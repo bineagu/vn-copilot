@@ -6,7 +6,7 @@ import { SpriteLayer } from "./SpriteLayer";
 import { DialogueBox } from "./DialogueBox";
 import type { DialogueBoxHandle } from "./DialogueBox";
 import { SettingsMenu } from "./SettingsMenu";
-import { AudioManager, playBGM, stopBGM } from "./AudioManager";
+import { AudioManager, playBGM, stopBGM, playSFX } from "./AudioManager";
 import type { Choice, DialogueLine } from "../types";
 
 interface GameScreenProps {
@@ -60,6 +60,13 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       playBGM(activeBgm, state.bgmVolume);
     }
   }, [activeBgm, state.bgmVolume]);
+
+  // Handle SFX on line change
+  useEffect(() => {
+    if (line?.sfx) {
+      playSFX(line.sfx, state.sfxVolume);
+    }
+  }, [line, state.sfxVolume]);
 
   const handleAdvance = useCallback(() => {
     dispatch({ type: "ADVANCE" });

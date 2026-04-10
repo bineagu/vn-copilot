@@ -2,10 +2,41 @@ import type { Scene } from "./types";
 
 // Asset paths
 export const BACKGROUNDS = {
-  classroom: "/backgrounds/1. The Classroom (Late Afternoon).png",
-  schoolGates: "/backgrounds/3. The School Gates (Sunset).png",
-  bedroom: "/backgrounds/4. Protagonist's Bedroom (Night).png",
-  darkStreet: "/backgrounds/5. The Dark Street.png",
+  // Day 1
+  classroomAfternoon: "/backgrounds/__1._Classroom,_Late_202604110132.png",
+  schoolHallway: "/backgrounds/__2._School_Hallway,_202604110134.png",
+  schoolGates: "/backgrounds/__3._School_Gates,_202604110134.png",
+  bedroomNight: "/backgrounds/__4._Protagonist's_Bedroom,_202604110133.png",
+  darkStreet: "/backgrounds/__5._Dark_Street,_202604110136.png",
+  // Day 2-3
+  classroomMorning: "/backgrounds/__6._Classroom,_Morning_202604110137.png",
+  library: "/backgrounds/__7._School_Library,_202604110137.png",
+  libraryHallway: "/backgrounds/__8._Library_Hallway,_202604110137.png",
+  schoolHallwayEvening: "/backgrounds/__9._School_Hallway,_202604110137.png",
+  // Day 4-5
+  fadeToBlack: "/backgrounds/__10._Fade_to_202604110137.png",
+  irisRoom: "/backgrounds/__11._Iris's_Bedroom___202604110138.png",
+  sedatedBlackout: "/backgrounds/__12._Sedated_Blackout_202604110138.png",
+  footballField: "/backgrounds/__13._School_Football_202604110139.png",
+  frozenOversaturated:
+    "/backgrounds/__14._Frozen_Oversaturated_202604110143.png",
+  // Day 6
+  classroomMorningVR: "/backgrounds/__15._Classroom,_Morning_202604110139.png",
+  whiteVoid: "/backgrounds/__16._Artificial_White_202604110140.png",
+  gymnasium: "/backgrounds/__17._School_Gymnasium,_202604110140.png",
+  classroomNormalVR: "/backgrounds/__18._Classroom,_Morning_202604110140.png",
+  hallwayLockers: "/backgrounds/__19._Hallway_with_202604110141.png",
+  // Day 9-10
+  glitchingLibrary: "/backgrounds/__20._Glitching_Library,_202604110141.png",
+  totalWhite: "/backgrounds/__21._Total_White_202604110141.png",
+  bedroomVR: "/backgrounds/__22._Protagonist's_Bedroom_202604110143.png",
+  bedroomDark: "/backgrounds/__23._Protagonist's_Bedroom_202604110144.png",
+  // Day 12+
+  studentCouncil: "/backgrounds/__24._Student_Council_202604110145.png",
+  binaryCode: "/backgrounds/__25._Binary_Code_202604110145.png",
+  totalBlack: "/backgrounds/__26._Total_Blackness_202604110146.png",
+  whiteBlinding: "/backgrounds/__27._Pure_Blinding_202604110146.png",
+  cafeReal: "/backgrounds/__28._Real-World_Cafe,_202604110146.png",
 };
 
 export const CHARACTERS = {
@@ -15,9 +46,86 @@ export const CHARACTERS = {
   maya: "/characters/Maya.png",
 };
 
+/** Get expression sprite by chronological number (1-100) */
+export function getExpressionSprite(num: number): string {
+  return `/characters/expressions/${num}.png`;
+}
+
 export const MUSIC = {
   graySuburbia: "/music/1 Three_PM_Kitchen_Table.mp3",
   obsession: "/music/2 Breath_Behind_the_Door.mp3",
+  infiniteSummer: "/music/3 無限の夏をインストール.mp3",
+  finalSaveState: "/music/4 Final_Save_State.mp3",
+  lastSavedState: "/music/5 Last_Saved_State.mp3",
+  pistonPressure: "/music/6 Piston_Pressure_Valve.mp3",
+  finalWinterRoom: "/music/7 The_Final_Winter_Room.mp3",
+  sunlightFloorboards: "/music/8 Sunlight_on_the_Floorboards.mp3",
+};
+
+export const SFX = {
+  schoolBellMuffled: "/sfx/sfx_school_bell_muffled.mp3",
+  footstepsTile: "/sfx/sfx_footsteps_tile_echo.mp3",
+  computerWork: "/sfx/sfx_computer_mouse_keyboard.mp3",
+  leavesCrunch: "/sfx/sfx_leaves_crunch_outside.mp3",
+  chairSqueak: "/sfx/sfx_chair_squeak.mp3",
+  windowSlide: "/sfx/sfx_window_slide_open.mp3",
+  runningFootsteps: "/sfx/sfx_running_footsteps_fade.mp3",
+  sdInsert: "/sfx/sfx_sd_insert_device_chime.mp3",
+  mouseClick: "/sfx/sfx_mouse_click_single.mp3",
+  phoneBuzz: "/sfx/sfx_phone_buzz_desk.mp3",
+  classroomMurmur: "/sfx/sfx_classroom_murmur_lockers.mp3",
+  chairSlide: "/sfx/sfx_chair_slide_floor.mp3",
+  shoulderSmack: "/sfx/sfx_shoulder_smack.mp3",
+  clothRustle: "/sfx/sfx_cloth_rustle_soft.mp3",
+  libraryPages: "/sfx/sfx_library_pages_pencil.mp3",
+  libraryDoors: "/sfx/sfx_library_doors_creak.mp3",
+  footstepsCarpet: "/sfx/sfx_footsteps_carpet_slow.mp3",
+  paperCrumple: "/sfx/sfx_paper_crumple.mp3",
+  hallwayLockerSteps: "/sfx/sfx_hallway_locker_footsteps_distant.mp3",
+  softGiggle: "/sfx/sfx_soft_giggle.mp3",
+  teacupDrop: "/sfx/sfx_teacup_drop_carpet.mp3",
+  footballAmbience: "/sfx/sfx_football_field_ambience.mp3",
+  footstepsGravel: "/sfx/sfx_footsteps_gravel_heavy.mp3",
+  footballThwack: "/sfx/sfx_football_thwack_cannon.mp3",
+  crunchSickening: "/sfx/sfx_crunch_sickening.mp3",
+  dialupScreech: "/sfx/sfx_dialup_screech_static.mp3",
+  systemBoot: "/sfx/sfx_system_boot_chime.mp3",
+  schoolBellCheerful: "/sfx/sfx_school_bell_cheerful.mp3",
+  serverHum: "/sfx/sfx_server_hum_low.mp3",
+  seagullLoop: "/sfx/sfx_seagull_loop.mp3",
+  wavesLoop: "/sfx/sfx_waves_loop.mp3",
+  footThud: "/sfx/sfx_foot_thud_solid_surface.mp3",
+  plasticBottle: "/sfx/sfx_plastic_bottle_squeeze.mp3",
+  gymShoeSqueak: "/sfx/sfx_gym_shoes_squeak.mp3",
+  whistleSharp: "/sfx/sfx_whistle_sharp.mp3",
+  digitalTearing: "/sfx/sfx_digital_tearing.mp3",
+  buzzingStatic: "/sfx/sfx_buzzing_static_rise.mp3",
+  gymDoors: "/sfx/sfx_gym_doors_hiss.mp3",
+  digitalPing: "/sfx/sfx_digital_ping_sharp.mp3",
+  schoolBellGlitch: "/sfx/sfx_school_bell_glitch_cutoff.mp3",
+  errorTone: "/sfx/sfx_error_tone_high.mp3",
+  hallwayThud: "/sfx/sfx_hallway_thud_echo.mp3",
+  rushingWind: "/sfx/sfx_rushing_wind_purge.mp3",
+  airConditioner: "/sfx/sfx_air_conditioner_hum_loud.mp3",
+  heavyFootstep: "/sfx/sfx_heavy_single_footstep.mp3",
+  whiteFlashScreech: "/sfx/sfx_white_flash_screech.mp3",
+  phoneRingtone: "/sfx/sfx_phone_ringtone_harsh.mp3",
+  staticBreathing: "/sfx/sfx_static_breathing_comm.mp3",
+  muffledBang: "/sfx/sfx_muffled_bang_upstairs.mp3",
+  dialupPhone: "/sfx/sfx_dialup_phone_burst.mp3",
+  threeKnocks: "/sfx/sfx_three_slow_knocks.mp3",
+  woodenDoorShut: "/sfx/sfx_wooden_door_click_shut.mp3",
+  softBuzzing: "/sfx/sfx_soft_buzzing_device.mp3",
+  hesitantFootsteps: "/sfx/sfx_hesitant_footsteps.mp3",
+  staticBurst: "/sfx/sfx_static_burst_silence.mp3",
+  staticExplosion: "/sfx/sfx_static_explosion.mp3",
+  doorUnlock: "/sfx/sfx_door_unlock_click.mp3",
+  doorBurstRun: "/sfx/sfx_door_burst_run.mp3",
+  serverRackBoom: "/sfx/sfx_server_rack_boom.mp3",
+  digitalGlassShatter: "/sfx/sfx_digital_glass_shatter.mp3",
+  footstepsStairs: "/sfx/sfx_footsteps_wooden_stairs_above.mp3",
+  dialupWhineBuild: "/sfx/sfx_dialup_whine_build.mp3",
+  policeBreach: "/sfx/sfx_police_breach_basement.mp3",
 };
 
 export const scenes: Scene[] = [
@@ -31,13 +139,15 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "The final bell always sounds less like a celebration and more like an eviction notice.",
         isInternal: true,
-        background: BACKGROUNDS.classroom,
+        background: BACKGROUNDS.classroomAfternoon,
         bgm: null,
+        sfx: SFX.schoolBellMuffled,
       },
       {
         speaker: "Protagonist",
         text: "Around me, the classroom empties in a blur of scraped chairs and overlapping conversations. I don't really tune into them. It's just noise. White noise in a gray room.",
         isInternal: true,
+        sfx: SFX.chairSlide,
       },
       {
         speaker: "Protagonist",
@@ -60,6 +170,7 @@ export const scenes: Scene[] = [
         text: "I push open the heavy double doors of the west exit. The evening air hits me—cool, damp, smelling like impending rain and wet asphalt. The sun is already dipping behind the treeline, casting long, warped shadows across the pavement.",
         isInternal: true,
         background: BACKGROUNDS.schoolGates,
+        sfx: SFX.footstepsTile,
       },
       {
         speaker: "Protagonist",
@@ -80,9 +191,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She isn't looking at her phone. She isn't reading a book. She's just... staring directly at the west doors. Like she's been waiting for them to open. Like a statue left out in the cold.",
         isInternal: true,
-        sprites: [
-          { character: "Iris", expression: "neutral", position: "center" },
-        ],
+        sprites: [{ character: "Iris", expression: "1", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -92,9 +201,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "Oh! {playerName}!",
-        sprites: [
-          { character: "Iris", expression: "smile", position: "center" },
-        ],
+        sprites: [{ character: "Iris", expression: "2", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -108,15 +215,18 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "I... I was just waiting for the bus, yeah. Even though the stop is a block away.",
+        sprites: [{ character: "Iris", expression: "3", position: "center" }],
       },
       {
         speaker: "Protagonist",
         text: "She takes a step closer. The gravel crunches under her shoes. She smells faintly of lavender, but underneath it, there's a sharp, metallic scent. Like copper.",
         isInternal: true,
+        sfx: SFX.footstepsGravel,
       },
       {
         speaker: "Iris",
         text: "I like the view from here. It's the view of where you spend your day.",
+        sprites: [{ character: "Iris", expression: "4", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -164,9 +274,7 @@ export const scenes: Scene[] = [
         text: "Look, Iris... that's a bit creepy. You shouldn't be memorizing people's schedules.",
         background: BACKGROUNDS.schoolGates,
         bgm: MUSIC.graySuburbia,
-        sprites: [
-          { character: "Iris", expression: "hurt", position: "center" },
-        ],
+        sprites: [{ character: "Iris", expression: "5", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -180,6 +288,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I don't wait for her to respond. I push past her and start walking down the sidewalk. I can feel her eyes burning into the back of my neck for a full block.",
         isInternal: true,
+        sfx: SFX.footstepsGravel,
       },
       {
         speaker: "Protagonist",
@@ -209,9 +318,7 @@ export const scenes: Scene[] = [
         text: "I mean... that's sweet, I guess. A little intense, but... thanks for looking out for me.",
         background: BACKGROUNDS.schoolGates,
         bgm: MUSIC.graySuburbia,
-        sprites: [
-          { character: "Iris", expression: "blushing", position: "center" },
-        ],
+        sprites: [{ character: "Iris", expression: "6", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -221,6 +328,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She takes another step forward, entirely invading my personal space. She reaches out, her fingertips lightly brushing the fabric of my uniform sleeve.",
         isInternal: true,
+        sfx: SFX.clothRustle,
       },
       {
         speaker: "Iris",
@@ -233,9 +341,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "Yes! Go home. Be safe. Lock your doors. I'll... I'll see you tomorrow, {playerName}. Exactly at 8:15 AM at the shoe lockers!",
-        sprites: [
-          { character: "Iris", expression: "manic", position: "center" },
-        ],
+        sprites: [{ character: "Iris", expression: "7", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -266,18 +372,20 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "11:42 PM.",
         isInternal: true,
-        background: BACKGROUNDS.bedroom,
+        background: BACKGROUNDS.bedroomNight,
         bgm: MUSIC.graySuburbia,
       },
       {
         speaker: "Protagonist",
         text: "The house is completely silent. My parents are working the night shift again. It's just me, the hum of my computer tower, and the occasional rattle of the wind against the glass.",
         isInternal: true,
+        sfx: SFX.airConditioner,
       },
       {
         speaker: "Protagonist",
         text: "I'm trying to focus on a history assignment, but the words keep swimming on the screen. My mind keeps drifting back to the school gate. To Iris.",
         isInternal: true,
+        sfx: SFX.computerWork,
       },
       {
         speaker: "Protagonist",
@@ -289,6 +397,7 @@ export const scenes: Scene[] = [
         text: "I freeze. My hand hovers over the mouse.",
         isInternal: true,
         bgm: null,
+        sfx: SFX.leavesCrunch,
       },
       {
         speaker: "Protagonist",
@@ -304,6 +413,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I slowly push my chair back and creep toward the window. I keep the lights off. If someone is out there, I don't want them to know I'm looking.",
         isInternal: true,
+        sfx: SFX.chairSqueak,
       },
       {
         speaker: "Protagonist",
@@ -349,11 +459,13 @@ export const scenes: Scene[] = [
       {
         speaker: "Protagonist",
         text: "Hey! What are you doing out there?!",
+        sfx: SFX.windowSlide,
       },
       {
         speaker: "Protagonist",
         text: "The figure flinches violently. The camera nearly drops from her hands. She doesn't say a word, doesn't even look up to meet my eyes. She just turns and bolts down the street, disappearing into the dark.",
         isInternal: true,
+        sfx: SFX.runningFootsteps,
       },
       {
         speaker: "Protagonist",
@@ -369,7 +481,8 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I didn't even put my shoes on. I just ran downstairs, grabbed it, and locked the front door behind me.",
         isInternal: true,
-        background: BACKGROUNDS.bedroom,
+        background: BACKGROUNDS.bedroomNight,
+        sfx: SFX.doorUnlock,
       },
       {
         speaker: "Protagonist",
@@ -390,6 +503,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I open the file explorer. There's only one master folder on the drive.",
         isInternal: true,
+        sfx: SFX.sdInsert,
       },
       {
         speaker: "Protagonist",
@@ -401,11 +515,13 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "My hand shakes slightly as I double-click the folder.\nHundreds of files populate the screen.\nThe first folder is named Location_Data.",
         isInternal: true,
+        sfx: SFX.mouseClick,
       },
       {
         speaker: "Protagonist",
         text: "I open a text file. It's a massive spreadsheet.\nDates. Times. GPS coordinates.\nMonday, 8:02 AM: Walked past the bakery.\nTuesday, 4:15 PM: Stayed at the arcade for exactly 42 minutes.\nSunday, 2:00 AM: Pacing in bedroom. (Heart rate elevated?)",
         isInternal: true,
+        sfx: SFX.mouseClick,
       },
       {
         speaker: "Protagonist",
@@ -415,15 +531,18 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I back out of the folder, feeling sick. There's another folder. Audio_Board.",
         isInternal: true,
+        sfx: SFX.mouseClick,
       },
       {
         speaker: "Protagonist",
         text: "Inside are dozens of small .wav files. I click one at random.",
         isInternal: true,
+        sfx: SFX.mouseClick,
       },
       {
         speaker: "Audio",
         text: '(Static hiss) "...hey Leo, do you... want to... grab lunch?"',
+        sfx: SFX.staticBurst,
       },
       {
         speaker: "Protagonist",
@@ -433,11 +552,13 @@ export const scenes: Scene[] = [
       {
         speaker: "Audio",
         text: '(Static hiss) "...I... love... you... Iris."',
+        sfx: SFX.staticBurst,
       },
       {
         speaker: "Protagonist",
         text: "I rip my headphones off my ears, throwing them onto the desk.",
         isInternal: true,
+        sfx: SFX.hallwayThud,
       },
       {
         speaker: "Protagonist",
@@ -453,6 +574,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I jump, nearly knocking over my chair. It's a text message from an unknown number.",
         isInternal: true,
+        sfx: SFX.phoneBuzz,
         systemGraphic:
           "You look so handsome when you're concentrating. Sweet dreams. See you tomorrow. ❤️",
       },

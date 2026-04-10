@@ -45,3 +45,9 @@ export function setBGMVolume(volume: number) {
     currentAudio.volume = volume;
   }
 }
+
+export function playSFX(src: string, volume: number = 1) {
+  const sfx = new Audio(src);
+  sfx.volume = volume;
+  sfx.play().catch(() => {});
+}

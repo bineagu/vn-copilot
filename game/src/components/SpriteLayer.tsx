@@ -1,4 +1,4 @@
-import { CHARACTERS } from "../script";
+import { CHARACTERS, getExpressionSprite } from "../script";
 
 interface SpriteLayerProps {
   sprites: Array<{
@@ -9,7 +9,18 @@ interface SpriteLayerProps {
   isVRMode: boolean;
 }
 
-function getCharacterImage(character: string, isVRMode: boolean): string {
+function getCharacterImage(
+  character: string,
+  expression: string,
+  isVRMode: boolean,
+): string {
+  // If expression is a number, use the numbered expression sprite
+  const num = parseInt(expression, 10);
+  if (!isNaN(num)) {
+    return getExpressionSprite(num);
+  }
+
+  // Fallback to legacy character images
   const name = character.toLowerCase();
   if (name === "iris") {
     return isVRMode ? CHARACTERS.irisVR : CHARACTERS.irisReal;
@@ -42,7 +53,11 @@ export function SpriteLayer({ sprites, isVRMode }: SpriteLayerProps) {
           className={`absolute bottom-0 ${getPositionClass(sprite.position)} animate-fade-in`}
         >
           <img
-            src={getCharacterImage(sprite.character, isVRMode)}
+            src={getCharacterImage(
+              sprite.character,
+              sprite.expression,
+              isVRMode,
+            )}
             alt={sprite.character}
             className="h-[92vh] w-auto object-contain drop-shadow-2xl"
             draggable={false}

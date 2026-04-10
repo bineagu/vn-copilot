@@ -1,8 +1,10 @@
 $ErrorActionPreference = 'Stop'
 
+. (Join-Path $PSScriptRoot 'freesound_common.ps1')
+
 $outDir = Join-Path $PSScriptRoot 'freesound_previews'
 $manifestPath = Join-Path $outDir 'manifest.csv'
-$headers = @{ 'User-Agent' = 'Mozilla/5.0' }
+$promptsPath = Join-Path $PSScriptRoot 'PROMPTS.md'
 
 if (-not (Test-Path $manifestPath)) {
     throw "Manifest not found at $manifestPath"
@@ -12,7 +14,12 @@ $overrides = @{
     'sfx_classroom_murmur_lockers' = 'https://freesound.org/people/okieactor/sounds/417041/'
     'sfx_chair_slide_floor' = 'https://freesound.org/people/frederickls/sounds/441695/'
     'sfx_shoulder_smack' = 'https://freesound.org/people/nahmandub/sounds/131358/'
+    'sfx_cloth_rustle_soft' = 'https://freesound.org/people/WasabiWielder/sounds/334219/'
+    'sfx_library_pages_pencil' = 'https://freesound.org/people/InspectorJ/sounds/398271/'
     'sfx_teacup_drop_carpet' = 'https://freesound.org/people/andre.nascimento/sounds/50118/'
+    'sfx_football_field_ambience' = 'https://freesound.org/people/Sandermotions/sounds/494362/'
+    'sfx_footsteps_gravel_heavy' = 'https://freesound.org/people/bevangoldswain/sounds/54778/'
+    'sfx_football_thwack_cannon' = 'https://freesound.org/people/dersuperanton/sounds/433722/'
     'sfx_system_boot_chime' = 'https://freesound.org/people/marlonnnnnn/sounds/351880/'
     'sfx_school_bell_cheerful' = 'https://freesound.org/people/BennettFilmTeacher/sounds/403459/'
     'sfx_server_hum_low' = 'https://freesound.org/people/DeVern/sounds/610761/'
@@ -25,42 +32,32 @@ $overrides = @{
     'sfx_footsteps_wooden_stairs_above' = 'https://freesound.org/people/Sclolex/sounds/210573/'
     'sfx_police_breach_basement' = 'https://freesound.org/people/MarcelWagner/sounds/693846/'
 }
-
-function Get-SoundPageInfo([string]$soundHtml) {
-    $titleMatch = [regex]::Match($soundHtml, '<title>Freesound - (.*?) by ')
-    $title = if ($titleMatch.Success) { [System.Net.WebUtility]::HtmlDecode($titleMatch.Groups[1].Value) } else { '' }
-
-    $previewMatch = [regex]::Match($soundHtml, 'https://cdn\.freesound\.org/previews/[^"'' ]+\.(mp3|ogg)')
-    $previewUrl = if ($previewMatch.Success) { $previewMatch.Value } else { '' }
-
-    $license = ''
-    foreach ($pattern in @('Creative Commons 0', 'Attribution 4.0', 'Attribution NonCommercial 4.0', 'Sampling\+')) {
-        $licenseMatch = [regex]::Match($soundHtml, $pattern)
-        if ($licenseMatch.Success) {
-            $license = $licenseMatch.Value
-            break
-        }
-    }
-
-    return [pscustomobject]@{
-        MatchTitle = $title
-        PreviewUrl = $previewUrl
-        License = $license
-    }
-}
-
 $rows = Import-Csv $manifestPath
+$promptEntries = Get-FreesoundPromptEntries $promptsPath
+$promptLookup = @{}
+foreach ($entry in $promptEntries) {
+    $promptLookup[$entry.AssetId] = $entry
+}
 
 foreach ($row in $rows) {
     if (-not $overrides.ContainsKey($row.AssetId)) {
         continue
     }
 
+    $currentPenalty = if ($row.DurationPenaltySeconds) { [double]$row.DurationPenaltySeconds } else { [double]::PositiveInfinity }
+    $currentDownloaded = ($row.Status -eq 'downloaded')
+
     $soundUrl = $overrides[$row.AssetId]
-    $soundHtml = (Invoke-WebRequest -UseBasicParsing $soundUrl -Headers $headers).Content
-    $info = Get-SoundPageInfo $soundHtml
+    $soundHtml = (Invoke-WebRequest -UseBasicParsing $soundUrl -Headers $Script:FreesoundHeaders).Content
+    $info = Get-FreesoundPageInfo $soundHtml
 
     if ([string]::IsNullOrWhiteSpace($info.PreviewUrl)) {
+        continue
+    }
+
+    $entry = $promptLookup[$row.AssetId]
+    $durationPenalty = Get-FreesoundDurationPenalty $info.DurationSeconds $entry.ExpectedMinSeconds $entry.ExpectedMaxSeconds
+    if ($currentDownloaded -and $durationPenalty -gt $currentPenalty) {
         continue
     }
 
@@ -69,13 +66,21 @@ foreach ($row in $rows) {
         $extension = '.mp3'
     }
 
+    Get-ChildItem -Path $outDir -Filter ($row.AssetId + '.*') -File -ErrorAction SilentlyContinue | Remove-Item -Force -ErrorAction SilentlyContinue
     $outFile = Join-Path $outDir ($row.AssetId + $extension)
-    Invoke-WebRequest -UseBasicParsing $info.PreviewUrl -Headers $headers -OutFile $outFile
+    Invoke-WebRequest -UseBasicParsing $info.PreviewUrl -Headers $Script:FreesoundHeaders -OutFile $outFile
 
     $row.MatchTitle = $info.MatchTitle
     $row.SoundUrl = $soundUrl
     $row.PreviewUrl = $info.PreviewUrl
     $row.License = $info.License
+    $row.Downloads = $info.Downloads
+    $row.MatchedDurationSeconds = $info.DurationSeconds
+    $row.ExpectedMinSeconds = $entry.ExpectedMinSeconds
+    $row.ExpectedMaxSeconds = $entry.ExpectedMaxSeconds
+    $row.TargetDurationSeconds = $entry.TargetDurationSeconds
+    $row.DurationPenaltySeconds = [Math]::Round($durationPenalty, 3)
+    $row.DurationInRange = ($durationPenalty -eq 0.0)
     $row.DownloadedFile = $outFile
     $row.Status = 'downloaded'
 }
@@ -83,8 +88,10 @@ foreach ($row in $rows) {
 $rows | Export-Csv -NoTypeInformation -Encoding UTF8 -Path $manifestPath
 
 $downloaded = ($rows | Where-Object Status -eq 'downloaded').Count
+$inRange = ($rows | Where-Object { $_.Status -eq 'downloaded' -and $_.DurationInRange -eq 'True' }).Count
 $failed = ($rows | Where-Object Status -ne 'downloaded').Count
 
 Write-Output "Downloaded: $downloaded"
+Write-Output "InRange: $inRange"
 Write-Output "NotDownloaded: $failed"
 Write-Output "Manifest: $manifestPath"
