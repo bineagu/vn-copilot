@@ -15,18 +15,20 @@ interface GameScreenProps {
 
 // Walk backward through lines to find the last set background/sprites
 function resolveFromHistory(
-  scene: { lines: DialogueLine[] } | undefined,
+  scene: { vrMode?: boolean; lines: DialogueLine[] } | undefined,
   index: number,
 ) {
   let bg = "";
   let sprites: DialogueLine["sprites"] = [];
-  if (!scene) return { bg, sprites };
+  let vrMode = scene?.vrMode ?? false;
+  if (!scene) return { bg, sprites, vrMode };
   for (let i = 0; i <= index; i++) {
     const l = scene.lines[i];
     if (l.background) bg = l.background;
     if (l.sprites) sprites = l.sprites;
+    if (l.vrMode !== undefined) vrMode = l.vrMode;
   }
-  return { bg, sprites };
+  return { bg, sprites, vrMode };
 }
 
 export function GameScreen({ onMainMenu }: GameScreenProps) {
@@ -37,7 +39,11 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
   const scene = getSceneById(state.currentSceneId);
   const line = scene?.lines[state.dialogueIndex];
 
-  const { bg: currentBg, sprites: currentSprites } = useMemo(
+  const {
+    bg: currentBg,
+    sprites: currentSprites,
+    vrMode: activeVrMode,
+  } = useMemo(
     () => resolveFromHistory(scene, state.dialogueIndex),
     [scene, state.dialogueIndex],
   );
@@ -78,6 +84,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         type: "CHOOSE",
         nextSceneId: choice.nextSceneId,
         stateEffects: choice.stateEffects,
+        requirements: choice.requirements,
       });
     },
     [dispatch],
@@ -109,18 +116,16 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       <AudioManager />
 
       {/* Background */}
-      {currentBg && (
-        <BackgroundLayer src={currentBg} isVRMode={state.isVRMode} />
-      )}
+      {currentBg && <BackgroundLayer src={currentBg} isVRMode={activeVrMode} />}
 
       {/* Sprites */}
-      <SpriteLayer sprites={currentSprites || []} isVRMode={state.isVRMode} />
+      <SpriteLayer sprites={currentSprites || []} isVRMode={activeVrMode} />
 
       {/* Settings gear button */}
       <button
         onClick={() => setShowSettings(true)}
         className={`absolute top-3 right-3 z-30 w-10 h-10 flex items-center justify-center text-xl rounded-full transition-all active:scale-90 ${
-          state.isVRMode
+          activeVrMode
             ? "bg-pink-900/50 text-pink-300 border border-pink-400/30 hover:bg-pink-800/60"
             : "bg-black/40 text-gray-400 border border-gray-600/30 hover:bg-black/60"
         }`}
@@ -131,13 +136,14 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       {/* Stats debug (small) */}
       <div
         className={`absolute top-3 left-3 z-30 text-[10px] px-2 py-1 rounded ${
-          state.isVRMode
+          activeVrMode
             ? "bg-pink-900/40 text-pink-400/60"
             : "bg-black/30 text-gray-600"
         }`}
       >
         LUC:{state.variables.lucidity || 0} AFF:
-        {state.variables.irisAffection || 0}
+        {state.variables.irisAffection || 0} ADD:
+        {state.variables.addiction || 0}
       </div>
 
       {/* Tap area — first tap fills text, second advances */}
@@ -155,8 +161,9 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         speaker={line.speaker}
         text={line.text}
         isInternal={line.isInternal}
-        isVRMode={state.isVRMode}
+        isVRMode={activeVrMode}
         choices={line.choices}
+        variables={state.variables}
         textSpeed={state.textSpeed}
         playerName={state.playerName}
         systemGraphic={line.systemGraphic}
@@ -167,6 +174,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       {/* Settings Overlay */}
       {showSettings && (
         <SettingsMenu
+          isVRMode={activeVrMode}
           onClose={() => setShowSettings(false)}
           onMainMenu={() => {
             stopBGM();

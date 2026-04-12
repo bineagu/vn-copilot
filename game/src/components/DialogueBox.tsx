@@ -8,6 +8,16 @@ import {
 } from "react";
 import type { Choice } from "../types";
 
+function meetsRequirements(
+  variables: Record<string, number>,
+  requirements?: Record<string, number>,
+) {
+  if (!requirements) return true;
+  return Object.entries(requirements).every(
+    ([key, value]) => (variables[key] || 0) >= value,
+  );
+}
+
 export interface DialogueBoxHandle {
   tap: () => void;
 }
@@ -18,6 +28,7 @@ interface DialogueBoxProps {
   isInternal?: boolean;
   isVRMode: boolean;
   choices?: Choice[];
+  variables: Record<string, number>;
   textSpeed: number;
   playerName: string;
   systemGraphic?: string;
@@ -33,6 +44,7 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
       isInternal,
       isVRMode,
       choices,
+      variables,
       textSpeed,
       playerName,
       systemGraphic,
@@ -187,19 +199,40 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
         {/* Choice menu */}
         {hasChoices && (
           <div className="flex flex-col items-center gap-3 px-6 mb-4 animate-slide-up">
-            {choices.map((choice, i) => (
-              <button
-                key={i}
-                onClick={() => onChoice(choice)}
-                className={`w-full max-w-lg py-3 px-6 text-base sm:text-lg font-medium transition-all duration-200 active:scale-95 ${
-                  isVRMode
-                    ? "bg-gradient-to-r from-pink-600/80 to-purple-600/80 hover:from-pink-500 hover:to-purple-500 text-white rounded-xl border border-pink-400/40 shadow-lg shadow-pink-500/20"
-                    : "bg-gray-800/90 hover:bg-gray-700/90 text-gray-100 border border-gray-500/50 rounded-sm"
-                }`}
-              >
-                {choice.text}
-              </button>
-            ))}
+            {choices.map((choice, i) => {
+              const unlocked = meetsRequirements(
+                variables,
+                choice.requirements,
+              );
+
+              return (
+                <button
+                  key={i}
+                  onClick={() => unlocked && onChoice(choice)}
+                  disabled={!unlocked}
+                  className={`w-full max-w-lg py-3 px-6 text-base sm:text-lg font-medium transition-all duration-200 active:scale-95 ${
+                    !unlocked
+                      ? isVRMode
+                        ? "bg-pink-950/50 text-pink-200/50 rounded-xl border border-pink-400/20 cursor-not-allowed"
+                        : "bg-gray-900/70 text-gray-500 border border-gray-700/40 rounded-sm cursor-not-allowed"
+                      : isVRMode
+                        ? "bg-gradient-to-r from-pink-600/80 to-purple-600/80 hover:from-pink-500 hover:to-purple-500 text-white rounded-xl border border-pink-400/40 shadow-lg shadow-pink-500/20"
+                        : "bg-gray-800/90 hover:bg-gray-700/90 text-gray-100 border border-gray-500/50 rounded-sm"
+                  }`}
+                >
+                  <div>{choice.text}</div>
+                  {!unlocked && choice.lockReason && (
+                    <div
+                      className={`mt-1 text-xs ${
+                        isVRMode ? "text-pink-300/70" : "text-gray-500"
+                      }`}
+                    >
+                      {choice.lockReason}
+                    </div>
+                  )}
+                </button>
+              );
+            })}
           </div>
         )}
 

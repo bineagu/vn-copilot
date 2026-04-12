@@ -4,10 +4,14 @@ export interface Sprite {
   position?: "left" | "center" | "right";
 }
 
+export type VariableRequirements = Record<string, number>;
+
 export interface Choice {
   text: string;
   nextSceneId: string;
   stateEffects?: Record<string, number>;
+  requirements?: VariableRequirements;
+  lockReason?: string;
 }
 
 export interface DialogueLine {
@@ -20,10 +24,12 @@ export interface DialogueLine {
   sfx?: string;
   choices?: Choice[];
   systemGraphic?: string;
+  vrMode?: boolean;
 }
 
 export interface Scene {
   id: string;
+  vrMode?: boolean;
   lines: DialogueLine[];
 }
 
@@ -44,6 +50,7 @@ export type GameAction =
       type: "CHOOSE";
       nextSceneId: string;
       stateEffects?: Record<string, number>;
+      requirements?: VariableRequirements;
     }
   | { type: "SET_SCENE"; sceneId: string; lineIndex?: number }
   | { type: "SET_VR_MODE"; value: boolean }

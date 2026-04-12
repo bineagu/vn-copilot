@@ -19,6 +19,8 @@ export function MainMenu({ onStart }: MainMenuProps) {
   const handleStartGame = () => {
     if (nameValue.trim()) {
       dispatch({ type: "SET_PLAYER_NAME", name: nameValue.trim() });
+    } else if (state.playerName === "Player") {
+      dispatch({ type: "SET_PLAYER_NAME", name: "" });
     }
     dispatch({ type: "SET_SCENE", sceneId: "day1_start", lineIndex: 0 });
     onStart();

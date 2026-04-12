@@ -4,15 +4,20 @@ import { setBGMVolume, stopBGM } from "./AudioManager";
 import { SaveLoadModal } from "./SaveLoadModal";
 
 interface SettingsMenuProps {
+  isVRMode: boolean;
   onClose: () => void;
   onMainMenu: () => void;
 }
 
-export function SettingsMenu({ onClose, onMainMenu }: SettingsMenuProps) {
+export function SettingsMenu({
+  isVRMode,
+  onClose,
+  onMainMenu,
+}: SettingsMenuProps) {
   const { state, dispatch } = useGame();
   const [slotMode, setSlotMode] = useState<"save" | "load" | null>(null);
 
-  const isVR = state.isVRMode;
+  const isVR = isVRMode;
 
   const panelClass = isVR
     ? "bg-gradient-to-b from-purple-900/95 to-pink-900/95 border border-pink-400/30 rounded-2xl"

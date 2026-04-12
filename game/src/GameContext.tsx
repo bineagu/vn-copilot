@@ -6,14 +6,26 @@ import type { SaveSlotData } from "./useGame";
 
 const SAVE_PREFIX = "sol_slot_";
 
+function meetsRequirements(
+  variables: Record<string, number>,
+  requirements?: Record<string, number>,
+) {
+  if (!requirements) return true;
+  return Object.entries(requirements).every(
+    ([key, value]) => (variables[key] || 0) >= value,
+  );
+}
+
 const initialState: GameState = {
   currentSceneId: "day1_start",
   dialogueIndex: 0,
   isVRMode: false,
-  playerName: "Leo",
+  playerName: "Player",
   variables: {
     lucidity: 0,
     irisAffection: 0,
+    addiction: 0,
+    silverLocket: 0,
   },
   textSpeed: 30,
   bgmVolume: 0.5,
@@ -35,6 +47,10 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return state;
     }
     case "CHOOSE": {
+      if (!meetsRequirements(state.variables, action.requirements)) {
+        return state;
+      }
+
       const newVars = { ...state.variables };
       if (action.stateEffects) {
         for (const [key, val] of Object.entries(action.stateEffects)) {
