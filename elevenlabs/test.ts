@@ -6,13 +6,27 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import apiKey from "./../api-key.json" with { type: "json" };
-import { BodyTextToDialogueMultiVoiceV1TextToDialoguePostApplyTextNormalization } from "@elevenlabs/elevenlabs-js/api/index.js";
+import sfxEntries from "./sfx.json" with { type: "json" };
+import voiceLines from "./voice_lines.json" with { type: "json" };
 
 const elevenlabs = new ElevenLabsClient({
   apiKey: apiKey.key, // Defaults to process.env.ELEVENLABS_API_KEY
 });
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
+
+type SfxEntry = {
+  prompt: string;
+  loop: boolean;
+  durationSeconds?: number;
+  fileName: string;
+};
+
+type VoiceLineEntry = {
+  line: string;
+  character: string;
+  id: string;
+};
 
 async function generateSfx(
   prompt: string,
@@ -25,13 +39,14 @@ async function generateSfx(
     loop,
     outputFormat: "mp3_44100_128",
     durationSeconds,
-    promptInfluence: 0.5,
+    promptInfluence: 0.4,
   });
 
   const audioBytes = await readStreamFully(sfx);
 
   const outputPath = path.resolve(
     scriptDirectory,
+    "sfx",
     ensureMp3Extension(fileName),
   );
 
@@ -42,11 +57,19 @@ async function generateSfx(
 }
 
 const voices = {
-  irisReal: "p7g5YXt4rAnjYuiiuCzb",
+  irisReal: "zPABhxcjU5slbQSedYKn",
+  irisVr: "WyVvr9QxPuxX5FI4AWH0",
+  maya: "IA1Uo0uGXjm4EZdkWo1t",
+  chloe: "9LQXwQNBrPJQQ5D2qv07",
+  leo: "8YIOgzXVOYUwEENkD1m0",
+  randomStudent: "LWDjGNDPlm2PQwnzQKdK",
 };
 
 async function generateLine(line: string, character: string, id: string) {
-  const voiceId = "EXAVITQu4vr4xnSDxMaL/EXAMPLE_VOICE_ID";
+  const voiceId = voices[character as keyof typeof voices];
+  if (!voiceId) {
+    throw new Error(`No voice found for character "${character}"`);
+  }
   const audio = await elevenlabs.textToSpeech.convert(voiceId, {
     text: line,
     outputFormat: "mp3_44100_128",
@@ -102,17 +125,135 @@ function ensureMp3Extension(fileName: string) {
   return path.extname(fileName) ? fileName : `${fileName}.mp3`;
 }
 
+function parseOptionalNumber(value: string | undefined, fallback: number) {
+  if (value === undefined) return fallback;
+
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < 0) {
+    throw new Error(`Expected a non-negative integer, received "${value}".`);
+  }
+
+  return parsed;
+}
+
+function printUsage() {
+  console.log(`Usage:
+  node .\\elevenlabs\\test.ts --sfx [skip] [take]
+  node .\\elevenlabs\\test.ts --lines [skip] [take]
+  node .\\elevenlabs\\test.ts --line "text" "character" "id"
+  node .\\elevenlabs\\test.ts "prompt" "output-file" [durationSeconds] [loop]
+
+Examples:
+  node .\\elevenlabs\\test.ts --sfx 0 10
+  node .\\elevenlabs\\test.ts --lines 20 5
+  node .\\elevenlabs\\test.ts --line "[urgent] Hello?" leo sample_line_001
+  node .\\elevenlabs\\test.ts "metal door slam" "door_slam" 2 false`);
+}
+
+async function generateSfxBatch(skip: number, take?: number) {
+  const entries = sfxEntries as SfxEntry[];
+  const selected = entries.slice(
+    skip,
+    take === undefined ? undefined : skip + take,
+  );
+
+  if (selected.length === 0) {
+    console.log("No SFX entries selected.");
+    return;
+  }
+
+  for (let index = 0; index < selected.length; index += 1) {
+    const entry = selected[index];
+    const absoluteIndex = skip + index;
+    console.log(
+      `Generating SFX ${absoluteIndex + 1}/${entries.length}: ${entry.fileName}`,
+    );
+    const outputPath = await generateSfx(
+      entry.prompt,
+      entry.loop,
+      entry.durationSeconds,
+      entry.fileName,
+    );
+    console.log(`Saved SFX to ${outputPath}`);
+  }
+}
+
+async function generateLineBatch(skip: number, take?: number) {
+  const entries = voiceLines as VoiceLineEntry[];
+  const selected = entries.slice(
+    skip,
+    take === undefined ? undefined : skip + take,
+  );
+
+  if (selected.length === 0) {
+    console.log("No line entries selected.");
+    return;
+  }
+
+  for (let index = 0; index < selected.length; index += 1) {
+    const entry = selected[index];
+    const absoluteIndex = skip + index;
+    console.log(
+      `Generating line ${absoluteIndex + 1}/${entries.length}: ${entry.id}`,
+    );
+    const outputPath = await generateLine(
+      entry.line,
+      entry.character,
+      entry.id,
+    );
+    console.log(`Saved line to ${outputPath}`);
+  }
+}
+
 async function main() {
-  const prompt = process.argv[2];
-  const fileName = process.argv[3];
-  const durationArg = process.argv[4] ?? undefined;
-  const loopArg = process.argv[5] ?? "false";
+  const args = process.argv.slice(2);
+
+  if (args.length === 0 || args[0] === "--help" || args[0] === "-h") {
+    printUsage();
+    return;
+  }
+
+  if (args[0] === "--sfx") {
+    const skip = parseOptionalNumber(args[1], 0);
+    const take =
+      args[2] === undefined ? undefined : parseOptionalNumber(args[2], 0);
+    await generateSfxBatch(skip, take);
+    return;
+  }
+
+  if (args[0] === "--lines") {
+    const skip = parseOptionalNumber(args[1], 0);
+    const take =
+      args[2] === undefined ? undefined : parseOptionalNumber(args[2], 0);
+    await generateLineBatch(skip, take);
+    return;
+  }
+
+  if (args[0] === "--line") {
+    const line = args[1];
+    const character = args[2];
+    const id = args[3];
+
+    if (!line || !character || !id) {
+      throw new Error(
+        'Usage: node .\\elevenlabs\\test.ts --line "text" "character" "id"',
+      );
+    }
+
+    const outputPath = await generateLine(line, character, id);
+    console.log(`Saved line to ${outputPath}`);
+    return;
+  }
+
+  const prompt = args[0];
+  const fileName = args[1];
+  const durationArg = args[2];
+  const loopArg = args[3] ?? "false";
 
   if (!prompt || !fileName) {
-    console.error(
-      'Usage: node .\\test.ts "prompt" "output-file" [durationSeconds] [loop]',
+    throw new Error(
+      'Usage: node .\\elevenlabs\\test.ts "prompt" "output-file" [durationSeconds] [loop]',
     );
-    process.exit(1);
   }
 
   let durationSeconds: number | undefined = Number(durationArg);
@@ -131,4 +272,8 @@ async function main() {
   console.log(`Saved SFX to ${outputPath}`);
 }
 
-await main();
+await main().catch((error: unknown) => {
+  const message = error instanceof Error ? error.message : String(error);
+  console.error(message);
+  process.exit(1);
+});

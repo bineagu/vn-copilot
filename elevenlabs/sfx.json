@@ -1,0 +1,380 @@
+[
+  {
+    "prompt": "Interior school bell ringing, slightly muffled and a little harsh, heard through classroom ambience, cold institutional tone, brief natural decay. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_school_bell_muffled"
+  },
+  {
+    "prompt": "Echoing footsteps on hard school tile floor in an empty hallway, clean heel-to-toe impacts, faint reverb, lonely institutional space. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 4.5,
+    "fileName": "sfx_footsteps_tile_echo"
+  },
+  {
+    "prompt": "Quiet nighttime computer desk foley, soft mouse clicks and light keyboard tapping, intimate indoor recording, no voice, no fan hum dominating the mix. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 7.5,
+    "fileName": "sfx_computer_mouse_keyboard"
+  },
+  {
+    "prompt": "Sudden sharp crunch of dry leaves outdoors at night, single alarming footstep in a quiet suburban yard, crisp transient, suspenseful. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_leaves_crunch_outside"
+  },
+  {
+    "prompt": "Desk chair squeaking as someone stands up suddenly, indoor close-mic recording, slightly tense, no room noise. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_chair_squeak"
+  },
+  {
+    "prompt": "Sliding window yanked open hard, sharp track rattle and sudden stop, aggressive motion, nighttime interior. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_window_slide_open"
+  },
+  {
+    "prompt": "Rapid footsteps running away outdoors at night, quick pavement impacts receding into the distance, urgent and frightened. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_running_footsteps_fade"
+  },
+  {
+    "prompt": "Tiny plastic SD card click into a reader followed by a clean computer device-connected notification chime, crisp and modern, no music. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 2,
+    "fileName": "sfx_sd_insert_device_chime"
+  },
+  {
+    "prompt": "Single clean computer mouse click, close and dry, no ambience. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_mouse_click_single"
+  },
+  {
+    "prompt": "Smartphone vibrating against a wooden desk, sudden short buzz, intimate close-up sound. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_phone_buzz_desk"
+  },
+  {
+    "prompt": "Subdued classroom ambience with distant students chatting and occasional faraway locker slams, morning school interior, low emotional energy. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 11.5,
+    "fileName": "sfx_classroom_murmur_lockers"
+  },
+  {
+    "prompt": "School classroom chair scraping lightly across the floor, single movement, close and clean. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_chair_slide_floor"
+  },
+  {
+    "prompt": "Friendly but loud slap on a school uniform shoulder, sharp hand impact on fabric, no comedy exaggeration. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_shoulder_smack"
+  },
+  {
+    "prompt": "Soft fabric rustling from unwrapping cloth, delicate close-up movement, clean and light. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_cloth_rustle_soft"
+  },
+  {
+    "prompt": "Quiet library ambience, soft page turns, faint pencil scratching, spacious but hushed room tone, studious and calm. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 15,
+    "fileName": "sfx_library_pages_pencil"
+  },
+  {
+    "prompt": "Heavy library double doors slowly creaking open, wooden and metal strain, ominous entrance cue, natural room reverb. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 2.5,
+    "fileName": "sfx_library_doors_creak"
+  },
+  {
+    "prompt": "Slow deliberate footsteps on low-pile carpet in a quiet library, muffled but clearly paced, tense and controlled. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 4,
+    "fileName": "sfx_footsteps_carpet_slow"
+  },
+  {
+    "prompt": "Sharp paper crumpling in one hand, dry notebook paper, close-mic, emotionally tense. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_paper_crumple"
+  },
+  {
+    "prompt": "Empty school hallway ambience with distant locker slam and fading footsteps, late afternoon, mostly silence, lonely and uneasy. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 7.5,
+    "fileName": "sfx_hallway_locker_footsteps_distant"
+  },
+  {
+    "prompt": "Soft feminine giggle, brief and unsettling, intimate proximity, not comedic, slight eeriness. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_soft_giggle"
+  },
+  {
+    "prompt": "Ceramic teacup slipping from a hand and hitting carpeted floor with a soft thud and small clatter, indoors, muffled by carpet. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_teacup_drop_carpet"
+  },
+  {
+    "prompt": "Distant school sports field ambience, faint shouts from a track team and rhythmic football kicks, open outdoor space, overcast day. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 11.5,
+    "fileName": "sfx_football_field_ambience"
+  },
+  {
+    "prompt": "Rapid heavy footsteps approaching over gravel near an outdoor track, urgent pace, breathless tension. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_footsteps_gravel_heavy"
+  },
+  {
+    "prompt": "Extremely loud leather football impact fused with a cannon-like air burst, impossible speed, violent and shocking, cinematic hit sound. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_football_thwack_cannon"
+  },
+  {
+    "prompt": "Short sickening impact crunch, not too wet, bone-jarring blunt trauma implication, horror stinger. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_crunch_sickening"
+  },
+  {
+    "prompt": "Violent digital dial-up screech tearing through speakers followed by heavy static, abrasive glitch horror sound, high intensity. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_dialup_screech_static"
+  },
+  {
+    "prompt": "Cheerful bright digital boot-up chime, clean console startup feel, polished and synthetic. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_system_boot_chime"
+  },
+  {
+    "prompt": "Bright cheerful school bell chimes, overly pleasant and clean, idealized anime school tone. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_school_bell_cheerful"
+  },
+  {
+    "prompt": "Low electronic hum like a server fan spinning up in the background, subtle, barely audible, mechanical unease. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 9,
+    "fileName": "sfx_server_hum_low"
+  },
+  {
+    "prompt": "Single seagull cry in a clean seaside environment, isolated enough to loop, bright but uncanny if repeated. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 6,
+    "fileName": "sfx_seagull_loop"
+  },
+  {
+    "prompt": "Gentle ocean wave wash on a beach, evenly timed, controlled loop-friendly surf, clean and slightly artificial feeling. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 9,
+    "fileName": "sfx_waves_loop"
+  },
+  {
+    "prompt": "Dull footstep thud against a hard glossy surface, as if stepping on solid water or thick plastic, uncanny and wrong. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_foot_thud_solid_surface"
+  },
+  {
+    "prompt": "Small plastic bottle squeezed in one hand, sunscreen-bottle style, close and tactile. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_plastic_bottle_squeeze"
+  },
+  {
+    "prompt": "Rubber athletic shoes squeaking on polished indoor gym floor, clean sports court resonance, light motion. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 4,
+    "fileName": "sfx_gym_shoes_squeak"
+  },
+  {
+    "prompt": "Sharp coach whistle blow, piercing but brief, indoor gym acoustics. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_whistle_sharp"
+  },
+  {
+    "prompt": "Horrible loud digital tearing noise like a blown-out speaker and corrupted geometry ripping apart, abrasive and alarming. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_digital_tearing"
+  },
+  {
+    "prompt": "Loud buzzing static slowly rising in intensity, electrical and unstable, suspense build with no melody. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 4.5,
+    "fileName": "sfx_buzzing_static_rise"
+  },
+  {
+    "prompt": "Large gym doors sliding or opening with a heavy mechanical hiss and metallic motion, ominous entrance cue. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 2,
+    "fileName": "sfx_gym_doors_hiss"
+  },
+  {
+    "prompt": "Sharp sterile digital confirmation ping, cold and clinical, admin-interface feel. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_digital_ping_sharp"
+  },
+  {
+    "prompt": "School bell chime that abruptly cuts off halfway, glitched playback, unnatural stop, corrupted school ambience. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 2.5,
+    "fileName": "sfx_school_bell_glitch_cutoff"
+  },
+  {
+    "prompt": "High-pitched digital error tone, short and unpleasant, system fault cue. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_error_tone_high"
+  },
+  {
+    "prompt": "Loud echoing thud from down a school hallway, heavy impact source unknown, unnerving empty-space reverb. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_hallway_thud_echo"
+  },
+  {
+    "prompt": "Sudden rushing wind as if part of the environment is being erased, surreal suction and spatial collapse, cinematic transition effect. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_rushing_wind_purge"
+  },
+  {
+    "prompt": "Loud institutional air conditioner hum, sterile HVAC drone filling an otherwise silent room, oppressive and monotonous. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": true,
+    "durationSeconds": 11.5,
+    "fileName": "sfx_air_conditioner_hum_loud"
+  },
+  {
+    "prompt": "One heavy slow footstep at a distant entrance, deliberate, weighty, threatening, large interior reverb. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_heavy_single_footstep"
+  },
+  {
+    "prompt": "Massive blinding flash translated into sound, deafening digital screech with explosive transient and abrupt cutoff, overwhelming system-overload effect. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_white_flash_screech"
+  },
+  {
+    "prompt": "Sharp vibrating smartphone ringtone, urgent and intrusive, realistic modern phone sound, no melody sweetness. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_phone_ringtone_harsh"
+  },
+  {
+    "prompt": "Heavy crackling radio-like static with frantic human breathing underneath, distressed covert communication, no spoken words. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 4.5,
+    "fileName": "sfx_static_breathing_comm"
+  },
+  {
+    "prompt": "Loud muffled bang from another floor of a house, like a door slamming upstairs, filtered through walls and distance. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_muffled_bang_upstairs"
+  },
+  {
+    "prompt": "Piercing dial-up screech blasting through a small phone speaker, clipped and harsh, distorted communication failure. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_dialup_phone_burst"
+  },
+  {
+    "prompt": "Three slow deliberate knocks on a bedroom door, wood resonance, tense pauses between hits, intimate indoor proximity. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 2.5,
+    "fileName": "sfx_three_slow_knocks"
+  },
+  {
+    "prompt": "Heavy wooden door closing with a clear latch click, quiet room, ominous finality. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_wooden_door_click_shut"
+  },
+  {
+    "prompt": "Soft electronic buzzing from a small device on a desk, subtle and suspicious, clean close-up recording. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_soft_buzzing_device"
+  },
+  {
+    "prompt": "Slow hesitant footsteps in a quiet room, careful pacing, soft shoe impacts, anxious movement. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 4,
+    "fileName": "sfx_hesitant_footsteps"
+  },
+  {
+    "prompt": "Harsh burst of static that cuts instantly into total silence, abrupt and unnerving, system intrusion cue. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_static_burst_silence"
+  },
+  {
+    "prompt": "Distinct mechanical door unlock click, close and tense, no extra handling noise. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 0.75,
+    "fileName": "sfx_door_unlock_click"
+  },
+  {
+    "prompt": "Door violently bursting open followed by heavy echoing footsteps running down a hallway, aggressive panic energy, indoor reverb. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_door_burst_run"
+  },
+  {
+    "prompt": "Massive echoing boom like a server rack crashing to the ground in a large industrial basement, metallic weight and low-end impact. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 2,
+    "fileName": "sfx_server_rack_boom"
+  },
+  {
+    "prompt": "Ear-splitting shatter of digital glass, sharp crystalline breakup mixed with synthetic glitch artifacts, dramatic and final. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1.5,
+    "fileName": "sfx_digital_glass_shatter"
+  },
+  {
+    "prompt": "Heavy footsteps moving on wooden stairs overhead, muffled by floorboards, threatening approach from above. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_footsteps_wooden_stairs_above"
+  },
+  {
+    "prompt": "High-pitched whining dial-up tone gradually building in intensity, unstable digital tension, no static tail. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 3,
+    "fileName": "sfx_dialup_whine_build"
+  },
+  {
+    "prompt": "Massive explosive burst of static, full-spectrum digital blast, abrupt and overwhelming. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 1,
+    "fileName": "sfx_static_explosion"
+  },
+  {
+    "prompt": "Wood splintering, heavy boots hitting concrete, urgent police entry in a basement, multiple officers shouting commands, chaotic rescue breach, intense but intelligible. clean isolated sound effect, no music, no voice unless explicitly requested, cinematic, high quality, suitable for psychological horror visual novel, clear transient detail, minimal background noise.",
+    "loop": false,
+    "durationSeconds": 4.5,
+    "fileName": "sfx_police_breach_basement"
+  }
+]

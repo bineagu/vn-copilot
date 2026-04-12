@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useGame } from "../useGame";
-import { setBGMVolume, stopBGM } from "./AudioManager";
+import {
+  setBGMVolume,
+  stopBGM,
+  setVoiceVolume,
+  stopVoice,
+} from "./AudioManager";
 import { SaveLoadModal } from "./SaveLoadModal";
 
 interface SettingsMenuProps {
@@ -69,6 +74,28 @@ export function SettingsMenu({
             />
           </div>
 
+          {/* Voice Volume */}
+          <div className="mb-5">
+            <label
+              className={`block text-sm mb-1 ${isVR ? "text-pink-300" : "text-gray-400"}`}
+            >
+              Voice Volume
+            </label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={state.voiceVolume}
+              onChange={(e) => {
+                const v = parseFloat(e.target.value);
+                dispatch({ type: "SET_VOICE_VOLUME", volume: v });
+                setVoiceVolume(v);
+              }}
+              className={`w-full h-2 rounded-lg cursor-pointer ${sliderAccent}`}
+            />
+          </div>
+
           {/* Text Speed */}
           <div className="mb-5">
             <label
@@ -131,6 +158,7 @@ export function SettingsMenu({
           onClose={() => setSlotMode(null)}
           onLoadComplete={() => {
             stopBGM();
+            stopVoice();
             onClose();
           }}
         />

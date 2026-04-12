@@ -51,3 +51,29 @@ export function playSFX(src: string, volume: number = 1) {
   sfx.volume = volume;
   sfx.play().catch(() => {});
 }
+
+let currentVoice: HTMLAudioElement | null = null;
+
+export function playVoice(src: string, volume: number = 1) {
+  stopVoice();
+  currentVoice = new Audio(src);
+  currentVoice.volume = volume;
+  currentVoice.play().catch(() => {});
+  currentVoice.addEventListener("ended", () => {
+    currentVoice = null;
+  });
+}
+
+export function stopVoice() {
+  if (currentVoice) {
+    currentVoice.pause();
+    currentVoice.currentTime = 0;
+    currentVoice = null;
+  }
+}
+
+export function setVoiceVolume(volume: number) {
+  if (currentVoice) {
+    currentVoice.volume = volume;
+  }
+}

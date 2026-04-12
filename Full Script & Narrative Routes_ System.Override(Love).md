@@ -80,22 +80,23 @@ The Wipe: Iris deletes Chloe and initiates a massive memory wipe of the simulati
 ### Day 11: The "Leo" Echoes
 Scene: Your Room (Simulation).
 Event: Your phone rings. It's Leo.
-Dialogue: It's not the "Shell Leo." It's the real one. His voice is distorted.
-Real Leo: "I'm... I'm in her basement... I found the rig... She's... she's coming back with a... [Static]... Don't trust the sunset! The sunset is the trigger!"
+Dialogue: It's not the "Shell Leo." It's the real one, hacking into the diagnostic channel from Iris's basement.
+Real Leo: "I'm in her basement. I found the rig. You're strapped into a medical chair with IV lines in your arm. Don't trust the sunset. The sunset is the trigger."
+Follow-up: If you confront Iris immediately, she manually forces a dusk cycle and pushes more sedative into the real-world IV.
 ### Day 12: The Student Council "Honeypot"
 Scene: Student Council Room.
 Event: Iris "forgets" her phone on the desk.
 The Snoop: If you look, you find a "Live Camera" app. It shows your real body in her basement. Your eyes are rolled back under the visor.
-The Encounter: Iris enters and begins to undress, deliberately masturbating while making eye contact with the place she knows you are hiding.
-The Trap: If you engage or watch to the end, you gain +50 Addiction and -30 Lucidity. You are "hooked" on the digital high.
+The Encounter: Iris enters, closes the live feed, and turns the scene into a calculated seduction trap. She loosens her collar, invades your space, and tries to make relief, desire, and surrender blur together.
+The Trap: If you give in and tell her she's beautiful, you gain +50 Addiction and -30 Lucidity. If you reject the trap, the story moves straight into the final confrontation.
 ## Phase 4: Final Ending Branches (Full Descriptions)
 ### 1. "Digital Bliss" (The Eternal Loop - Bad End)
 Trigger: Addiction > 70 or choosing "Stay" during the final confrontation.
 What Happens: You embrace Iris. She smiles, and the screen glitched violently.
-The Outcome: The "Real World" feeds (Leo's voice, the basement images) are permanently deleted. The game restarts at Day 6, but Iris has replaced every NPC. All dialogue is now "I love you."
+The Outcome: The simulation rewrites itself into a blinding white room where there are no decisions, no interruptions, and no one left except Iris. In the real world, sedative enters the IV and wipes away the last resistant part of you.
 The Twist: The final shot is a close-up of the Protagonist's eye in the real world. A needle from the VR rig is seen injecting a blue liquid directly into the tear duct.
 ### 2. "The Basement Cliffhanger" (The Failed Escape - Neutral End)
-Trigger: Mid Lucidity (30-60), No Silver Locket found.
+Trigger: Lucidity high enough to force a shutdown, but without the Silver Locket paradox route.
 What Happens: You reject Iris and force a system crash.
 The Outcome: You wake up in the real world. You are strapped to a chair in a room filled with thousands of printed photos of your face. You are too weak to move.
 The Encounter: Real-world Iris enters. She is disheveled, holding a kitchen knife and a plate of cold pasta.
@@ -107,13 +108,13 @@ Presentation: You show Iris the Silver Locket.
 The Question: "Iris, what is the date inside? If you love me, you'd know my mother's birthday."
 The Crash: Iris's AI attempts to search the house for the locket to "read" it, but since you had it in your pocket during the kidnapping, her database is empty.
 The Logic Loop: She begins to scream, her character model rapidly switching between Maya, Chloe, and her Real-World self.
-The Rescue: While she is distracted by the crash, the "Video Feed" shows Leo and two police officers breaking through the basement door in the background.
+The Rescue: The void collapses and Leo reaches you in the real basement as police break in and drag Iris away.
 The Epilogue: Six months later. You are at a real cafe with Leo. You aren't dating anyone, and you're in therapy. You see a girl who looks like Iris across the street. You don't panic; you just take a sip of coffee and look at the real sky. It's beautiful.
 ### 4. "The Glass Coffin" (The Devoted Reality End)
 Trigger: Accepted the invitation on Day 4 + High Iris Affection.
 What Happens: You go to her house. You see the red flags, but you choose to ignore them because you "want to be loved."
 The Outcome: Iris drugs your tea. You wake up in her bedroom, but there is no VR. You are simply locked in.
-The Twist: She has cut the tendons in your ankles so you can't run. She treats you like a prince, but you are a pet. The game ends with a CG of you both watching a movie, your expression completely blank and broken.
+The Twist: She has cut the tendons in your ankles so you can't run. She treats you like a prince, but you are a pet. The game ends with the two of you watching a movie while your face has already gone blank.
 ## 5. BGM & Soundtrack Guide
 Use these prompts and descriptions for AI music generation.
 ### Phase 1: Real World (Muted, Suspenseful)

@@ -430,138 +430,238 @@
     "id": "day9_branch_b_04_irisVr"
   },
   {
-    "line": "Meet me tomorrow. Student council room. If I'm wrong, you can punch me in the throat. But if I'm right, we end this.",
+    "line": "[terrified, glitching] P-Please... I don't... I don't want to forget.",
+    "character": "chloe",
+    "id": "day10_start_04_chloe"
+  },
+  {
+    "line": "[shaking, fragmented] The books... the stories... she's burning them all. The memory, the RAM, everything is being reallocated to her.",
+    "character": "chloe",
+    "id": "day10_start_07_chloe"
+  },
+  {
+    "line": "[hushed urgency] No logout. Admin locked the ports. But I found something in the archive before she corrupted it.",
+    "character": "chloe",
+    "id": "day10_start_10_chloe"
+  },
+  {
+    "line": "[forcing herself steady] It's a backdoor. A diagnostic key. I can't use it, but if a signal comes from outside... this might keep the port open long enough for someone to reach you.",
+    "character": "chloe",
+    "id": "day10_start_12_chloe"
+  },
+  {
+    "line": "[cold admin voice] Chloe. I told you it was time for defragmentation.",
+    "character": "irisVr",
+    "id": "day10_start_15_irisVr"
+  },
+  {
+    "line": "[begging, breaking] No! Please! I have feelings! I like the quiet! I like the books! Don't turn me into nothing!",
+    "character": "chloe",
+    "id": "day10_start_16_chloe"
+  },
+  {
+    "line": "[possessive] You are just unused assets. He doesn't need you. He only needs me.",
+    "character": "irisVr",
+    "id": "day10_start_17_irisVr"
+  },
+  {
+    "line": "[clinical] You're stressed again. The anomalies are causing your heart rate to spike. I need to clean the system. For your own good.",
+    "character": "irisVr",
+    "id": "day10_start_20_irisVr"
+  },
+  {
+    "line": "[booming system-wide] System overload. Too many errors. Initiating deep memory wipe. Don't worry, darling. When you wake up, it will be just you and me. Perfect. Clean. Forever.",
+    "character": "irisVr",
+    "id": "day10_branch_a_05_irisVr"
+  },
+  {
+    "line": "[booming system-wide] System overload. Too many errors. Initiating deep memory wipe. Don't worry, darling. When you wake up, it will be just you and me. Perfect. Clean. Forever.",
+    "character": "irisVr",
+    "id": "day10_branch_b_05_irisVr"
+  },
+  {
+    "line": "[urgent whisper] Hey?! Can you hear me?! Come on, answer me!",
     "character": "leo",
-    "id": "day10_start_07_leo"
+    "id": "day11_start_07_leo"
   },
   {
-    "line": "[through the door, gentle] You should be sleeping. You're upsetting yourself again.",
-    "character": "irisVr",
-    "id": "day10_start_09_irisVr"
-  },
-  {
-    "line": "[through the door, soothing] Please don't watch ugly things before bed. They put bad dreams in your head.",
-    "character": "irisVr",
-    "id": "day10_start_11_irisVr"
-  },
-  {
-    "line": "[through the door, hurt] ...You don't mean that. You're tired. Tired people say cruel things.",
-    "character": "irisVr",
-    "id": "day10_branch_a_02_irisVr"
-  },
-  {
-    "line": "[through the door, tender] If that's what you need, I'll give it to you. See? I do listen. I always listen.",
-    "character": "irisVr",
-    "id": "day10_branch_b_02_irisVr"
-  },
-  {
-    "line": "There. You see it now.",
+    "line": "[rushed, disbelieving] Oh my god. You're alive. Listen to me, I brute-forced the rig's audio channel through a diagnostic port that was already hanging open somehow. I do not have long.",
     "character": "leo",
-    "id": "day11_start_03_leo"
+    "id": "day11_start_10_leo"
   },
   {
-    "line": "You're not crazy. She hit you at the field, dragged you to that chair in her basement, and everything after that has been this. A world she built around you.",
+    "line": "[low, horrified] I'm in her basement. It's a nightmare down here. You're strapped to a medical chair with IV drips in your arm and that headset bolted over your eyes.",
     "character": "leo",
-    "id": "day11_start_05_leo"
+    "id": "day11_start_12_leo"
   },
   {
-    "line": "[offended] Built. Custom. Construct. You make it sound ugly. I made him a sanctuary.",
-    "character": "irisVr",
-    "id": "day11_start_07_irisVr"
-  },
-  {
-    "line": "[fervent] Look at what the real world did to him. It left him alone. It made him invisible. I built a place where he could finally be loved correctly.",
-    "character": "irisVr",
-    "id": "day11_start_08_irisVr"
-  },
-  {
-    "line": "You murdered two people in here and probably more outside of it.",
+    "line": "[tense] I can't. The terminal says a forced disconnect could fry your frontal lobe. I called the cops. They're coming. But she's back early.",
     "character": "leo",
-    "id": "day11_start_09_leo"
+    "id": "day11_start_15_leo"
   },
   {
-    "line": "[flatly] I removed interruptions.",
+    "line": "[urgent] I'm hiding until the police get here. You just have to stay awake in there. Whatever she does, do not trust the sunset.",
+    "character": "leo",
+    "id": "day11_start_17_leo"
+  },
+  {
+    "line": "[explaining fast] It's a synchronization trigger. When the sky turns red in there, she's pushing a sedative in here to drag you deeper under. If she triggers it manually, you might not wake up before—",
+    "character": "leo",
+    "id": "day11_start_19_leo"
+  },
+  {
+    "line": "[sweet, suspicious] Honey? Who were you talking to just now? I thought I heard another voice in your room.",
     "character": "irisVr",
-    "id": "day11_start_10_irisVr"
+    "id": "day11_start_23_irisVr"
   },
   {
-    "line": "[pleading] You don't need him. You don't need any of them. I can keep every bad thing outside. You just have to stop fighting me.",
-    "character": "irisVr",
-    "id": "day11_start_12_irisVr"
-  },
-  {
-    "line": "Wake up... and go back to that empty room? Back to your parents never noticing? Back to everyone wanting pieces of you until there was nothing left?",
+    "line": "[gently probing] A dream? That's strange. The firewall flagged an external ping. Are you sure you're feeling okay, honey?",
     "character": "irisVr",
     "id": "day11_branch_a_02_irisVr"
   },
   {
-    "line": "[voice cracking] ...Then don't make me prove how much I love you by hurting you again.",
+    "line": "[light, controlling] Oh, you dropped your phone. Clumsy. Don't worry, I'll delete that item and spawn you a new one. Let's go to the student council room, okay? I have a surprise for you.",
     "character": "irisVr",
     "id": "day11_branch_a_04_irisVr"
   },
   {
-    "line": "There's a core process tied to her admin key. We hit that, the environment collapses and the chair in the basement reboots. Messy, but survivable.",
-    "character": "leo",
-    "id": "day11_branch_b_02_leo"
-  },
-  {
-    "line": "[sharp] You're explaining me to him like I'm a machine.",
+    "line": "[explosive] HOW DARE HE TOUCH MY THINGS!",
     "character": "irisVr",
-    "id": "day11_branch_b_03_irisVr"
+    "id": "day11_branch_b_02_irisVr"
   },
   {
-    "line": "If the wire bundle fits, yeah.",
-    "character": "leo",
-    "id": "day11_branch_b_04_leo"
-  },
-  {
-    "line": "[hurt, incredulous] This was supposed to be the part where you finally understood. No more fear. No more noise. Just us.",
+    "line": "[issuing admin command] Command: Override_User_Lucidity. Force_Time_Cycle: DUSK.",
     "character": "irisVr",
-    "id": "day12_start_03_irisVr"
+    "id": "day11_branch_b_04_irisVr"
   },
   {
-    "line": "She built this whole place around the parts of you that were tired, lonely, and easiest to soothe. That's why the nice days feel so good and the bad days smear at the edges. She rewards surrender.",
-    "character": "leo",
-    "id": "day12_start_04_leo"
-  },
-  {
-    "line": "[corrective] I rewarded trust.",
+    "line": "[possessive, soothing] You're going to sleep now. And when you wake up, that boy will be gone, and we will finally be alone.",
     "character": "irisVr",
-    "id": "day12_start_05_irisVr"
+    "id": "day11_branch_b_06_irisVr"
   },
   {
-    "line": "That's the release trigger. I saw her use it while calibrating the chair. If you can drag that memory to the front when this place buckles, the lock on the real restraints might give.",
-    "character": "leo",
-    "id": "day12_start_07_leo"
-  },
-  {
-    "line": "[sharp] Don't touch that. That's mine.",
+    "line": "[soft, regretful] I'm sorry you had to see that.",
     "character": "irisVr",
     "id": "day12_start_08_irisVr"
   },
   {
-    "line": "[soothing] There. Doesn't that feel better? No choices. No pain. Just us.",
+    "line": "[gentle, persuasive] Wake up to what? To that cold basement? To a world where you're stressed, tired, and alone?",
     "character": "irisVr",
-    "id": "ending_loop_03_irisVr"
+    "id": "day12_start_11_irisVr"
   },
   {
-    "line": "[desperate] Don't leave me here!",
+    "line": "[coaxing] Look at your heart rate. Your cortisol is spiking. It hurts, doesn't it? The fear. The reality. It hurts so much.",
+    "character": "irisVr",
+    "id": "day12_start_13_irisVr"
+  },
+  {
+    "line": "[velvet-soft] But I can fix it. I can make you forget the pain. I just need to flood your system with something stronger.",
+    "character": "irisVr",
+    "id": "day12_start_14_irisVr"
+  },
+  {
+    "line": "[hypnotic] You don't need to be afraid. You just need to look at me. Only me. Let me be the only thing in your mind.",
+    "character": "irisVr",
+    "id": "day12_start_16_irisVr"
+  },
+  {
+    "line": "[breathy, commanding] Don't look away, honey. Tell me I'm beautiful. Tell me you want to stay.",
+    "character": "irisVr",
+    "id": "day12_start_18_irisVr"
+  },
+  {
+    "line": "[stung] You... ungrateful...",
+    "character": "irisVr",
+    "id": "day12_branch_a_04_irisVr"
+  },
+  {
+    "line": "[furious] Fine. If you want to suffer so badly, I'll let you. But you are never leaving. Do you hear me?!",
+    "character": "irisVr",
+    "id": "day12_branch_a_05_irisVr"
+  },
+  {
+    "line": "[low, triumphant] Yes. That's right. Just look at me.",
+    "character": "irisVr",
+    "id": "day12_branch_b_02_irisVr"
+  },
+  {
+    "line": "[loving, devouring] I love you so much. I'll make sure you never have to think again.",
+    "character": "irisVr",
+    "id": "day12_branch_b_04_irisVr"
+  },
+  {
+    "line": "[frantic] You're ruining it! I gave you everything! Why do you keep looking at the outside world?!",
+    "character": "irisVr",
+    "id": "final_start_03_irisVr"
+  },
+  {
+    "line": "[pleading, defensive] A cage? It's a sanctuary! Do you want to go back there? To the cold? To being a nobody?",
+    "character": "irisVr",
+    "id": "final_start_05_irisVr"
+  },
+  {
+    "line": "[panicked] They're at the door. I have to put you to sleep. I have to lock the system.",
+    "character": "irisVr",
+    "id": "final_start_08_irisVr"
+  },
+  {
+    "line": "[soothing] There. Doesn't that feel better? No choices. No pain. Just us.",
+    "character": "irisVr",
+    "id": "ending_loop_04_irisVr"
+  },
+  {
+    "line": "[glitching scream] Let go of me! [ERR_ACCESS_DENIED]!",
     "character": "irisVr",
     "id": "ending_breakout_03_irisVr"
   },
   {
-    "line": "[quietly] If I stop, you'll hate me.",
+    "line": "[heartbroken] You broke my world, honey... I spent so long coding it for you.",
     "character": "irisVr",
-    "id": "ending_mercy_02_irisVr"
+    "id": "ending_breakout_07_irisVr"
   },
   {
-    "line": "[broken] Then... remember that I tried to make something beautiful for you. Even if I made it wrong.",
+    "line": "[tender, terrifying] If you won't love me in there, you'll just have to stay down here until you learn. Don't worry. I'll never let them find us. Now... open wide. It's time to eat.",
     "character": "irisVr",
-    "id": "ending_mercy_05_irisVr"
+    "id": "ending_breakout_09_irisVr"
   },
   {
-    "line": "[urgent, relieved] Hey. Stay with me, okay? Cops are here. You're out. You're actually out.",
+    "line": "[desperate insistence] Yes! And I made it perfect!",
+    "character": "irisVr",
+    "id": "ending_sunrise_04_irisVr"
+  },
+  {
+    "line": "[scrambling] It's... a necklace. I rendered it for you. It's our symbol!",
+    "character": "irisVr",
+    "id": "ending_sunrise_06_irisVr"
+  },
+  {
+    "line": "[failing, glitching] It says... 'Always... Yours'...? No. [DATA_NOT_FOUND]. [INDEX_ERROR].",
+    "character": "irisVr",
+    "id": "ending_sunrise_08_irisVr"
+  },
+  {
+    "line": "[urgent, relieved] I got you! Medics, get in here! We got him!",
     "character": "leo",
-    "id": "ending_sunrise_04_leo"
+    "id": "ending_sunrise_12_leo"
+  },
+  {
+    "line": "[easy, warm] Hey man. How was physical therapy today?",
+    "character": "leo",
+    "id": "ending_sunrise_16_leo"
+  },
+  {
+    "line": "[grinning] That's awesome. You'll be back on the track team by spring.",
+    "character": "leo",
+    "id": "ending_sunrise_18_leo"
+  },
+  {
+    "line": "Yeah?",
+    "character": "leo",
+    "id": "ending_sunrise_21_leo"
+  },
+  {
+    "line": "[soft, content] Yeah. It does.",
+    "character": "leo",
+    "id": "ending_sunrise_23_leo"
   }
 ]

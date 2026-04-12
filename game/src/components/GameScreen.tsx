@@ -1,12 +1,19 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useGame } from "../useGame";
-import { getSceneById } from "../script";
+import { getSceneById, getVoiceLine } from "../script";
 import { BackgroundLayer } from "./BackgroundLayer";
 import { SpriteLayer } from "./SpriteLayer";
 import { DialogueBox } from "./DialogueBox";
 import type { DialogueBoxHandle } from "./DialogueBox";
 import { SettingsMenu } from "./SettingsMenu";
-import { AudioManager, playBGM, stopBGM, playSFX } from "./AudioManager";
+import {
+  AudioManager,
+  playBGM,
+  stopBGM,
+  playSFX,
+  playVoice,
+  stopVoice,
+} from "./AudioManager";
 import type { Choice, DialogueLine } from "../types";
 
 interface GameScreenProps {
@@ -73,6 +80,16 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       playSFX(line.sfx, state.sfxVolume);
     }
   }, [line, state.sfxVolume]);
+
+  // Handle voice lines on line change
+  useEffect(() => {
+    const voice = getVoiceLine(state.currentSceneId, state.dialogueIndex);
+    if (voice) {
+      playVoice(voice, state.voiceVolume);
+    } else {
+      stopVoice();
+    }
+  }, [state.currentSceneId, state.dialogueIndex, state.voiceVolume]);
 
   const handleAdvance = useCallback(() => {
     dispatch({ type: "ADVANCE" });

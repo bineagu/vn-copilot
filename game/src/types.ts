@@ -42,6 +42,7 @@ export interface GameState {
   textSpeed: number;
   bgmVolume: number;
   sfxVolume: number;
+  voiceVolume: number;
 }
 
 export type GameAction =
@@ -58,4 +59,5 @@ export type GameAction =
   | { type: "SET_TEXT_SPEED"; speed: number }
   | { type: "SET_BGM_VOLUME"; volume: number }
   | { type: "SET_SFX_VOLUME"; volume: number }
+  | { type: "SET_VOICE_VOLUME"; volume: number }
   | { type: "LOAD_STATE"; state: GameState };

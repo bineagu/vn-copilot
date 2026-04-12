@@ -30,6 +30,7 @@ const initialState: GameState = {
   textSpeed: 30,
   bgmVolume: 0.5,
   sfxVolume: 0.7,
+  voiceVolume: 1,
 };
 
 function gameReducer(state: GameState, action: GameAction): GameState {
@@ -80,6 +81,8 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return { ...state, bgmVolume: action.volume };
     case "SET_SFX_VOLUME":
       return { ...state, sfxVolume: action.volume };
+    case "SET_VOICE_VOLUME":
+      return { ...state, voiceVolume: action.volume };
     case "LOAD_STATE":
       return { ...action.state };
     default:
