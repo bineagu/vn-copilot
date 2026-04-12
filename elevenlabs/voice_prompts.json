@@ -1,0 +1,82 @@
+[
+  {
+    "character": "irisReal",
+    "displayName": "Iris (Real World)",
+    "creationStrategy": "design-voice",
+    "voiceDesignPrompt": "Native English, neutral American. Female, 17-19. Excellent quality. Persona: lonely obsessive schoolgirl. Emotion: tender, fragile, fixated. Warm airy timbre with a soft close presence and slightly breathy texture. Speaks at a gentle, natural pace with careful emphasis, occasional hesitation, and enough instability that affection can sharpen into possessive intensity without losing human realism.",
+    "previewText": "I've been paying attention because no one else ever really does. [small breath] The world feels messy when people drift in and out of it, but you make sense to me. When I know where you are, everything gets quieter for a little while, and I can almost believe nothing bad is going to happen.",
+    "performanceNotes": "Use the guide's recommended structure as-is. Keep her human and grounded first; the obsession should emerge through pacing, breath, and emphasis rather than a villain tone.",
+    "avoid": "Avoid dialect drift, cartoon yandere energy, childlike squeakiness, robotic delivery, or overtly seductive femme-fatale choices. Do not use FX words like reverb, echo, phone, or tape.",
+    "sampleLine": "It's... it's a comfort to know where you are. The world is so big and messy. But you... you make sense. You're exactly where you're supposed to be."
+  },
+  {
+    "character": "irisVr",
+    "displayName": "Iris (VR Admin Entity)",
+    "creationStrategy": "design-voice",
+    "voiceDesignPrompt": "Native English, neutral American. Female, 17-19. Excellent quality. Persona: controlling virtual lover. Emotion: soothing, precise, possessive. Smooth polished timbre with a clean intimate presence, reduced breathiness, and very controlled articulation. Speaks at an even, deliberate pace with elegant emphasis and calm authority, while still sounding like the same person as Iris when the control begins to crack.",
+    "previewText": "You keep calling this place a trap, but I made it so you could finally rest. No noise, no interruptions, no one taking pieces of you before you can breathe. [softening] If you would just stop fighting me, I could keep every bad thing outside and let you feel safe for once.",
+    "performanceNotes": "This should feel like a refined simulation-layer version of Iris, not a totally different character. Cleaner pacing and tighter control than irisReal, with instability only surfacing on emotional breaks.",
+    "avoid": "Avoid metallic AI assistant cues, sci-fi robot monotone, villain queen camp, or synthetic effect language. Do not use the word accent unless you actually want a dialect shift.",
+    "sampleLine": "You don't need him. You don't need any of them. I can keep every bad thing outside. You just have to stop fighting me."
+  },
+  {
+    "character": "leo",
+    "displayName": "Leo",
+    "creationStrategy": "design-voice",
+    "voiceDesignPrompt": "Native English, neutral American. Male, 17-19. Excellent quality. Persona: loyal best friend. Emotion: relaxed, protective, urgent. Warm mid-range tenor with a natural conversational texture and confident youthful energy. Speaks at an easy everyday pace in normal moments, but can shift into hushed urgency and breathless warning while staying grounded and believable.",
+    "previewText": "Look, I'm not joking anymore. I found something in her basement, and if I'm right, you're in way deeper than you think. [lower, urgent] Don't argue with me, just get somewhere private, keep your voice down, and listen until I'm done.",
+    "performanceNotes": "He should feel like the most normal person in the cast at first. Even in panic, keep him practical and human rather than theatrical.",
+    "avoid": "Avoid overly deep macho casting, radio-announcer polish, surfer-bro slang caricature, or gritty adult roughness.",
+    "sampleLine": "If she finds out I'm talking to you, she'll cut the line. After school, come to the old student council room. Top floor. West wing. I'll explain everything."
+  },
+  {
+    "character": "chloe",
+    "displayName": "Chloe",
+    "creationStrategy": "design-voice",
+    "voiceDesignPrompt": "Native English, neutral American. Female, 17-19. Excellent quality. Persona: shy studious librarian. Emotion: gentle, nervous, sincere. Light soft timbre with clear diction, polite phrasing, and a restrained airy quality. Speaks at a careful, slightly hesitant pace with small pauses and soft landings, sounding kind, intelligent, and easily unsettled under pressure.",
+    "previewText": "I know this sounds strange, and I'm sorry if I'm overreacting, but something about the way she looked at us felt wrong. [quietly] She didn't say anything, and somehow that made it worse. I keep thinking about it, and I can't tell if I'm being silly or if I should actually be afraid.",
+    "performanceNotes": "Her fear should stay small, real, and constricted. The preview text should support a quiet, fragile performance instead of pushing her into melodrama.",
+    "avoid": "Avoid babyish anime-cute delivery, exaggerated whispering, or making her too sonically similar to irisReal.",
+    "sampleLine": "No... she didn't say anything. She just... she walked over to our table while you were gone. She leaned right over my shoulder and smelled your textbook. Then she just... walked out."
+  },
+  {
+    "character": "maya",
+    "displayName": "Maya",
+    "creationStrategy": "design-voice",
+    "voiceDesignPrompt": "Native English, neutral American. Female, 17-19. Excellent quality. Persona: athletic upbeat classmate. Emotion: bright, energetic, determined. Clear lively mezzo with healthy vocal energy, open delivery, and strong physical presence. Speaks at a confident natural pace with punchy emphasis and a friendly extroverted rhythm, while still able to jump into startled panic when the scene breaks.",
+    "previewText": "Hey, thanks for showing up. It actually helps when somebody's watching, because then I want to push harder and beat my own time. [light laugh] Just don't blink when I start, okay? I'm feeling weirdly locked in today, like if I keep moving fast enough nothing can touch me.",
+    "performanceNotes": "She should sound embodied and active. That normal physical confidence is what makes her later glitch-panic work.",
+    "avoid": "Avoid mean-girl edge, nasal cheerleader parody, cartoon jock delivery, or a voice that sounds older than the rest of the cast.",
+    "sampleLine": "Thanks for coming! Having you here really pumps me up! I'm going to beat my personal record today, just watch!"
+  },
+  {
+    "character": "randomStudent",
+    "displayName": "Random Student",
+    "creationStrategy": "design-voice",
+    "voiceDesignPrompt": "Native English, neutral American. Gender-neutral, 16-18. Very good quality. Persona: ordinary background student. Emotion: neutral, casual, unremarkable. Plain natural timbre with even pacing and no standout character traits. Delivers simple school-day conversation in a totally everyday way so the line feels normal in isolation.",
+    "previewText": "The weather is nice today, isn't it? I thought it was going to rain this morning, but I guess it cleared up after all. Maybe lunch outside won't be so bad if it stays like this.",
+    "performanceNotes": "This should be intentionally bland. The voice is useful precisely because it does not call attention to itself.",
+    "avoid": "Avoid stylization, creepiness, dramatic emphasis, or any memorable personality marker.",
+    "sampleLine": "The weather is nice today, isn't it?"
+  },
+  {
+    "character": "crowd",
+    "displayName": "Crowd",
+    "creationStrategy": "layered-renders-preferred",
+    "voiceDesignPrompt": "Native English, neutral American. Mixed-gender teens, 16-18. Very good quality. Persona: synchronized school crowd. Emotion: flat, coordinated, uncanny. Clean ordinary student voices delivered with matching timing and minimal variation. Keep the timbre natural and the pacing even so the unsettling quality comes from perfect unison rather than from horror styling.",
+    "previewText": "The weather is nice today, isn't it? The weather is nice today, isn't it? The weather is nice today, isn't it?",
+    "performanceNotes": "Best result is still layered rendering, not a single designed voice. Generate several plain student voices and stack them with near-identical timing.",
+    "avoid": "Avoid monster-chorus effects, ghostly ambience, exaggerated creepiness, or any FX wording in the prompt.",
+    "sampleLine": "The weather is nice today, isn't it?"
+  },
+  {
+    "character": "mayaChloe",
+    "displayName": "Maya and Chloe Together",
+    "creationStrategy": "multi-voice-dialogue-preferred",
+    "voiceDesignPrompt": "Native English, neutral American. Two females, 17-19. Excellent quality. Persona: forced best-friend duet. Emotion: cheerful, synchronized, uncanny. One voice should feel bright and athletic, the other soft and shy, but both should match pacing and emphasis too closely. The line should sound friendly at first and subtly wrong because the timing is unnaturally perfect.",
+    "previewText": "Of course! We love hanging out with you! [same timing] Of course! We love hanging out with you!",
+    "performanceNotes": "Prefer two separate renders, one Maya-coded and one Chloe-coded, aligned to the same rhythm. If using a multi-voice workflow, keep Maya slightly more forward and Chloe slightly softer.",
+    "avoid": "Avoid turning them into one blended single voice or leaning into overt horror too early. The uncanny effect should come from synchronization.",
+    "sampleLine": "Of course! We love hanging out with you!"
+  }
+]

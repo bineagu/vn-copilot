@@ -153,7 +153,18 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I take my time packing my bag. There's no rush. No club activities, no study groups, no one waiting for me.",
         isInternal: true,
+        background: BACKGROUNDS.schoolHallway,
         bgm: MUSIC.graySuburbia,
+      },
+      {
+        speaker: "Protagonist",
+        text: "That's more or less my whole life lately. I'm not popular enough to be missed, not hated enough to be memorable. Just another second-year who learned that if you stay quiet, people eventually start looking through you instead of at you.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Most nights I go home to an empty house, microwave something forgettable, and listen to my parents apologize by text for another late shift. Routine isn't comforting. It's just predictable. And predictable is close enough.",
+        isInternal: true,
       },
       {
         speaker: "Protagonist",
@@ -189,6 +200,16 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
+        text: "I know her in the vague, school-shaped way you know people you never actually talk to. Quiet girl. Good grades. Usually alone. The kind of person who blends into the edges of a room until she suddenly doesn't.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I've noticed her a few times this week when I shouldn't have. At the shoe lockers before first bell. Across the street from the convenience store. At the far end of a hallway after everyone else had already gone home. Every time, I told myself it was coincidence.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
         text: "She isn't looking at her phone. She isn't reading a book. She's just... staring directly at the west doors. Like she's been waiting for them to open. Like a statue left out in the cold.",
         isInternal: true,
         sprites: [{ character: "Iris", expression: "1", position: "center" }],
@@ -211,6 +232,38 @@ export const scenes: Scene[] = [
         speaker: "Iris",
         text: "I... I was just waiting for the bus, yeah. Even though the stop is a block away.",
         sprites: [{ character: "Iris", expression: "3", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Her voice is a little too loud for the quiet courtyard. I stop, adjusting my grip on my backpack strap.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "She takes a step closer. The gravel crunches under her shoes. She smells faintly of lavender, but underneath it, there's a sharp, metallic scent. Like copper.",
+        isInternal: true,
+        sfx: SFX.footstepsGravel,
+      },
+      {
+        speaker: "Iris",
+        text: "I like the view from here. It's the view of where you spend your day.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "...Excuse me?",
+      },
+      {
+        speaker: "Iris",
+        text: "I know your schedule, you know. 3:15 PM, you leave through the west exit. 3:20 PM, you check your locker. 3:23 PM, you walk past the old oak tree.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "My stomach does a slow, uncomfortable flip. The acoustic guitar in my headphones suddenly feels completely disconnected from the heavy silence settling between us.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "It's... it's a comfort to know where you are. The world is so big and messy, {playerName}. But you... you make sense. You're exactly where you're supposed to be.",
       },
       {
         speaker: "Protagonist",
@@ -460,6 +513,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "An SD card. It must have popped out of her camera when I startled her.",
         isInternal: true,
+        sprites: [{ character: "Item", expression: "8", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -471,6 +525,7 @@ export const scenes: Scene[] = [
         text: "I open the file explorer. There's only one master folder on the drive.",
         isInternal: true,
         sfx: SFX.sdInsert,
+        sprites: [],
       },
       {
         speaker: "Protagonist",
@@ -1287,19 +1342,62 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I survived the night.\nI didn't sleep a wink. I just sat in the corner of my room with a baseball bat, listening to the wind rattle the windowpanes. But the sun came up, and she didn't break in.",
         isInternal: true,
-        background: BACKGROUNDS.footballField,
+        background: BACKGROUNDS.bedroomDark,
         bgm: MUSIC.graySuburbia,
+        sfx: SFX.airConditioner,
+      },
+      {
+        speaker: "Protagonist",
+        text: "By first period, I know I can't keep carrying this alone. If I don't tell someone now, Iris is going to decide the shape of the story for me.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I catch Leo before homeroom and drag him into the empty library hallway before he can crack a joke.",
+        isInternal: true,
+        background: BACKGROUNDS.libraryHallway,
+        sfx: SFX.hesitantFootsteps,
+      },
+      {
+        speaker: "Leo",
+        text: "Dude, what the hell? You look awful. Did somebody die?",
+        sprites: [{ character: "Leo", expression: "34", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Not yet. But I think somebody will if I keep pretending this is just some clingy girl with bad boundaries.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "I show him the SD card. The tracking logs. The audio clips she spliced together. I tell him about the lunchbox, the note in my textbook, the way Chloe vanished, the invitation to Iris's house. I talk too fast and in the wrong order, but once I start, I can't stop.",
+        isInternal: true,
+        systemGraphic: "C:/Users/Iris/Archive/My_Future_Husband",
+      },
+      {
+        speaker: "Leo",
+        text: "...Okay. That is not normal. That's not even movie-stalker normal. That's call-the-cops-and-burn-your-phone normal.",
+        sprites: [{ character: "Leo", expression: "35", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Thank you. I was starting to think I was losing my mind.",
+      },
+      {
+        speaker: "Leo",
+        text: "No, man. If even half of this is real, she's dangerous. Let me check something after fifth period. If she's this organized, she's keeping the worst part somewhere you can't screenshot.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "I tell him not to go alone. He tells me to stop acting like I have veto power after dumping a horror file archive in his lap. We agree to meet after practice and go straight to the police together.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I make it through the rest of the day by avoiding the hallways and hiding in the boys' bathroom during lunch.\nNow school is over, and I'm standing at the edge of the football field waiting for Leo to finish practice. We're going to the police. I have the SD card in my pocket. I don't care if they think I'm crazy. I can't live like this anymore.",
+        isInternal: true,
+        background: BACKGROUNDS.footballField,
+        sprites: [],
         sfx: SFX.footballAmbience,
-      },
-      {
-        speaker: "Protagonist",
-        text: "I made it to school. I avoided the hallways. I hid in the boys' bathroom during lunch.",
-        isInternal: true,
-      },
-      {
-        speaker: "Protagonist",
-        text: "Now, school is over. I'm standing at the edge of the football field, waiting for Leo to finish practice.\nWe're going to the police. I have the SD card in my pocket. I don't care if they think I'm crazy. I can't live like this anymore.",
-        isInternal: true,
       },
       {
         speaker: "Leo",
@@ -2081,7 +2179,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
-        text: "I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she built under her house, it's wired into you somehow. I think the hit at the field knocked something loose.",
+        text: "I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she's hiding under her house, it got worse after the hit at the field. Ever since then, she's been smoothing things over around you.",
       },
       {
         speaker: "Protagonist",
@@ -2092,7 +2190,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
-        text: "She's trying to smooth everything over around you. Make it feel safe. Make it feel normal. Don't let her decide what was real.",
+        text: "She's trying to make everything around you feel safe. Predictable. Like if she can keep you calm long enough, you'll stop asking questions. Don't let her decide what was real.",
       },
       {
         speaker: "Protagonist",
@@ -2210,78 +2308,120 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "That night I barricade my bedroom door with my desk and wait.",
+        text: "The simulation is dying.",
         isInternal: true,
-        background: BACKGROUNDS.bedroomDark,
-        bgm: MUSIC.finalSaveState,
+        background: BACKGROUNDS.glitchingLibrary,
+        bgm: MUSIC.lastSavedState,
         sfx: SFX.airConditioner,
       },
       {
         speaker: "Protagonist",
-        text: "At 12:14 AM, my phone lights up with a file transfer request from Leo.",
-        isInternal: true,
-        sfx: SFX.phoneBuzz,
-      },
-      {
-        speaker: "System",
-        text: "Incoming file",
-        systemGraphic: "C:\\Users\\Leo\\Desktop\\iris_basement_capture.mp4",
-      },
-      {
-        speaker: "Protagonist",
-        text: "I open it.",
-      },
-      {
-        speaker: "Protagonist",
-        text: "The footage is shaky, filmed through a grimy basement window. Server racks. Cables. A reclining chair ringed with restraints. A monitor showing a model of the school. And for one impossible frame, my own name listed beside the word SESSION.",
-        isInternal: true,
-        background: BACKGROUNDS.totalBlack,
-        sfx: SFX.serverRackBoom,
-      },
-      {
-        speaker: "Protagonist",
-        text: "My stomach folds in on itself. The beach. Maya sinking. Everyone reciting the same line. The feeling of solid water. It all rearranges at once into a shape I don't want to name.",
+        text: "Since Iris threw her tantrum yesterday, the world has been falling apart. Doors open onto blank walls. Students walk into corners and keep walking. Entire chunks of the hallway jitter like damaged video.",
         isInternal: true,
       },
       {
-        speaker: "Leo",
-        text: "Meet me tomorrow. Student council room. If I'm wrong, you can punch me in the throat. But if I'm right, we end this.",
-        systemGraphic:
-          "Meet me tomorrow. Student council room. If I'm wrong, you can punch me in the throat. But if I'm right, we end this.",
+        speaker: "Protagonist",
+        text: "I hide in the library because it used to feel safe. Quiet. Stable. Now even the bookshelves look sick.",
+        isInternal: true,
+        sfx: SFX.libraryPages,
+      },
+      {
+        speaker: "Chloe",
+        text: "P-Please... I don't... I don't want to forget.",
+        sprites: [{ character: "Chloe", expression: "24", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "A soft knock lands against my bedroom door. Three slow taps.",
+        text: "Chloe?",
+      },
+      {
+        speaker: "Protagonist",
+        text: "She's hiding under one of the reading tables in the far corner. Half her face is smeared into a low-resolution blur, and her whole body is shaking so hard the table rattles with her.",
         isInternal: true,
-        sfx: SFX.threeKnocks,
+      },
+      {
+        speaker: "Chloe",
+        text: "The books... the stories... she's burning them all. The memory, the RAM, everything is being reallocated to her.",
+        sprites: [{ character: "Chloe", expression: "23", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "I kneel beside the table. Chloe isn't acting shy anymore. She's acting like a person who just learned she's made of code and that someone is about to delete it.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Chloe, what is she doing? Can you help me get out?",
+      },
+      {
+        speaker: "Chloe",
+        text: "No logout. Admin locked the ports. But I found something in the archive before she corrupted it.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "With trembling fingers, Chloe pulls a glowing square from inside her cardigan. It looks like a broken save file, pixelated at the edges and shedding static.",
+        isInternal: true,
+        systemGraphic: "Item Received\nCorrupted Key_File",
+      },
+      {
+        speaker: "Chloe",
+        text: "It's a backdoor. A diagnostic key. I can't use it, but if a signal comes from outside... this might keep the port open long enough for someone to reach you.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "I take the corrupted square. It sinks into my palm like cold light and disappears under my skin.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "A heavy footstep lands at the library entrance.",
+        isInternal: true,
+        bgm: null,
+        sfx: SFX.heavyFootstep,
       },
       {
         speaker: "Iris",
-        text: "{playerName}? You should be sleeping. You're upsetting yourself again.",
+        text: "Chloe. I told you it was time for defragmentation.",
+        sprites: [{ character: "Iris", expression: "67", position: "center" }],
+        bgm: MUSIC.obsession,
+      },
+      {
+        speaker: "Chloe",
+        text: "No! Please! I have feelings! I like the quiet! I like the books! Don't turn me into nothing!",
+        sprites: [
+          { character: "Chloe", expression: "22", position: "left" },
+          { character: "Iris", expression: "67", position: "right" },
+        ],
+      },
+      {
+        speaker: "Iris",
+        text: "You are just unused assets. {playerName} doesn't need you. He only needs me.",
       },
       {
         speaker: "Protagonist",
-        text: "She shouldn't be here. She definitely shouldn't be inside the house. But I can smell her perfume on the other side of the door.",
+        text: "Iris, stop! Leave her alone!",
+      },
+      {
+        speaker: "Protagonist",
+        text: "Her head turns toward me with a sharp, mechanical snap. The sound is small. The effect isn't.",
         isInternal: true,
       },
       {
         speaker: "Iris",
-        text: "Please don't watch ugly things before bed. They put bad dreams in your head.",
+        text: "You're stressed again. The anomalies are causing your heart rate to spike. I need to clean the system. For your own good.",
       },
       {
         speaker: "Protagonist",
-        text: "I need to decide what version of tomorrow I'm willing to walk into.",
+        text: "She raises her hand. The lights in the library dim to a dead white hum.",
         isInternal: true,
         choices: [
           {
-            text: '"Go away, Iris. I\'m done listening to you."',
+            text: '"Try to pull Chloe away from her."',
             nextSceneId: "day10_branch_a",
-            stateEffects: { lucidity: 15, addiction: -10, irisAffection: -10 },
           },
           {
-            text: '"Just... leave me alone tonight. Please."',
+            text: '"Brace yourself for the deletion."',
             nextSceneId: "day10_branch_b",
-            stateEffects: { addiction: 10, irisAffection: 5 },
           },
         ],
       },
@@ -2294,24 +2434,36 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "Go away, Iris. I'm done listening to you.",
-        background: BACKGROUNDS.bedroomDark,
-        bgm: MUSIC.finalSaveState,
+        text: "Don't do this!",
+        background: BACKGROUNDS.glitchingLibrary,
+        bgm: MUSIC.obsession,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I lunge under the table and grab for Chloe's wrist, trying to drag her backward before Iris can finish whatever command she's executing.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "A blinding sheet of white tears across the room before I ever make contact.",
+        isInternal: true,
+        background: BACKGROUNDS.totalWhite,
+        sfx: SFX.whiteFlashScreech,
+      },
+      {
+        speaker: "Protagonist",
+        text: "The library, the books, Chloe, all of it is vaporized in a single impossible frame. I hit the floor on my knees in a place with no walls and no horizon.",
+        isInternal: true,
       },
       {
         speaker: "Iris",
-        text: "...You don't mean that. You're tired. Tired people say cruel things.",
+        text: "System overload. Too many errors. Initiating deep memory wipe. Don't worry, {playerName}. When you wake up, it will be just you and me. Perfect. Clean. Forever.",
       },
       {
         speaker: "Protagonist",
-        text: "I hear her breathing stop on the other side of the door. Then her footsteps retreat, very slowly, like she's memorizing the sound of my silence.",
+        text: "The white rushes into my eyes. I remember Maya falling. I remember Chloe shaking under the table. I remember the corrupted square in my hand. Then even those memories start to come apart.",
         isInternal: true,
-        sfx: SFX.hesitantFootsteps,
-      },
-      {
-        speaker: "Protagonist",
-        text: "I do not sleep at all.",
-        isInternal: true,
+        systemGraphic: "Overwriting_Memory_Sector...\nRebooting Day Cycle...",
         choices: [{ text: "Continue...", nextSceneId: "day11_start" }],
       },
     ],
@@ -2323,23 +2475,36 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "Just... leave me alone tonight. Please.",
-        background: BACKGROUNDS.bedroomDark,
-        bgm: MUSIC.finalSaveState,
+        text: "I freeze.",
+        background: BACKGROUNDS.glitchingLibrary,
+        bgm: MUSIC.obsession,
+      },
+      {
+        speaker: "Protagonist",
+        text: "My body refuses to move. All I can do is watch Chloe curl tighter into herself beneath the table while Iris's hand stays raised like a final verdict.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "The world erupts into a featureless white scream.",
+        isInternal: true,
+        background: BACKGROUNDS.totalWhite,
+        sfx: SFX.whiteFlashScreech,
+      },
+      {
+        speaker: "Protagonist",
+        text: "The shelves are gone. Chloe is gone. Even the idea of the library is gone. I'm on my knees in empty light while Iris's voice booms from everywhere at once.",
+        isInternal: true,
       },
       {
         speaker: "Iris",
-        text: "If that's what you need, I'll give it to you. See? I do listen. I always listen.",
+        text: "System overload. Too many errors. Initiating deep memory wipe. Don't worry, {playerName}. When you wake up, it will be just you and me. Perfect. Clean. Forever.",
       },
       {
         speaker: "Protagonist",
-        text: "Her footsteps fade. I hate how close her answer sounds to tenderness.",
+        text: "I try to hold on to the last two days. Maya disappearing. Chloe hiding. The key file. Leo. The memories shatter anyway, dissolving into static before I can anchor any of them.",
         isInternal: true,
-      },
-      {
-        speaker: "Protagonist",
-        text: "I still don't sleep. I just spend the rest of the night staring at Leo's video until sunrise bleaches the edges of my curtains.",
-        isInternal: true,
+        systemGraphic: "Overwriting_Memory_Sector...\nRebooting Day Cycle...",
         choices: [{ text: "Continue...", nextSceneId: "day11_start" }],
       },
     ],
@@ -2351,81 +2516,130 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "The student council room should be dusty and empty. Instead, when I open the door, the world tears open with it.",
+        text: "Day ten happened. I know it did. But the simulation filed most of it somewhere I can't reach.",
         isInternal: true,
-        background: BACKGROUNDS.studentCouncil,
+        background: BACKGROUNDS.bedroomVR,
+        bgm: null,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I remember flashes. Chloe under a table. A square of corrupted light sinking into my hand. Iris turning the whole world white. After that, I woke up here with the bed made, the desk spotless, and every scrap of ordinary life polished into something sterile.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I haven't left the room. I don't want to see what the school looks like without Maya. I don't want to see Chloe waiting to be erased. Most of all, I don't want to see her.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Then a ringtone tears through the silence. Not the cheerful chime this place uses. Something harsher. Realer.",
+        isInternal: true,
+        sfx: SFX.phoneRingtone,
+        systemGraphic: "ERR_UNKNOWN_INTRUSION\nAccept?",
+      },
+      {
+        speaker: "Protagonist",
+        text: "I flinch so hard I nearly fall off the bed. The sound is coming from the phone on my desk.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "...Hello?",
+      },
+      {
+        speaker: "Leo",
+        text: "{playerName}?! Can you hear me?! Come on, man, answer me!",
+        sfx: SFX.staticBreathing,
+      },
+      {
+        speaker: "Protagonist",
+        text: "My heart stops. For a second I can't breathe at all.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Leo? Is that really you?",
+      },
+      {
+        speaker: "Leo",
+        text: "Oh my god. You're alive. Listen to me, I brute-forced the rig's audio channel through a diagnostic port that was already hanging open somehow. I do not have long.",
         bgm: MUSIC.pistonPressure,
-        sfx: SFX.whiteFlashScreech,
       },
       {
         speaker: "Protagonist",
-        text: "The windows go white. The walls peel into grids. The floor drops away, exposing an endless scaffold of light beneath the school.",
-        isInternal: true,
-        background: BACKGROUNDS.binaryCode,
+        text: "The rig? Leo, where are you?",
       },
       {
         speaker: "Leo",
-        text: "Finally. You can see it too.",
-        sprites: [{ character: "Leo", expression: "70", position: "left" }],
+        text: "I'm in her basement. It's a nightmare down here. You're strapped to a medical chair with IV drips in your arm and that headset bolted over your eyes.",
       },
       {
         speaker: "Protagonist",
-        text: "Leo is standing beside an unplugged monitor cart jammed with cables. The footage on its screen matches the basement video exactly.",
+        text: "I look down at my virtual arm. It looks healthy. Perfect. A phantom prick of pain still pulses through the vein underneath the illusion.",
         isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Then pull it off! Get me out of here!",
       },
       {
         speaker: "Leo",
-        text: "She hit you at the field, knocked you out, and dragged your body to that chair in her basement. The school, the beach, the gym, all of it after that? It's a custom environment. Her custom environment.",
+        text: "I can't. The terminal says a forced disconnect could fry your frontal lobe. I called the cops. They're coming. But she's back early.",
+        sfx: SFX.muffledBang,
       },
       {
         speaker: "Protagonist",
-        text: "The words should sound absurd. Instead they click into place so neatly they make me nauseous.",
-        isInternal: true,
-      },
-      {
-        speaker: "Iris",
-        text: "Custom is such a cruel word. I made him a sanctuary.",
-        sprites: [
-          { character: "Leo", expression: "71", position: "left" },
-          { character: "Iris", expression: "72", position: "right" },
-        ],
-      },
-      {
-        speaker: "Iris",
-        text: "Look at what the real world did to him. It left him alone. It made him invisible. I built a place where he could finally be loved correctly.",
+        text: "Leo, get out of there. She's insane.",
       },
       {
         speaker: "Leo",
-        text: "You murdered two people in here and probably more outside of it.",
-      },
-      {
-        speaker: "Iris",
-        text: "I removed interruptions.",
-        sprites: [{ character: "Iris", expression: "73", position: "center" }],
+        text: "I'm hiding until the police get here. You just have to stay awake in there. Whatever she does, do not trust the sunset.",
       },
       {
         speaker: "Protagonist",
-        text: "Her face flickers. For half a second I see the beach smile, the library stare, the hallway softness, all stacked on top of each other like bad layers in an image editor.",
+        text: "The sunset? What does that even mean?",
+      },
+      {
+        speaker: "Leo",
+        text: "It's a synchronization trigger. When the sky turns red in there, she's pushing a sedative in here to drag you deeper under. If she triggers it manually, you might not wake up before—",
+        sfx: SFX.dialupScreech,
+      },
+      {
+        speaker: "Protagonist",
+        text: "The phone shrieks, the glass spiders with black pixels, and the call drops dead in my hand.",
+        isInternal: true,
+        bgm: null,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Silence slams back into the room. He found me. I'm really in that chair. The cops are coming. I just have to survive until they get here.",
         isInternal: true,
       },
       {
+        speaker: "Protagonist",
+        text: "Three slow knocks land on the bedroom door.",
+        isInternal: true,
+        sfx: SFX.threeKnocks,
+      },
+      {
         speaker: "Iris",
-        text: "{playerName}, you don't need him. You don't need any of them. I can keep every bad thing outside. You just have to stop fighting me.",
+        text: "Honey? Who were you talking to just now? I thought I heard another voice in your room.",
       },
       {
         speaker: "Protagonist",
-        text: "The room hums around us like a living nerve. This is the first moment that feels completely, brutally honest.",
+        text: "Every muscle in my body locks up. She felt the intrusion. She knows something touched her system.",
         isInternal: true,
         choices: [
           {
-            text: '"If any part of you ever loved me, help me wake up."',
+            text: '"Nobody. I was just talking to myself."',
             nextSceneId: "day11_branch_a",
-            stateEffects: { irisAffection: 10, lucidity: 10 },
+            stateEffects: { lucidity: 15 },
           },
           {
-            text: '"Leo, tell me how to shut this place down."',
+            text: '"Leo is in your basement. It\'s over, Iris."',
             nextSceneId: "day11_branch_b",
-            stateEffects: { lucidity: 15, irisAffection: -10 },
+            stateEffects: { lucidity: -20, addiction: 20, irisAffection: -10 },
           },
         ],
       },
@@ -2438,26 +2652,26 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "If any part of you ever loved me, help me wake up.",
-        background: BACKGROUNDS.binaryCode,
-        bgm: MUSIC.pistonPressure,
+        text: "Nobody. I was just talking to myself. Having a weird dream.",
+        background: BACKGROUNDS.bedroomVR,
+        bgm: MUSIC.finalSaveState,
         sprites: [{ character: "Iris", expression: "74", position: "center" }],
       },
       {
         speaker: "Iris",
-        text: "Wake up... and go back to that empty room? Back to your parents never noticing? Back to everyone wanting pieces of you until there was nothing left?",
+        text: "A dream? That's strange. The firewall flagged an external ping. Are you sure you're feeling okay, {playerName}?",
       },
       {
         speaker: "Protagonist",
-        text: "Maybe. But it has to be my choice.",
+        text: "Yeah. My head just hurts.",
       },
       {
         speaker: "Iris",
-        text: "...Then don't make me prove how much I love you by hurting you again.",
+        text: "Oh, you dropped your phone. Clumsy. Don't worry, I'll delete that item and spawn you a new one. Let's go to the student council room, okay? I have a surprise for you.",
       },
       {
         speaker: "Protagonist",
-        text: "Her voice cracks on the last word. Leo hears it too. His expression changes from anger to something more careful.",
+        text: "She knows I'm lying. She just doesn't want to admit the simulation is fraying. I nod because playing along is the only time I've bought all week.",
         isInternal: true,
         choices: [{ text: "Continue...", nextSceneId: "day12_start" }],
       },
@@ -2470,27 +2684,41 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "Leo, tell me how to shut this place down.",
-        background: BACKGROUNDS.binaryCode,
-        bgm: MUSIC.pistonPressure,
-        sprites: [{ character: "Leo", expression: "75", position: "left" }],
-      },
-      {
-        speaker: "Leo",
-        text: "There's a core process tied to her admin key. We hit that, the environment collapses and the chair in the basement reboots. Messy, but survivable.",
+        text: "Leo is in your basement. The police are on their way. It's over, Iris.",
+        background: BACKGROUNDS.bedroomVR,
+        bgm: null,
+        sprites: [{ character: "Iris", expression: "75", position: "center" }],
       },
       {
         speaker: "Iris",
-        text: "You're explaining me to him like I'm a machine.",
-        sprites: [{ character: "Iris", expression: "76", position: "right" }],
-      },
-      {
-        speaker: "Leo",
-        text: "If the wire bundle fits, yeah.",
+        text: "HOW DARE HE TOUCH MY THINGS!",
+        bgm: MUSIC.lastSavedState,
       },
       {
         speaker: "Protagonist",
-        text: "Iris goes very still. The entire room lowers in pitch like something immense has become aware of us.",
+        text: "She doesn't step toward me. She raises one hand, and the whole room flushes with a violent, blood-orange light.",
+        isInternal: true,
+        background: BACKGROUNDS.frozenOversaturated,
+      },
+      {
+        speaker: "Iris",
+        text: "Command: Override_User_Lucidity. Force_Time_Cycle: DUSK.",
+        systemGraphic:
+          "Command: Override_User_Lucidity\nForce_Time_Cycle: DUSK",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The sunset. Leo's warning. In the real world, the needle is going into my arm. In here, my knees buckle before I can even reach the door.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "You're going to sleep now. And when you wake up, that boy will be gone, and we will finally be alone.",
+        sprites: [{ character: "Iris", expression: "76", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "The sedative drags me under. The last thing I hear is the sound of distant sirens dissolving into static.",
         isInternal: true,
         choices: [{ text: "Continue...", nextSceneId: "day12_start" }],
       },
@@ -2503,58 +2731,183 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "The student council room peels back one last layer and becomes what it always was underneath: a control chamber dressed up like a school fantasy.",
+        text: "Iris told me to wait for her here. The student council room is suffocatingly quiet, lit by a heavy gold sunset that doesn't move.",
         isInternal: true,
         background: BACKGROUNDS.studentCouncil,
         bgm: MUSIC.lastSavedState,
       },
       {
         speaker: "Protagonist",
-        text: "Desks are replaced by suspended screens. The whiteboard is now a diagnostics panel full of my memories tagged, sorted, and color-coded.",
+        text: "Dust hangs motionless in the air. The clock ticks, but the second hand just vibrates in place. Time isn't progressing. It's being held.",
         isInternal: true,
-        systemGraphic:
-          "SESSION: {playerName}\nSTATE: unstable\nATTACHMENT VECTOR: IRIS\nEXTERNAL INTERFERENCE: LEO",
-      },
-      {
-        speaker: "Iris",
-        text: "This was supposed to be the part where you finally understood. No more fear. No more noise. Just us.",
-        sprites: [{ character: "Iris", expression: "77", position: "center" }],
-      },
-      {
-        speaker: "Leo",
-        text: "She's anchored the whole construct to your dependency responses. That's why the nice days feel good and the bad days blur together. She rewards surrender.",
-        sprites: [{ character: "Leo", expression: "78", position: "left" }],
-      },
-      {
-        speaker: "Iris",
-        text: "I rewarded trust.",
-        sprites: [
-          { character: "Leo", expression: "78", position: "left" },
-          { character: "Iris", expression: "79", position: "right" },
-        ],
       },
       {
         speaker: "Protagonist",
-        text: "On one screen, a camera feed of the real basement flickers into view. A silver locket hangs from a hook beside the chair. My stomach twists. It was in her room. It exists outside this place too.",
+        text: "My heart is still racing from Leo's call. I need a terminal, a command prompt, anything. Instead I find Iris's phone sitting in the middle of the desk, unlocked and glowing.",
         isInternal: true,
-        systemGraphic: "C:\\Iris\\Basement\\feeds\\chair_cam_03",
+        systemGraphic: "Iris's Phone\nUnlocked",
       },
       {
-        speaker: "Leo",
-        text: "That's the manual fail-safe. I saw her use it while calibrating. If you can force that memory to the front, the lock on the chair might release when the system buckles.",
+        speaker: "Protagonist",
+        text: "She never leaves her phone. If it's here, it's a trap. If it's here, it's also the first chance I've had.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "There is an app on the screen with no name, just a blinking red eye. I tap it.",
+        isInternal: true,
+        bgm: null,
+        sfx: SFX.staticBurst,
+      },
+      {
+        speaker: "Protagonist",
+        text: "The app opens to a live feed. Grainy green night vision. A basement. A medical chair. And strapped into it... me.",
+        isInternal: true,
+        systemGraphic:
+          "CG Unlock\nNight-vision feed: the real-world protagonist strapped into the chair beneath the VR rig.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The IV bag is labeled in sloppy handwriting: Nutrient Mix + Sedative. Leo wasn't lying. I'm really down there.",
+        isInternal: true,
       },
       {
         speaker: "Iris",
-        text: "Don't touch that. That's mine.",
+        text: "I'm sorry you had to see that, {playerName}.",
+        sprites: [{ character: "Iris", expression: "80", position: "center" }],
+        bgm: MUSIC.finalSaveState,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I spin around so fast I nearly drop the phone. She's in the doorway, flushed, gentle, almost sympathetic. That scares me more than anger would.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Iris... please. Let me go. Just let me wake up.",
+      },
+      {
+        speaker: "Iris",
+        text: "Wake up to what? To that cold basement? To a world where you're stressed, tired, and alone?",
+      },
+      {
+        speaker: "Protagonist",
+        text: "She takes the phone from my hands and closes the feed with one thumb. Then she presses her palms against my chest like she's checking a machine for heat.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "Look at your heart rate. Your cortisol is spiking. It hurts, doesn't it? The fear. The reality. It hurts so much.",
+      },
+      {
+        speaker: "Iris",
+        text: "But I can fix it. I can make you forget the pain. I just need to flood your system with something stronger.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "She steps closer, loosening her collar, moving slowly enough that every gesture feels calculated. The room smells faintly sweet. The music under the silence feels like a pulse.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "You don't need to be afraid. You just need to look at me. Only me. Let me be the only thing in your mind.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "It's a honeypot. A trap built to overload fear with desire and relief until resistance feels impossible. The basement is cold and real. She is warm and carefully unreal.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "Don't look away, honey. Tell me I'm beautiful. Tell me you want to stay.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "If I let this wash over me, I may never want to wake up again.",
+        isInternal: true,
+        choices: [
+          {
+            text: "\"Stop. I'm not looking at you. This isn't real.\"",
+            nextSceneId: "day12_branch_a",
+            stateEffects: { lucidity: 30, addiction: -50 },
+          },
+          {
+            text: '"You\'re beautiful..."',
+            nextSceneId: "day12_branch_b",
+            stateEffects: { addiction: 50, lucidity: -30 },
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "day12_branch_a",
+    vrMode: true,
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "Stop. Put your clothes back on, Iris.",
+        background: BACKGROUNDS.studentCouncil,
+        bgm: MUSIC.obsession,
         sprites: [{ character: "Iris", expression: "80", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "The whole world shudders, waiting to see which desire in me is strongest: escape, surrender, or the need to be understood by the person who built this prison.",
+        text: "I force myself to stand and turn away from her. My heart is trying to claw out of my chest, but I keep my eyes on the wall and not on the shape she wants me to see.",
         isInternal: true,
-        choices: [
-          { text: "Make the final choice.", nextSceneId: "final_start" },
-        ],
+      },
+      {
+        speaker: "Protagonist",
+        text: "It isn't real. You aren't real. You're just a script trying to hack my brain chemistry. I'd rather die in that basement than become your pet in here.",
+      },
+      {
+        speaker: "Iris",
+        text: "You... ungrateful...",
+      },
+      {
+        speaker: "Iris",
+        text: "Fine. If you want to suffer so badly, I'll let you. But you are never leaving. Do you hear me?!",
+        sfx: SFX.doorBurstRun,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Her footsteps thunder away down the hall. I survived the trap. That only means the final confrontation is here.",
+        isInternal: true,
+        choices: [{ text: "Continue...", nextSceneId: "final_start" }],
+      },
+    ],
+  },
+
+  {
+    id: "day12_branch_b",
+    vrMode: true,
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "...You're beautiful.",
+        background: BACKGROUNDS.studentCouncil,
+        bgm: MUSIC.finalSaveState,
+        sprites: [{ character: "Iris", expression: "80", position: "center" }],
+      },
+      {
+        speaker: "Iris",
+        text: "Yes. That's right. Just look at me.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The fear loosens all at once. The basement, Leo's voice, the cold shape of my real body in that chair, all of it starts to blur beneath the relief of letting go.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "I love you so much. I'll make sure you never have to think again.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "I close my eyes. I surrender. The code begins rewriting the parts of me that still wanted to wake.",
+        isInternal: true,
+        choices: [{ text: "Continue...", nextSceneId: "ending_loop" }],
       },
     ],
   },
@@ -2564,23 +2917,69 @@ export const scenes: Scene[] = [
     vrMode: true,
     lines: [
       {
-        speaker: "System",
-        text: "FINAL ROUTE SELECT",
+        speaker: "Protagonist",
+        text: "The student council room dissolves into a void of raw, scrolling code.",
         background: BACKGROUNDS.binaryCode,
-        bgm: MUSIC.finalWinterRoom,
+        bgm: null,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Walls, desks, sky, all of it unravel into green-black streams. The simulation is breaking apart around us.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "You're ruining it! I gave you everything! Why do you keep looking at the outside world?!",
+        sprites: [{ character: "Iris", expression: "81", position: "center" }],
+        bgm: MUSIC.pistonPressure,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Because it's real, Iris! You're keeping me in a cage!",
+      },
+      {
+        speaker: "Iris",
+        text: "A cage? It's a sanctuary! Do you want to go back there? To the cold? To being a nobody?",
+      },
+      {
+        speaker: "Protagonist",
+        text: "A massive boom rolls through the void like a server rack collapsing in the dark. Somewhere behind the code, the real world is still moving.",
+        isInternal: true,
+        sfx: SFX.serverRackBoom,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I can almost hear police sirens behind layers of static. Iris hears them too. Panic flashes across her face.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        text: "They're at the door. I have to put you to sleep. I have to lock the system.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "She raises one hand. A command prompt blossoms above her head.",
+        isInternal: true,
+        systemGraphic:
+          "Command: Execute_Neural_Lockdown\nAdmin_Override_Initiated",
+      },
+      {
+        speaker: "Protagonist",
+        text: "This is it. Either I break the system now, or I disappear inside it forever.",
+        isInternal: true,
         choices: [
           {
             text: "Take Iris's hand and stay in the world she made.",
             nextSceneId: "ending_loop",
             stateEffects: { addiction: 10 },
-            requirements: { addiction: 40 },
-            lockReason: "Requires higher dependency on Iris.",
+            requirements: { addiction: 70 },
+            lockReason: "Requires much higher dependency on Iris.",
           },
           {
-            text: "Side with Leo and brute-force the shutdown.",
+            text: "Force the shutdown and wake up, no matter what waits outside.",
             nextSceneId: "ending_breakout",
-            requirements: { lucidity: 45 },
-            lockReason: "Requires higher lucidity.",
+            requirements: { lucidity: 50 },
+            lockReason: "Requires stronger lucidity.",
           },
           {
             text: "Reach for Iris and ask her to choose reality with you.",
@@ -2589,7 +2988,7 @@ export const scenes: Scene[] = [
             lockReason: "Requires stronger connection with Iris.",
           },
           {
-            text: "Grab the silver locket memory and wake up for real.",
+            text: "Use the silver locket memory to break her model of you.",
             nextSceneId: "ending_sunrise",
             requirements: { lucidity: 60, silverLocket: 1 },
             lockReason: "Requires the silver locket and high lucidity.",
@@ -2605,15 +3004,19 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "I take Iris's hand.",
+        text: "Wait. Iris, stop.",
         background: BACKGROUNDS.whiteBlinding,
-        bgm: MUSIC.infiniteSummer,
+        bgm: MUSIC.finalWinterRoom,
         sprites: [{ character: "Iris", expression: "81", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "Leo is still shouting. The monitors are still flashing warnings. But the instant her fingers close around mine, the noise recedes like a tide.",
+        text: "The command prompt hovers above us. Her eyes are full of tears. My body feels impossibly heavy, and the memory of her warmth is still burning through every thought that was supposed to save me.",
         isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I'm tired of fighting. I want to stay with you.",
       },
       {
         speaker: "Iris",
@@ -2621,50 +3024,84 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "The beach returns. The sky is flawless. The waves loop forever. This time, I do not test the water.",
+        text: "The glitches vanish. The void rewrites itself into a blinding white room around us. Her lips touch mine and, somewhere in the real world, an icy prick slides into my arm.",
+        isInternal: true,
+        systemGraphic:
+          "CG Unlock\nA tear on the real-world protagonist's cheek in the blue light of the rig. A mechanical syringe pushes sedative into the IV line.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The sedative erases the last resistant edge of me. There is no Leo. There is no school. There is only Iris. Forever.",
         isInternal: true,
       },
       {
         speaker: "System",
-        text: "ENDING 1 — INFINITE SUMMER",
+        text: "ENDING 1 — DIGITAL BLISS",
       },
     ],
   },
 
   {
     id: "ending_breakout",
-    vrMode: true,
+    vrMode: false,
     lines: [
       {
         speaker: "Protagonist",
-        text: "Leo, now!",
+        text: "No! I'm not letting you do this!",
         background: BACKGROUNDS.binaryCode,
         bgm: MUSIC.pistonPressure,
-        sprites: [{ character: "Leo", expression: "82", position: "left" }],
+        sprites: [{ character: "Iris", expression: "82", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "He slams the monitor cart into the admin console. The room detonates into white shards and screaming static.",
+        text: "I lunge for her arm before the command can execute. I don't know how this place handles force, only that I have to reject her with everything I have left.",
         isInternal: true,
         sfx: SFX.digitalGlassShatter,
       },
       {
         speaker: "Iris",
-        text: "{playerName}, don't leave me here!",
+        text: "Let go of me! [ERR_ACCESS_DENIED]!",
         sprites: [{ character: "Iris", expression: "83", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "I wake up choking in a basement chair while police pound down a door somewhere upstairs. My ankles scream. My throat tastes like blood and copper.\nBut I am awake.",
+        text: "The conflict between my lucidity and her control throws the whole place into a violent red logic loop. I scream the only command that still feels mine: wake up.",
         isInternal: true,
         background: BACKGROUNDS.totalBlack,
-        bgm: MUSIC.sunlightFloorboards,
-        sfx: SFX.policeBreach,
-        sprites: [],
+        bgm: null,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I gasp in real darkness. Mold. Copper. Old carpet. The VR rig is dead over my eyes, but the leather straps around my wrists are very real.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Heavy footsteps thud on the stairs above me. The cops didn't make it in time.",
+        isInternal: true,
+        sfx: SFX.footstepsStairs,
+      },
+      {
+        speaker: "Iris",
+        text: "You broke my world, honey... I spent so long coding it for you.",
+        sprites: [{ character: "Iris", expression: "84", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Iris... don't...",
+      },
+      {
+        speaker: "Iris",
+        text: "If you won't love me in there, you'll just have to stay down here until you learn. Don't worry. I'll never let them find us. Now... open wide. It's time to eat.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "She sits on my lap and raises a fork toward my mouth with one hand while a knife glints in the other. I close my eyes. The nightmare has only changed shape.",
+        isInternal: true,
       },
       {
         speaker: "System",
-        text: "ENDING 2 — HARD REBOOT",
+        text: "ENDING 2 — THE BASEMENT CLIFFHANGER",
       },
     ],
   },
@@ -2690,7 +3127,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "Her shoulders shake once. The screens around us dim. One by one, the fake walls come apart.",
+        text: "Her shoulders shake once. The screens around us dim. One by one, the fake walls lose the will to stay upright.",
         isInternal: true,
       },
       {
@@ -2719,38 +3156,116 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "I grab the silver locket from the memory feed and hold on so hard it hurts.",
+        text: "Iris. Look at me.",
         background: BACKGROUNDS.binaryCode,
-        bgm: MUSIC.sunlightFloorboards,
+        bgm: null,
       },
       {
         speaker: "Protagonist",
-        text: "The room convulses. Every false wall, every stitched-together day, every borrowed smile tears away at once.",
+        text: "My hand closes around something that renders badly in the void, heavy with static and memory. The silver locket.",
         isInternal: true,
+        systemGraphic: "Item\nThe Silver Locket, glitching heavily in the void",
+      },
+      {
+        speaker: "Protagonist",
+        text: "This simulation is built on my memories, right? On the data you stole from my phone and my schedule.",
+      },
+      {
+        speaker: "Iris",
+        text: "Yes! And I made it perfect!",
+        sprites: [{ character: "Iris", expression: "85", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Then tell me what this is. What's the date engraved on the inside?",
+      },
+      {
+        speaker: "Iris",
+        text: "It's... a necklace. I rendered it for you. It's our symbol!",
+      },
+      {
+        speaker: "Protagonist",
+        text: "A whining tone builds through the code as she tries to read something she never stole and never indexed.",
+        isInternal: true,
+        sfx: SFX.dialupWhineBuild,
+      },
+      {
+        speaker: "Iris",
+        text: "It says... 'Always... Yours'...? No. [DATA_NOT_FOUND]. [INDEX_ERROR].",
+      },
+      {
+        speaker: "Protagonist",
+        text: "It's my mother's birthday. March 12th. You don't know me, Iris. You only love a save file.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The paradox hits her like a sledgehammer. Her avatar flickers through Maya, Chloe, the hallway smile, the beach smile, then shatters into white static.",
+        isInternal: true,
+        bgm: MUSIC.sunlightFloorboards,
         sfx: SFX.staticExplosion,
       },
       {
         speaker: "Protagonist",
-        text: "I wake to real pain. Real cold. Real air. I'm in the basement chair, wrists raw, Leo crouched beside me with bolt cutters in one hand and tears in his eyes.",
+        text: "The void collapses into blinding white. Then cold air rips the visor from my face.",
         isInternal: true,
         background: BACKGROUNDS.totalBlack,
-        sprites: [{ character: "Leo", expression: "85", position: "center" }],
+        sfx: SFX.policeBreach,
       },
       {
         speaker: "Leo",
-        text: "Hey. Stay with me, okay? Cops are here. You're out. You're actually out.",
+        text: "I got you! Medics, get in here! We got him!",
+        sprites: [{ character: "Leo", expression: "86", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "Later, after statements and sirens and dawn breaking over a world that looks almost unbearably plain, I sit in a hospital cafeteria with a paper cup of terrible coffee and watch the sunlight crawl across the floor.",
+        text: "Leo is standing over me, exhausted and real. In the background, Iris is sobbing against the wall while officers pin her arms behind her back. For the first time in weeks, I let myself fall asleep.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Six months later, the coffee in the cafe is bitter. I like it that way. It tastes real.",
         isInternal: true,
         background: BACKGROUNDS.cafeReal,
         sprites: [],
       },
       {
         speaker: "Protagonist",
-        text: "It isn't perfect. It isn't safe. It isn't even kind. But it's mine.",
+        text: "Across from me, Leo sets down two paper cups and drops into the chair with the kind of ordinary clumsiness no simulation ever bothered to copy.",
         isInternal: true,
+      },
+      {
+        speaker: "Leo",
+        text: "Hey man. How was physical therapy today?",
+        sprites: [{ character: "Leo", expression: "87", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Getting better. I walked a full mile without the cane.",
+      },
+      {
+        speaker: "Leo",
+        text: "That's awesome. You'll be back on the track team by spring.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "Across the street, a girl with short hair walks a dog. For one terrible second my heart misfires. Then she turns and she's just a stranger, living her own life under a real sky.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Leo?",
+      },
+      {
+        speaker: "Leo",
+        text: "Yeah?",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The sun feels... actually warm today.",
+      },
+      {
+        speaker: "Leo",
+        text: "Yeah. It does.",
       },
       {
         speaker: "System",

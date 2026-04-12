@@ -1,0 +1,567 @@
+[
+  {
+    "line": "[bright, sudden] Oh! Hey!",
+    "character": "irisReal",
+    "id": "day1_start_16_irisReal"
+  },
+  {
+    "line": "[stuttering] I... I was just waiting for the bus, yeah. Even though the stop is a block away.",
+    "character": "irisReal",
+    "id": "day1_start_18_irisReal"
+  },
+  {
+    "line": "I like the view from here. It's the view of where you spend your day.",
+    "character": "irisReal",
+    "id": "day1_start_21_irisReal"
+  },
+  {
+    "line": "[matter-of-fact] I know your schedule, you know. 3:15 PM, you leave through the west exit. 3:20 PM, you check your locker. 3:23 PM, you walk past the old oak tree.",
+    "character": "irisReal",
+    "id": "day1_start_23_irisReal"
+  },
+  {
+    "line": "[reverent] It's... it's a comfort to know where you are. The world is so big and messy. But you... you make sense. You're exactly where you're supposed to be.",
+    "character": "irisReal",
+    "id": "day1_start_25_irisReal"
+  },
+  {
+    "line": "[hurt, defensive] Creepy...? I just... I just wanted to pay attention to you. Nobody else pays attention to you.",
+    "character": "irisReal",
+    "id": "day1_branch_a_02_irisReal"
+  },
+  {
+    "line": "[brightening, manic] Sweet? You think I'm sweet?!",
+    "character": "irisReal",
+    "id": "day1_branch_b_02_irisReal"
+  },
+  {
+    "line": "[breathless] I knew it. I knew you'd understand. Everyone else says I'm weird, but you... you're different. We're the same.",
+    "character": "irisReal",
+    "id": "day1_branch_b_04_irisReal"
+  },
+  {
+    "line": "[eager] Yes! Go home. Be safe. Lock your doors. I'll... I'll see you tomorrow. Exactly at 8:15 AM at the shoe lockers!",
+    "character": "irisReal",
+    "id": "day1_branch_b_06_irisReal"
+  },
+  {
+    "line": "Yo! Morning, man. You look like you got run over by a truck.",
+    "character": "leo",
+    "id": "day2_start_13_leo"
+  },
+  {
+    "line": "Whoa, hello. Did your mom drop off a gourmet lunch or something? That smells incredible.",
+    "character": "leo",
+    "id": "day2_start_15_leo"
+  },
+  {
+    "line": "Wait, is there a note? 'From I'? Bro, you have a secret admirer? Open it!",
+    "character": "leo",
+    "id": "day2_start_17_leo"
+  },
+  {
+    "line": "Come on, just a peek! I'm starving. I skipped breakfast.",
+    "character": "leo",
+    "id": "day2_start_19_leo"
+  },
+  {
+    "line": "Alright, alright! Keep your romantic bento to yourself. Just save me a bite, yeah?",
+    "character": "leo",
+    "id": "day2_branch_a_02_leo"
+  },
+  {
+    "line": "Wait, seriously? You're giving away premium waifu cooking? Are you sick?",
+    "character": "leo",
+    "id": "day2_branch_b_02_leo"
+  },
+  {
+    "line": "Don't mind if I do! You're a lifesaver, man!",
+    "character": "leo",
+    "id": "day2_branch_b_04_leo"
+  },
+  {
+    "line": "[stuttering] U-Um... excuse me?",
+    "character": "chloe",
+    "id": "day3_start_04_chloe"
+  },
+  {
+    "line": "No! I mean, yes, I was wondering if I could sit here. If... if you're not saving it for anyone. The other tables are full, and we're in the same history group...",
+    "character": "chloe",
+    "id": "day3_start_06_chloe"
+  },
+  {
+    "line": "Thank you. I noticed you were reading the chapter on the Meiji Restoration. I... I have some really good notes on that, if you want to share?",
+    "character": "chloe",
+    "id": "day3_start_09_chloe"
+  },
+  {
+    "line": "[uneasy] Um... is that your friend? She's... she's staring at us.",
+    "character": "chloe",
+    "id": "day3_start_13_chloe"
+  },
+  {
+    "line": "[whispering, shaken] Hey... I feel really weird. Why is she doing that? Should we get Mrs. Gable?",
+    "character": "chloe",
+    "id": "day3_start_17_chloe"
+  },
+  {
+    "line": "[shaken] No... she didn't say anything. She just... she walked over to our table while you were gone. She leaned right over my shoulder and smelled your textbook. Then she just... walked out.",
+    "character": "chloe",
+    "id": "day3_start_24_chloe"
+  },
+  {
+    "line": "I'm sorry, I have to go home. Good luck on the test.",
+    "character": "chloe",
+    "id": "day3_start_26_chloe"
+  },
+  {
+    "line": "[softly] You look so tired. Your eyes are all dark. Have you not been sleeping?",
+    "character": "irisReal",
+    "id": "day4_start_07_irisReal"
+  },
+  {
+    "line": "You work too hard. You carry too much weight. The world asks too much of you... but I don't.",
+    "character": "irisReal",
+    "id": "day4_start_10_irisReal"
+  },
+  {
+    "line": "[coaxing] I made something special at my house today. Just for us. It's quiet there. No tests, no loud people, no Chloe... just peace.",
+    "character": "irisReal",
+    "id": "day4_start_12_irisReal"
+  },
+  {
+    "line": "[pleading] Will you come over? Please? I don't want to be alone today. And I know you don't either.",
+    "character": "irisReal",
+    "id": "day4_start_13_irisReal"
+  },
+  {
+    "line": "[hushed, thrilled] I knew it. I knew you were the one.",
+    "character": "irisReal",
+    "id": "day4_branch_a_02_irisReal"
+  },
+  {
+    "line": "[softly] Shhh, don't move too fast, honey. The stitches are still fresh.",
+    "character": "irisReal",
+    "id": "day4_branch_a_08_irisReal"
+  },
+  {
+    "line": "I just made sure you'll never have to walk away from me. You'll never have to go to that awful school again. You're safe now. You're my prince... and I'm going to take such good care of you.",
+    "character": "irisReal",
+    "id": "day4_branch_a_10_irisReal"
+  },
+  {
+    "line": "[hesitant] ...Your parents.",
+    "character": "irisReal",
+    "id": "day4_branch_b_03_irisReal"
+  },
+  {
+    "line": "[softly] That's okay. I understand. You have... attachments in this world. It's hard to let go.",
+    "character": "irisReal",
+    "id": "day4_branch_b_06_irisReal"
+  },
+  {
+    "line": "[coldly] But don't worry. I can fix that for you. I'll fix everything.",
+    "character": "irisReal",
+    "id": "day4_branch_b_08_irisReal"
+  },
+  {
+    "line": "Dude, what the hell? You look awful. Did somebody die?",
+    "character": "leo",
+    "id": "day5_start_04_leo"
+  },
+  {
+    "line": "[hesitant] ...Okay. That is not normal. That's not even movie-stalker normal. That's call-the-cops-and-burn-your-phone normal.",
+    "character": "leo",
+    "id": "day5_start_07_leo"
+  },
+  {
+    "line": "No, man. If even half of this is real, she's dangerous. Let me check something after fifth period. If she's this organized, she's keeping the worst part somewhere you can't screenshot.",
+    "character": "leo",
+    "id": "day5_start_09_leo"
+  },
+  {
+    "line": "[breathless] Hey! Man, I'm so glad you're still here.",
+    "character": "leo",
+    "id": "day5_start_12_leo"
+  },
+  {
+    "line": "[rattled] Worse. Man, it's so much worse than we thought.",
+    "character": "leo",
+    "id": "day5_start_14_leo"
+  },
+  {
+    "line": "No. I skipped fifth period. I... I broke into her backyard. Her parents are never home, right? I looked through the basement window.",
+    "character": "leo",
+    "id": "day5_start_16_leo"
+  },
+  {
+    "line": "[hushed] She has a shrine, man. It's not just photos. She has... pieces of your hair. Clothes you threw away.",
+    "character": "leo",
+    "id": "day5_start_18_leo"
+  },
+  {
+    "line": "We have to go to the cops right now. My car is in the lot. Come on.",
+    "character": "leo",
+    "id": "day5_start_19_leo"
+  },
+  {
+    "line": "Don't look at her. Just walk. Keep walking!",
+    "character": "leo",
+    "id": "day5_start_23_leo"
+  },
+  {
+    "line": "[shouting, cut off] WATCH OU—!",
+    "character": "leo",
+    "id": "day5_start_26_leo"
+  },
+  {
+    "line": "Morning, sleeping beauty! You were totally out of it. Dreaming about your future wife again?",
+    "character": "leo",
+    "id": "day6_start_05_leo"
+  },
+  {
+    "line": "Cops? What are you talking about, man? Did you play too many video games last night? Come on, you need to wake up. The girls are coming over!",
+    "character": "leo",
+    "id": "day6_start_07_leo"
+  },
+  {
+    "line": "[bright, rehearsed] Hey! Chloe and I brought some extra snacks. You want some?",
+    "character": "maya",
+    "id": "day6_start_10_maya"
+  },
+  {
+    "line": "[soft, rehearsed] We made them together this morning! I hope you like them...",
+    "character": "chloe",
+    "id": "day6_start_11_chloe"
+  },
+  {
+    "line": "[warmly] Good morning.",
+    "character": "irisVr",
+    "id": "day6_start_14_irisVr"
+  },
+  {
+    "line": "[warm, polished] I'm so glad you're here. The world is just so beautiful today, isn't it? I feel like... like today is the start of something wonderful. Just for us.",
+    "character": "irisVr",
+    "id": "day6_start_17_irisVr"
+  },
+  {
+    "line": "The weather is nice today, isn't it?",
+    "character": "randomStudent",
+    "id": "day6_start_20_randomStudent"
+  },
+  {
+    "line": "[in eerie unison; flat, synchronized] The weather is nice today, isn't it?",
+    "character": "crowd",
+    "id": "day6_start_21_crowd"
+  },
+  {
+    "line": "[cheerful, insistent] Don't pay attention to them. Pay attention to me. What should we do today? We can do anything you want!",
+    "character": "irisVr",
+    "id": "day6_start_23_irisVr"
+  },
+  {
+    "line": "[delighted] I knew you'd say that! Let's go to the roof. Maya and Chloe can come too, right girls?",
+    "character": "irisVr",
+    "id": "day6_branch_a_02_irisVr"
+  },
+  {
+    "line": "[cheerful, in unison] Of course! We love hanging out with you!",
+    "character": "mayaChloe",
+    "id": "day6_branch_a_03_mayaChloe"
+  },
+  {
+    "line": "[too quickly] They're just... they're just agreeing with each other! Great minds think alike, right?",
+    "character": "irisVr",
+    "id": "day6_branch_b_02_irisVr"
+  },
+  {
+    "line": "[flat, synchronized] The weather is nice today, isn't it?",
+    "character": "leo",
+    "id": "day6_branch_b_04_leo"
+  },
+  {
+    "line": "[snapping] Don't look at him! Look at me! I worked so hard on this for you! You said you wanted peace! This is peace!",
+    "character": "irisVr",
+    "id": "day6_branch_b_06_irisVr"
+  },
+  {
+    "line": "[instantly sweet] Of course! Anything for you. Let's just have a good day, okay?",
+    "character": "irisVr",
+    "id": "day6_branch_b_09_irisVr"
+  },
+  {
+    "line": "[brightly] Hey! The water looks so beautiful today, doesn't it?",
+    "character": "irisVr",
+    "id": "day7_start_07_irisVr"
+  },
+  {
+    "line": "[playful] You're so serious! You need to relax. We're supposed to be having fun! Oh, actually...",
+    "character": "irisVr",
+    "id": "day7_start_10_irisVr"
+  },
+  {
+    "line": "[sweetly] I can't quite reach my back. Would you mind helping me? I don't want to get a sunburn.",
+    "character": "irisVr",
+    "id": "day7_start_11_irisVr"
+  },
+  {
+    "line": "[startled, sharp] What are you looking at?!",
+    "character": "irisVr",
+    "id": "day7_branch_a_03_irisVr"
+  },
+  {
+    "line": "[tight, pleading] Just put the lotion on. Please. Don't look too hard at things. It ruins the magic.",
+    "character": "irisVr",
+    "id": "day7_branch_a_05_irisVr"
+  },
+  {
+    "line": "[contented] Mmm... thank you. Your hands are so warm.",
+    "character": "irisVr",
+    "id": "day7_branch_b_02_irisVr"
+  },
+  {
+    "line": "[dreamy] I'm so glad we're together. I promise... every day will be exactly like this. Forever.",
+    "character": "irisVr",
+    "id": "day7_branch_b_05_irisVr"
+  },
+  {
+    "line": "[bright] Thanks for coming! Having you here really pumps me up! I'm going to beat my personal record today, just watch!",
+    "character": "maya",
+    "id": "day8_start_03_maya"
+  },
+  {
+    "line": "[startled] Ow! What—? The floor... it gave way!",
+    "character": "maya",
+    "id": "day8_start_08_maya"
+  },
+  {
+    "line": "[screaming, glitching] Help! I can't feel my... legs... I can't feel my... [ERROR: VARIABLE_NOT_FOUND].",
+    "character": "maya",
+    "id": "day8_start_12_maya"
+  },
+  {
+    "line": "[coldly] I knew this would happen eventually. She was always so loud. So restless. So hard to keep in one place.",
+    "character": "irisVr",
+    "id": "day8_start_17_irisVr"
+  },
+  {
+    "line": "[possessive] She's a distraction. She keeps getting between us.",
+    "character": "irisVr",
+    "id": "day8_start_19_irisVr"
+  },
+  {
+    "line": "[stuttering, glitching] P-P-Please... I don't want to... [END_PROCESS]...",
+    "character": "maya",
+    "id": "day8_start_20_maya"
+  },
+  {
+    "line": "[coolly] She was too loud anyway. Always running around, always sweating. You like the quiet, don't you?",
+    "character": "irisVr",
+    "id": "day8_start_23_irisVr"
+  },
+  {
+    "line": "[soothing] Look at you. You're shaking. This is what happens when other people fill your head with noise. Now it's just us and the books. And Chloe, for a little while longer.",
+    "character": "irisVr",
+    "id": "day8_start_24_irisVr"
+  },
+  {
+    "line": "[furious] A monster? I'm the only thing holding you together right now! After everything you've seen, you still think anyone else understands you?",
+    "character": "irisVr",
+    "id": "day8_branch_a_03_irisVr"
+  },
+  {
+    "line": "[cold, controlled] I am trying to make this better. Do not make me sand down every sharp edge of you myself. Now go to your room.",
+    "character": "irisVr",
+    "id": "day8_branch_a_05_irisVr"
+  },
+  {
+    "line": "[softly] Shhh. It's okay. You're in shock. Change is hard, I know.",
+    "character": "irisVr",
+    "id": "day8_branch_b_02_irisVr"
+  },
+  {
+    "line": "[gentle, possessive] You're being so good. I promise, when everything is quiet again, this will all feel far away.",
+    "character": "irisVr",
+    "id": "day8_branch_b_04_irisVr"
+  },
+  {
+    "line": "[urgent whisper] Don't hang up. Don't say my name out loud. If you can hear me, go somewhere she can't hear you breathe.",
+    "character": "leo",
+    "id": "day9_start_06_leo"
+  },
+  {
+    "line": "[hushed, urgent] I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she's hiding under her house, it got worse after the hit at the field. Ever since then, she's been smoothing things over around you.",
+    "character": "leo",
+    "id": "day9_start_08_leo"
+  },
+  {
+    "line": "[urgent] She's trying to make everything around you feel safe. Predictable. Like if she can keep you calm long enough, you'll stop asking questions. Don't let her decide what was real.",
+    "character": "leo",
+    "id": "day9_start_10_leo"
+  },
+  {
+    "line": "[urgent] If she finds out I'm talking to you, she'll cut the line. After school, come to the old student council room. Top floor. West wing. I'll explain everything.",
+    "character": "leo",
+    "id": "day9_start_12_leo"
+  },
+  {
+    "line": "[too calm] Hey... who are you talking to?",
+    "character": "irisVr",
+    "id": "day9_start_13_irisVr"
+  },
+  {
+    "line": "[coolly] You look frightened again. I told you, those feelings only make things uglier.",
+    "character": "irisVr",
+    "id": "day9_start_15_irisVr"
+  },
+  {
+    "line": "[tenderly] Then stop exhausting yourself. Stop digging. Let me hold the heavy things for you.",
+    "character": "irisVr",
+    "id": "day9_branch_a_02_irisVr"
+  },
+  {
+    "line": "[dismissive] He remembers noise. Pain. He remembers ruining things. That's all Leo ever does.",
+    "character": "irisVr",
+    "id": "day9_branch_b_02_irisVr"
+  },
+  {
+    "line": "[tired, wounded] Please don't make me compete with him again. I am so tired of cleaning up after boys who don't understand you.",
+    "character": "irisVr",
+    "id": "day9_branch_b_04_irisVr"
+  },
+  {
+    "line": "Meet me tomorrow. Student council room. If I'm wrong, you can punch me in the throat. But if I'm right, we end this.",
+    "character": "leo",
+    "id": "day10_start_07_leo"
+  },
+  {
+    "line": "[through the door, gentle] You should be sleeping. You're upsetting yourself again.",
+    "character": "irisVr",
+    "id": "day10_start_09_irisVr"
+  },
+  {
+    "line": "[through the door, soothing] Please don't watch ugly things before bed. They put bad dreams in your head.",
+    "character": "irisVr",
+    "id": "day10_start_11_irisVr"
+  },
+  {
+    "line": "[through the door, hurt] ...You don't mean that. You're tired. Tired people say cruel things.",
+    "character": "irisVr",
+    "id": "day10_branch_a_02_irisVr"
+  },
+  {
+    "line": "[through the door, tender] If that's what you need, I'll give it to you. See? I do listen. I always listen.",
+    "character": "irisVr",
+    "id": "day10_branch_b_02_irisVr"
+  },
+  {
+    "line": "There. You see it now.",
+    "character": "leo",
+    "id": "day11_start_03_leo"
+  },
+  {
+    "line": "You're not crazy. She hit you at the field, dragged you to that chair in her basement, and everything after that has been this. A world she built around you.",
+    "character": "leo",
+    "id": "day11_start_05_leo"
+  },
+  {
+    "line": "[offended] Built. Custom. Construct. You make it sound ugly. I made him a sanctuary.",
+    "character": "irisVr",
+    "id": "day11_start_07_irisVr"
+  },
+  {
+    "line": "[fervent] Look at what the real world did to him. It left him alone. It made him invisible. I built a place where he could finally be loved correctly.",
+    "character": "irisVr",
+    "id": "day11_start_08_irisVr"
+  },
+  {
+    "line": "You murdered two people in here and probably more outside of it.",
+    "character": "leo",
+    "id": "day11_start_09_leo"
+  },
+  {
+    "line": "[flatly] I removed interruptions.",
+    "character": "irisVr",
+    "id": "day11_start_10_irisVr"
+  },
+  {
+    "line": "[pleading] You don't need him. You don't need any of them. I can keep every bad thing outside. You just have to stop fighting me.",
+    "character": "irisVr",
+    "id": "day11_start_12_irisVr"
+  },
+  {
+    "line": "Wake up... and go back to that empty room? Back to your parents never noticing? Back to everyone wanting pieces of you until there was nothing left?",
+    "character": "irisVr",
+    "id": "day11_branch_a_02_irisVr"
+  },
+  {
+    "line": "[voice cracking] ...Then don't make me prove how much I love you by hurting you again.",
+    "character": "irisVr",
+    "id": "day11_branch_a_04_irisVr"
+  },
+  {
+    "line": "There's a core process tied to her admin key. We hit that, the environment collapses and the chair in the basement reboots. Messy, but survivable.",
+    "character": "leo",
+    "id": "day11_branch_b_02_leo"
+  },
+  {
+    "line": "[sharp] You're explaining me to him like I'm a machine.",
+    "character": "irisVr",
+    "id": "day11_branch_b_03_irisVr"
+  },
+  {
+    "line": "If the wire bundle fits, yeah.",
+    "character": "leo",
+    "id": "day11_branch_b_04_leo"
+  },
+  {
+    "line": "[hurt, incredulous] This was supposed to be the part where you finally understood. No more fear. No more noise. Just us.",
+    "character": "irisVr",
+    "id": "day12_start_03_irisVr"
+  },
+  {
+    "line": "She built this whole place around the parts of you that were tired, lonely, and easiest to soothe. That's why the nice days feel so good and the bad days smear at the edges. She rewards surrender.",
+    "character": "leo",
+    "id": "day12_start_04_leo"
+  },
+  {
+    "line": "[corrective] I rewarded trust.",
+    "character": "irisVr",
+    "id": "day12_start_05_irisVr"
+  },
+  {
+    "line": "That's the release trigger. I saw her use it while calibrating the chair. If you can drag that memory to the front when this place buckles, the lock on the real restraints might give.",
+    "character": "leo",
+    "id": "day12_start_07_leo"
+  },
+  {
+    "line": "[sharp] Don't touch that. That's mine.",
+    "character": "irisVr",
+    "id": "day12_start_08_irisVr"
+  },
+  {
+    "line": "[soothing] There. Doesn't that feel better? No choices. No pain. Just us.",
+    "character": "irisVr",
+    "id": "ending_loop_03_irisVr"
+  },
+  {
+    "line": "[desperate] Don't leave me here!",
+    "character": "irisVr",
+    "id": "ending_breakout_03_irisVr"
+  },
+  {
+    "line": "[quietly] If I stop, you'll hate me.",
+    "character": "irisVr",
+    "id": "ending_mercy_02_irisVr"
+  },
+  {
+    "line": "[broken] Then... remember that I tried to make something beautiful for you. Even if I made it wrong.",
+    "character": "irisVr",
+    "id": "ending_mercy_05_irisVr"
+  },
+  {
+    "line": "[urgent, relieved] Hey. Stay with me, okay? Cops are here. You're out. You're actually out.",
+    "character": "leo",
+    "id": "ending_sunrise_04_leo"
+  }
+]

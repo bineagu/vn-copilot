@@ -6,6 +6,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import apiKey from "./../api-key.json" with { type: "json" };
+import { BodyTextToDialogueMultiVoiceV1TextToDialoguePostApplyTextNormalization } from "@elevenlabs/elevenlabs-js/api/index.js";
 
 const elevenlabs = new ElevenLabsClient({
   apiKey: apiKey.key, // Defaults to process.env.ELEVENLABS_API_KEY
@@ -32,6 +33,32 @@ async function generateSfx(
   const outputPath = path.resolve(
     scriptDirectory,
     ensureMp3Extension(fileName),
+  );
+
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await writeFile(outputPath, audioBytes);
+
+  return outputPath;
+}
+
+const voices = {
+  irisReal: "p7g5YXt4rAnjYuiiuCzb",
+};
+
+async function generateLine(line: string, character: string, id: string) {
+  const voiceId = "EXAVITQu4vr4xnSDxMaL/EXAMPLE_VOICE_ID";
+  const audio = await elevenlabs.textToSpeech.convert(voiceId, {
+    text: line,
+    outputFormat: "mp3_44100_128",
+    modelId: "eleven_v3",
+  });
+
+  const audioBytes = await readStreamFully(audio);
+
+  const outputPath = path.resolve(
+    scriptDirectory,
+    "lines",
+    ensureMp3Extension(id),
   );
 
   await mkdir(path.dirname(outputPath), { recursive: true });
