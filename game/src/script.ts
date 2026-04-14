@@ -314,6 +314,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "When I finally look back, the school gate is empty.",
         isInternal: true,
+        sprites: [],
       },
       {
         speaker: "Protagonist",
@@ -2997,7 +2998,8 @@ export const scenes: Scene[] = [
             text: "Use the silver locket memory to break her model of you.",
             nextSceneId: "ending_sunrise",
             requirements: { lucidity: 60, silverLocket: 1 },
-            lockReason: "Requires pocketing the silver locket and high lucidity.",
+            lockReason:
+              "Requires pocketing the silver locket and high lucidity.",
           },
         ],
       },

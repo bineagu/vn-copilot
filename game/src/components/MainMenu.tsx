@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGame } from "../useGame";
 import { SaveLoadModal } from "./SaveLoadModal";
+import { useGamepadControls } from "../useGamepadControls";
+import { ControllerHints } from "./ControllerHints";
 
 interface MainMenuProps {
   onStart: () => void;
@@ -11,6 +13,12 @@ export function MainMenu({ onStart }: MainMenuProps) {
   const [showNameInput, setShowNameInput] = useState(false);
   const [nameValue, setNameValue] = useState(state.playerName);
   const [showLoadSlots, setShowLoadSlots] = useState(false);
+  const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
+  const hasSave = hasAnySave();
+
+  useEffect(() => {
+    if (!hasSave) setSelectedMenuIndex(0);
+  }, [hasSave]);
 
   const handleNewGame = () => {
     setShowNameInput(true);
@@ -29,6 +37,35 @@ export function MainMenu({ onStart }: MainMenuProps) {
   const handleContinue = () => {
     setShowLoadSlots(true);
   };
+
+  useGamepadControls({
+    enabled: !showLoadSlots,
+    onBack: () => {
+      if (showNameInput) setShowNameInput(false);
+    },
+    onUp: () => {
+      if (!showNameInput && hasSave) {
+        setSelectedMenuIndex((prev) => (prev + 1) % 2);
+      }
+    },
+    onDown: () => {
+      if (!showNameInput && hasSave) {
+        setSelectedMenuIndex((prev) => (prev + 1) % 2);
+      }
+    },
+    onConfirm: () => {
+      if (showNameInput) {
+        handleStartGame();
+        return;
+      }
+
+      if (selectedMenuIndex === 0) {
+        handleNewGame();
+      } else if (hasSave) {
+        handleContinue();
+      }
+    },
+  });
 
   return (
     <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black overflow-hidden">
@@ -77,7 +114,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
           />
           <button
             onClick={handleStartGame}
-            className="w-full mt-3 py-3 bg-red-900/60 hover:bg-red-800/70 text-gray-100 border border-red-700/40 rounded transition-all text-base font-medium active:scale-95"
+            className="w-full mt-3 py-3 bg-red-900/60 hover:bg-red-800/70 text-gray-100 border border-red-700/40 rounded transition-all text-base font-medium active:scale-95 ring-2 ring-red-400/60"
           >
             Begin
           </button>
@@ -89,14 +126,14 @@ export function MainMenu({ onStart }: MainMenuProps) {
         <div className="relative z-10 flex flex-col gap-4 w-[70%] max-w-xs animate-slide-up">
           <button
             onClick={handleNewGame}
-            className="py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95"
+            className={`py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${selectedMenuIndex === 0 ? "ring-2 ring-red-400/60" : ""}`}
           >
             New Game
           </button>
-          {hasAnySave() && (
+          {hasSave && (
             <button
               onClick={handleContinue}
-              className="py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95"
+              className={`py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${selectedMenuIndex === 1 ? "ring-2 ring-red-400/60" : ""}`}
             >
               Continue
             </button>
@@ -108,6 +145,25 @@ export function MainMenu({ onStart }: MainMenuProps) {
       <div className="absolute bottom-6 text-xs text-gray-700 z-10">
         v0.1 — Day 1
       </div>
+
+      <ControllerHints
+        hints={
+          showNameInput
+            ? [
+                { button: "KB", action: "Type Name" },
+                { button: "A", action: "Begin" },
+                { button: "B", action: "Back" },
+              ]
+            : hasSave
+              ? [
+                  { button: "D-Pad", action: "Navigate" },
+                  { button: "A", action: "Select" },
+                ]
+              : [{ button: "A", action: "New Game" }]
+        }
+        isVRMode={false}
+        className="absolute right-4 bottom-14"
+      />
 
       {showLoadSlots && (
         <SaveLoadModal

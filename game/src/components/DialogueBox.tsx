@@ -20,6 +20,7 @@ function meetsRequirements(
 
 export interface DialogueBoxHandle {
   tap: () => void;
+  isComplete: () => boolean;
 }
 
 interface DialogueBoxProps {
@@ -28,6 +29,7 @@ interface DialogueBoxProps {
   isInternal?: boolean;
   isVRMode: boolean;
   choices?: Choice[];
+  selectedChoiceIndex?: number;
   variables: Record<string, number>;
   textSpeed: number;
   playerName: string;
@@ -46,6 +48,7 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
       isInternal,
       isVRMode,
       choices,
+      selectedChoiceIndex,
       variables,
       textSpeed,
       playerName,
@@ -103,7 +106,11 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
       }
     }, [isComplete, processedText, choices, onAdvance]);
 
-    useImperativeHandle(ref, () => ({ tap: handleTap }), [handleTap]);
+    useImperativeHandle(
+      ref,
+      () => ({ tap: handleTap, isComplete: () => isComplete }),
+      [handleTap, isComplete],
+    );
 
     const hasChoices = choices && choices.length > 0 && isComplete;
     const isTitleCard = speaker === "";
@@ -384,6 +391,7 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
                 variables,
                 choice.requirements,
               );
+              const isSelected = selectedChoiceIndex === i;
 
               return (
                 <button
@@ -391,6 +399,12 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
                   onClick={() => unlocked && onChoice(choice)}
                   disabled={!unlocked}
                   className={`w-full max-w-lg py-3 px-6 text-base sm:text-lg font-medium transition-all duration-200 active:scale-95 ${
+                    isSelected
+                      ? isVRMode
+                        ? "ring-2 ring-cyan-300/80 scale-[1.01]"
+                        : "ring-2 ring-green-400/70 scale-[1.01]"
+                      : ""
+                  } ${
                     !unlocked
                       ? isVRMode
                         ? "bg-pink-950/50 text-pink-200/50 rounded-xl border border-pink-400/20 cursor-not-allowed"

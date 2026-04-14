@@ -15,6 +15,8 @@ import {
   stopVoice,
 } from "./AudioManager";
 import type { Choice, DialogueLine } from "../types";
+import { useGamepadControls } from "../useGamepadControls";
+import { ControllerHints } from "./ControllerHints";
 
 interface GameScreenProps {
   onMainMenu: () => void;
@@ -41,6 +43,11 @@ function resolveFromHistory(
 export function GameScreen({ onMainMenu }: GameScreenProps) {
   const { state, dispatch } = useGame();
   const [showSettings, setShowSettings] = useState(false);
+  const [choiceSelection, setChoiceSelection] = useState({
+    key: "",
+    index: 0,
+  });
+  const [historyDepth, setHistoryDepth] = useState(0);
   const dialogueRef = useRef<DialogueBoxHandle>(null);
 
   // ── Visited lines (persisted to localStorage) ─────────────────────────────
@@ -75,11 +82,25 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
   const scene = getSceneById(state.currentSceneId);
   const line = scene?.lines[state.dialogueIndex];
   const hasChoices = !!(line?.choices && line.choices.length > 0);
+  const choiceSelectionKey = `${state.currentSceneId}:${state.dialogueIndex}`;
+  const selectedChoiceIndex =
+    choiceSelection.key === choiceSelectionKey ? choiceSelection.index : 0;
 
   const isEndOfGame =
     scene !== undefined &&
     state.dialogueIndex === scene.lines.length - 1 &&
     !hasChoices;
+
+  const gamepadHints = hasChoices
+    ? [
+        { button: "A", action: "Select" },
+        { button: "D-Pad", action: "Move" },
+        { button: "Start", action: "Settings" },
+      ]
+    : [
+        { button: "A", action: isEndOfGame ? "Menu" : "Advance" },
+        { button: "Start", action: "Settings" },
+      ];
 
   // Track visited and whether this is a first-time visit
   const [isFirstVisit, setIsFirstVisit] = useState(true);
@@ -152,12 +173,14 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         sceneId: state.currentSceneId,
         dialogueIndex: state.dialogueIndex,
       });
+      setHistoryDepth(navHistoryRef.current.length);
       dispatch({ type: "ADVANCE" });
     }
   }, [
     dispatch,
     isEndOfGame,
     onMainMenu,
+    setHistoryDepth,
     state.currentSceneId,
     state.dialogueIndex,
   ]);
@@ -165,6 +188,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
   const handleBack = useCallback(() => {
     const prev = navHistoryRef.current.pop();
     if (prev) {
+      setHistoryDepth(navHistoryRef.current.length);
       dispatch({
         type: "SET_SCENE",
         sceneId: prev.sceneId,
@@ -179,6 +203,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         sceneId: state.currentSceneId,
         dialogueIndex: state.dialogueIndex,
       });
+      setHistoryDepth(navHistoryRef.current.length);
       dispatch({
         type: "CHOOSE",
         nextSceneId: choice.nextSceneId,
@@ -187,6 +212,22 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       });
     },
     [dispatch, state.currentSceneId, state.dialogueIndex],
+  );
+
+  const moveChoiceSelection = useCallback(
+    (delta: number) => {
+      if (!line?.choices?.length || !dialogueRef.current?.isComplete()) return;
+      setChoiceSelection((prev) => {
+        const currentIndex = prev.key === choiceSelectionKey ? prev.index : 0;
+        const next = currentIndex + delta;
+        const total = line.choices!.length;
+        return {
+          key: choiceSelectionKey,
+          index: (next + total) % total,
+        };
+      });
+    },
+    [choiceSelectionKey, line?.choices],
   );
 
   // Autoplay: fires when DialogueBox typewriter completes
@@ -236,6 +277,26 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     return () => window.removeEventListener("keydown", handler);
   }, [showSettings]);
 
+  useGamepadControls({
+    enabled: !showSettings,
+    onMenu: () => setShowSettings((prev) => !prev),
+    onBack: () => {
+      if (debugMode && navHistoryRef.current.length > 0) {
+        handleBack();
+      }
+    },
+    onUp: () => moveChoiceSelection(-1),
+    onDown: () => moveChoiceSelection(1),
+    onConfirm: () => {
+      if (hasChoices && dialogueRef.current?.isComplete()) {
+        const choice = line.choices?.[selectedChoiceIndex];
+        if (choice) handleChoice(choice);
+        return;
+      }
+      dialogueRef.current?.tap();
+    },
+  });
+
   if (!scene || !line) {
     return (
       <div className="absolute inset-0 flex items-center justify-center bg-black text-gray-400 text-lg">
@@ -280,7 +341,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       )}
 
       {/* Debug back button (visible in debug mode) */}
-      {debugMode && navHistoryRef.current.length > 0 && (
+      {debugMode && historyDepth > 0 && (
         <button
           onClick={handleBack}
           className={`absolute top-14 right-3 z-30 px-3 h-8 text-xs rounded transition-all active:scale-90 ${
@@ -307,6 +368,16 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         {debugMode && " [DBG]"}
       </div>
 
+      <ControllerHints
+        hints={
+          debugMode && historyDepth > 0
+            ? [...gamepadHints, { button: "B", action: "Back" }]
+            : gamepadHints
+        }
+        isVRMode={activeVrMode}
+        className="absolute right-3 bottom-36"
+      />
+
       {/* Tap area — first tap fills text, second advances */}
       <div
         className="absolute inset-0 z-10"
@@ -324,6 +395,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         isInternal={line.isInternal}
         isVRMode={activeVrMode}
         choices={line.choices}
+        selectedChoiceIndex={selectedChoiceIndex}
         variables={state.variables}
         textSpeed={state.textSpeed}
         playerName={state.playerName}

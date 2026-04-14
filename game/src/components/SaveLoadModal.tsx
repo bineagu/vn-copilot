@@ -1,6 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useGame, TOTAL_SLOTS } from "../useGame";
 import type { SaveSlotData } from "../useGame";
+import { useGamepadControls } from "../useGamepadControls";
+import { ControllerHints } from "./ControllerHints";
 
 const SLOTS_PER_PAGE = 10;
 const TOTAL_PAGES = Math.ceil(TOTAL_SLOTS / SLOTS_PER_PAGE);
@@ -40,6 +42,7 @@ export function SaveLoadModal({
   const [page, setPage] = useState(0);
   const [confirmSlot, setConfirmSlot] = useState<number | null>(null);
   const [flashSlot, setFlashSlot] = useState<number | null>(null);
+  const [selectedSlot, setSelectedSlot] = useState(0);
   // Force re-render after save/delete
   const [, setTick] = useState(0);
 
@@ -52,6 +55,10 @@ export function SaveLoadModal({
   ) {
     slots.push(getSlot(i));
   }
+
+  useEffect(() => {
+    setSelectedSlot((prev) => Math.min(prev, Math.max(0, slots.length - 1)));
+  }, [page, slots.length]);
 
   const handleSlotClick = useCallback(
     (slotIndex: number) => {
@@ -101,6 +108,15 @@ export function SaveLoadModal({
     [deleteSlot],
   );
 
+  const handleDeleteSlot = useCallback(
+    (globalIdx: number) => {
+      deleteSlot(globalIdx);
+      setConfirmSlot(null);
+      setTick((t) => t + 1);
+    },
+    [deleteSlot],
+  );
+
   // Theme
   const panelBg = isVRMode
     ? "bg-gradient-to-b from-purple-900/95 to-pink-900/95 border border-pink-400/30 rounded-2xl"
@@ -120,6 +136,37 @@ export function SaveLoadModal({
       : active
         ? "bg-gray-600 text-white border-gray-400/50"
         : "bg-gray-800/60 text-gray-400 hover:bg-gray-700/60 border-gray-600/30";
+
+  useGamepadControls({
+    onMenu: onClose,
+    onBack: onClose,
+    onUp: () => setSelectedSlot((prev) => Math.max(0, prev - 1)),
+    onDown: () =>
+      setSelectedSlot((prev) => Math.min(slots.length - 1, prev + 1)),
+    onLeft: () => {
+      if (page > 0) {
+        setPage((prev) => prev - 1);
+        setConfirmSlot(null);
+      }
+    },
+    onRight: () => {
+      if (page < TOTAL_PAGES - 1) {
+        setPage((prev) => prev + 1);
+        setConfirmSlot(null);
+      }
+    },
+    onConfirm: () => {
+      const slot = slots[selectedSlot];
+      if (mode === "load" && !slot) return;
+      handleSlotClick(selectedSlot);
+    },
+    onSecondary: () => {
+      const globalIdx = startIdx + selectedSlot;
+      if (slots[selectedSlot] && flashSlot !== globalIdx) {
+        handleDeleteSlot(globalIdx);
+      }
+    },
+  });
 
   return (
     <div className="absolute inset-0 z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm animate-fade-in">
@@ -179,6 +226,7 @@ export function SaveLoadModal({
                   : isVRMode
                     ? "bg-pink-800/40 border-pink-500/30 hover:bg-pink-700/40"
                     : "bg-gray-800/60 border-gray-500/30 hover:bg-gray-700/50";
+            const isSelected = selectedSlot === i;
 
             const disabled = mode === "load" && isEmpty;
 
@@ -188,6 +236,12 @@ export function SaveLoadModal({
                 onClick={() => !disabled && handleSlotClick(i)}
                 disabled={disabled}
                 className={`w-full flex items-center gap-3 p-3 border rounded-lg transition-all text-left ${slotBg} ${
+                  isSelected
+                    ? isVRMode
+                      ? "ring-2 ring-cyan-300/80"
+                      : "ring-2 ring-green-400/70"
+                    : ""
+                } ${
                   disabled
                     ? "opacity-40 cursor-not-allowed"
                     : "cursor-pointer active:scale-[0.98]"
@@ -259,6 +313,19 @@ export function SaveLoadModal({
               </button>
             );
           })}
+        </div>
+
+        <div className="px-4 pb-4 shrink-0">
+          <ControllerHints
+            hints={[
+              { button: "D-Pad", action: "Select" },
+              { button: "Left/Right", action: "Page" },
+              { button: "A", action: mode === "save" ? "Save" : "Load" },
+              { button: "Y", action: "Delete" },
+              { button: "B", action: "Close" },
+            ]}
+            isVRMode={isVRMode}
+          />
         </div>
       </div>
     </div>
