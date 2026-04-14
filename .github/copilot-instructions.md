@@ -21,8 +21,16 @@ These properties are sparse — only set when they change. Always scan **backwar
 
 ### System Graphics
 - `systemGraphic` field on a `DialogueLine` renders as an overlay above the dialogue box.
-- File paths (matching `^[A-Z]:[\/\\]`) render as a **PC file explorer window**.
-- Everything else renders as a **phone text message notification**.
+- Values use a `tag:content` prefix convention to select the visual style:
+  - `file:` — PC file explorer window (e.g. `file:C:/Users/Iris/Archive/...`)
+  - `sms:` — Phone text message notification
+  - `note:` — Handwritten paper note (torn notebook, lined paper)
+  - `call:` — Incoming phone call screen
+  - `terminal:` — VR system terminal / admin command (red-on-black)
+  - `item:` — Item received popup (gold accent)
+  - `phone:` — Phone screen (unlocked device)
+  - `cg:` — CG / scene description card (italic, cinematic)
+- Fallback: unprefixed strings render as a plain card.
 
 ### Save/Load
 - When loading a save, call `stopBGM()` before closing the settings menu so the BGM effect can restart cleanly for the new scene position.

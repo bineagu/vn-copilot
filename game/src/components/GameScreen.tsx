@@ -43,8 +43,58 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
   const [showSettings, setShowSettings] = useState(false);
   const dialogueRef = useRef<DialogueBoxHandle>(null);
 
+  // ── Visited lines (persisted to localStorage) ─────────────────────────────
+  const VISITED_KEY = "sol_visited";
+  const visitedRef = useRef<Set<string>>(
+    (() => {
+      try {
+        const raw = localStorage.getItem("sol_visited");
+        return raw ? new Set(JSON.parse(raw) as string[]) : new Set<string>();
+      } catch {
+        return new Set<string>();
+      }
+    })(),
+  );
+
+  // ── Autoplay (persisted) ───────────────────────────────────────────────────
+  const [autoplay, setAutoplay] = useState(
+    () => localStorage.getItem("sol_autoplay") === "true",
+  );
+  const autoplayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // ── Navigation history (in-memory, for back button) ───────────────────────
+  const navHistoryRef = useRef<
+    Array<{ sceneId: string; dialogueIndex: number }>
+  >([]);
+
+  // ── Debug mode (toggled by 5× backtick) ───────────────────────────────────
+  const [debugMode, setDebugMode] = useState(false);
+  const backtickCountRef = useRef(0);
+  const backtickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const scene = getSceneById(state.currentSceneId);
   const line = scene?.lines[state.dialogueIndex];
+  const hasChoices = !!(line?.choices && line.choices.length > 0);
+
+  const isEndOfGame =
+    scene !== undefined &&
+    state.dialogueIndex === scene.lines.length - 1 &&
+    !hasChoices;
+
+  // Track visited and whether this is a first-time visit
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  useEffect(() => {
+    const key = `${state.currentSceneId}:${state.dialogueIndex}`;
+    const alreadySeen = visitedRef.current.has(key);
+    setIsFirstVisit(!alreadySeen);
+    visitedRef.current.add(key);
+    localStorage.setItem(VISITED_KEY, JSON.stringify([...visitedRef.current]));
+    // Cancel any pending autoplay timer when line changes
+    if (autoplayTimerRef.current) {
+      clearTimeout(autoplayTimerRef.current);
+      autoplayTimerRef.current = null;
+    }
+  }, [state.currentSceneId, state.dialogueIndex]);
 
   const {
     bg: currentBg,
@@ -65,38 +115,70 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     return undefined;
   }, [scene, state.dialogueIndex]);
 
+  const master = state.masterVolume;
+
   // Handle BGM changes
   useEffect(() => {
     if (activeBgm === null) {
       stopBGM();
     } else if (activeBgm) {
-      playBGM(activeBgm, state.bgmVolume);
+      playBGM(activeBgm, state.bgmVolume * master);
     }
-  }, [activeBgm, state.bgmVolume]);
+  }, [activeBgm, state.bgmVolume, master]);
 
   // Handle SFX on line change
   useEffect(() => {
     if (line?.sfx) {
-      playSFX(line.sfx, state.sfxVolume);
+      playSFX(line.sfx, state.sfxVolume * master);
     }
-  }, [line, state.sfxVolume]);
+  }, [line, state.sfxVolume, master]);
 
   // Handle voice lines on line change
   useEffect(() => {
     const voice = getVoiceLine(state.currentSceneId, state.dialogueIndex);
     if (voice) {
-      playVoice(voice, state.voiceVolume);
+      playVoice(voice, state.voiceVolume * master);
     } else {
       stopVoice();
     }
-  }, [state.currentSceneId, state.dialogueIndex, state.voiceVolume]);
+  }, [state.currentSceneId, state.dialogueIndex, state.voiceVolume, master]);
 
   const handleAdvance = useCallback(() => {
-    dispatch({ type: "ADVANCE" });
+    if (isEndOfGame) {
+      stopBGM();
+      onMainMenu();
+    } else {
+      navHistoryRef.current.push({
+        sceneId: state.currentSceneId,
+        dialogueIndex: state.dialogueIndex,
+      });
+      dispatch({ type: "ADVANCE" });
+    }
+  }, [
+    dispatch,
+    isEndOfGame,
+    onMainMenu,
+    state.currentSceneId,
+    state.dialogueIndex,
+  ]);
+
+  const handleBack = useCallback(() => {
+    const prev = navHistoryRef.current.pop();
+    if (prev) {
+      dispatch({
+        type: "SET_SCENE",
+        sceneId: prev.sceneId,
+        lineIndex: prev.dialogueIndex,
+      });
+    }
   }, [dispatch]);
 
   const handleChoice = useCallback(
     (choice: Choice) => {
+      navHistoryRef.current.push({
+        sceneId: state.currentSceneId,
+        dialogueIndex: state.dialogueIndex,
+      });
       dispatch({
         type: "CHOOSE",
         nextSceneId: choice.nextSceneId,
@@ -104,16 +186,50 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         requirements: choice.requirements,
       });
     },
-    [dispatch],
+    [dispatch, state.currentSceneId, state.dialogueIndex],
   );
+
+  // Autoplay: fires when DialogueBox typewriter completes
+  const handleLineComplete = useCallback(() => {
+    if (!autoplay || isFirstVisit || hasChoices || isEndOfGame || showSettings)
+      return;
+    autoplayTimerRef.current = setTimeout(() => {
+      handleAdvance();
+    }, 400);
+  }, [
+    autoplay,
+    isFirstVisit,
+    hasChoices,
+    isEndOfGame,
+    showSettings,
+    handleAdvance,
+  ]);
 
   // Keyboard support
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      // Esc toggles settings
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setShowSettings((prev) => !prev);
+        return;
+      }
       if (showSettings) return;
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         dialogueRef.current?.tap();
+      }
+      // Backtick 5× → toggle debug mode
+      if (e.key === "`") {
+        backtickCountRef.current++;
+        if (backtickTimerRef.current) clearTimeout(backtickTimerRef.current);
+        backtickTimerRef.current = setTimeout(() => {
+          backtickCountRef.current = 0;
+        }, 2000);
+        if (backtickCountRef.current >= 5) {
+          backtickCountRef.current = 0;
+          setDebugMode((prev) => !prev);
+        }
       }
     };
     window.addEventListener("keydown", handler);
@@ -150,6 +266,33 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         ⚙
       </button>
 
+      {/* Autoplay indicator */}
+      {autoplay && (
+        <div
+          className={`absolute top-3 right-16 z-30 text-[10px] px-2 py-1 rounded font-mono ${
+            activeVrMode
+              ? "bg-pink-900/60 text-pink-300 border border-pink-400/30"
+              : "bg-black/40 text-green-400 border border-green-600/30"
+          }`}
+        >
+          AUTO
+        </div>
+      )}
+
+      {/* Debug back button (visible in debug mode) */}
+      {debugMode && navHistoryRef.current.length > 0 && (
+        <button
+          onClick={handleBack}
+          className={`absolute top-14 right-3 z-30 px-3 h-8 text-xs rounded transition-all active:scale-90 ${
+            activeVrMode
+              ? "bg-pink-900/60 text-pink-200 border border-pink-400/30 hover:bg-pink-800/70"
+              : "bg-black/50 text-gray-300 border border-gray-500/40 hover:bg-black/70"
+          }`}
+        >
+          ← Back
+        </button>
+      )}
+
       {/* Stats debug (small) */}
       <div
         className={`absolute top-3 left-3 z-30 text-[10px] px-2 py-1 rounded ${
@@ -161,6 +304,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         LUC:{state.variables.lucidity || 0} AFF:
         {state.variables.irisAffection || 0} ADD:
         {state.variables.addiction || 0}
+        {debugMode && " [DBG]"}
       </div>
 
       {/* Tap area — first tap fills text, second advances */}
@@ -184,14 +328,21 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         textSpeed={state.textSpeed}
         playerName={state.playerName}
         systemGraphic={line.systemGraphic}
+        isEnding={isEndOfGame}
         onAdvance={handleAdvance}
         onChoice={handleChoice}
+        onComplete={handleLineComplete}
       />
 
       {/* Settings Overlay */}
       {showSettings && (
         <SettingsMenu
           isVRMode={activeVrMode}
+          autoplay={autoplay}
+          onAutoplayChange={(v) => {
+            setAutoplay(v);
+            localStorage.setItem("sol_autoplay", String(v));
+          }}
           onClose={() => setShowSettings(false)}
           onMainMenu={() => {
             stopBGM();

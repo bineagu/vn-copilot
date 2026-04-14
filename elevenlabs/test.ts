@@ -63,6 +63,8 @@ const voices = {
   chloe: "9LQXwQNBrPJQQ5D2qv07",
   leo: "8YIOgzXVOYUwEENkD1m0",
   randomStudent: "LWDjGNDPlm2PQwnzQKdK",
+  // crowd: "LWDjGNDPlm2PQwnzQKdK",
+  // mayaChloe: "IA1Uo0uGXjm4EZdkWo1t",
 };
 
 async function generateLine(line: string, character: string, id: string) {
@@ -141,12 +143,14 @@ function printUsage() {
   node .\\elevenlabs\\test.ts --sfx [skip] [take]
   node .\\elevenlabs\\test.ts --lines [skip] [take]
   node .\\elevenlabs\\test.ts --line "text" "character" "id"
+  node .\\elevenlabs\\test.ts --line-id <id>
   node .\\elevenlabs\\test.ts "prompt" "output-file" [durationSeconds] [loop]
 
 Examples:
   node .\\elevenlabs\\test.ts --sfx 0 10
   node .\\elevenlabs\\test.ts --lines 20 5
   node .\\elevenlabs\\test.ts --line "[urgent] Hello?" leo sample_line_001
+  node .\\elevenlabs\\test.ts --line-id day8_start_20_maya
   node .\\elevenlabs\\test.ts "metal door slam" "door_slam" 2 false`);
 }
 
@@ -241,6 +245,26 @@ async function main() {
     }
 
     const outputPath = await generateLine(line, character, id);
+    console.log(`Saved line to ${outputPath}`);
+    return;
+  }
+
+  if (args[0] === "--line-id") {
+    const id = args[1];
+    if (!id) {
+      throw new Error("Usage: node .\\elevenlabs\\test.ts --line-id <id>");
+    }
+    const entries = voiceLines as VoiceLineEntry[];
+    const entry = entries.find((e) => e.id === id);
+    if (!entry) {
+      throw new Error(`No voice line found with id "${id}".`);
+    }
+    console.log(`Generating line: ${entry.id} (${entry.character})`);
+    const outputPath = await generateLine(
+      entry.line,
+      entry.character,
+      entry.id,
+    );
     console.log(`Saved line to ${outputPath}`);
     return;
   }

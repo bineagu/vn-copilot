@@ -28,6 +28,7 @@ const initialState: GameState = {
     silverLocket: 0,
   },
   textSpeed: 30,
+  masterVolume: 1,
   bgmVolume: 0.5,
   sfxVolume: 0.7,
   voiceVolume: 1,
@@ -77,6 +78,8 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return { ...state, playerName: action.name };
     case "SET_TEXT_SPEED":
       return { ...state, textSpeed: action.speed };
+    case "SET_MASTER_VOLUME":
+      return { ...state, masterVolume: action.volume };
     case "SET_BGM_VOLUME":
       return { ...state, bgmVolume: action.volume };
     case "SET_SFX_VOLUME":

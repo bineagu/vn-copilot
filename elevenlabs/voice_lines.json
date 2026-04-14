@@ -105,12 +105,12 @@
     "id": "day3_start_17_chloe"
   },
   {
-    "line": "[shaken] No... she didn't say anything. She just... she walked over to our table while you were gone. She leaned right over my shoulder and smelled your textbook. Then she just... walked out.",
+    "line": "[shaken, scared, teary] No... she didn't say anything. She just... she walked over to our table while you were gone. She leaned right over my shoulder and smelled your textbook. Then she just... walked out.",
     "character": "chloe",
     "id": "day3_start_24_chloe"
   },
   {
-    "line": "I'm sorry, I have to go home. Good luck on the test.",
+    "line": "[shaken, scared, teary] I'm sorry, I have to go home. Good luck on the test.",
     "character": "chloe",
     "id": "day3_start_26_chloe"
   },
@@ -120,7 +120,7 @@
     "id": "day4_start_07_irisReal"
   },
   {
-    "line": "You work too hard. You carry too much weight. The world asks too much of you... but I don't.",
+    "line": "[thoughtful] You work too hard. You carry too much weight. The world asks too much of you... but I don't.",
     "character": "irisReal",
     "id": "day4_start_10_irisReal"
   },
@@ -335,7 +335,7 @@
     "id": "day8_start_08_maya"
   },
   {
-    "line": "[screaming, glitching] Help! I can't feel my... legs... I can't feel my... [ERROR: VARIABLE_NOT_FOUND].",
+    "line": "[screaming, glitching] Help! I can't feel my... legs... I can't feel my... ",
     "character": "maya",
     "id": "day8_start_12_maya"
   },
@@ -350,7 +350,7 @@
     "id": "day8_start_19_irisVr"
   },
   {
-    "line": "[stuttering, glitching] P-P-Please... I don't want to... [END_PROCESS]...",
+    "line": "[stuttering, glitching] P-P-Please... [crying] I don't want to...",
     "character": "maya",
     "id": "day8_start_20_maya"
   },

@@ -10,12 +10,16 @@ import { SaveLoadModal } from "./SaveLoadModal";
 
 interface SettingsMenuProps {
   isVRMode: boolean;
+  autoplay: boolean;
+  onAutoplayChange: (v: boolean) => void;
   onClose: () => void;
   onMainMenu: () => void;
 }
 
 export function SettingsMenu({
   isVRMode,
+  autoplay,
+  onAutoplayChange,
   onClose,
   onMainMenu,
 }: SettingsMenuProps) {
@@ -52,6 +56,29 @@ export function SettingsMenu({
             </button>
           </div>
 
+          {/* Master Volume */}
+          <div className="mb-5">
+            <label
+              className={`block text-sm mb-1 ${isVR ? "text-pink-300" : "text-gray-400"}`}
+            >
+              Master Volume
+            </label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={state.masterVolume}
+              onChange={(e) => {
+                const v = parseFloat(e.target.value);
+                dispatch({ type: "SET_MASTER_VOLUME", volume: v });
+                setBGMVolume(state.bgmVolume * v);
+                setVoiceVolume(state.voiceVolume * v);
+              }}
+              className={`w-full h-2 rounded-lg cursor-pointer ${sliderAccent}`}
+            />
+          </div>
+
           {/* BGM Volume */}
           <div className="mb-5">
             <label
@@ -68,7 +95,28 @@ export function SettingsMenu({
               onChange={(e) => {
                 const v = parseFloat(e.target.value);
                 dispatch({ type: "SET_BGM_VOLUME", volume: v });
-                setBGMVolume(v);
+                setBGMVolume(v * state.masterVolume);
+              }}
+              className={`w-full h-2 rounded-lg cursor-pointer ${sliderAccent}`}
+            />
+          </div>
+
+          {/* SFX Volume */}
+          <div className="mb-5">
+            <label
+              className={`block text-sm mb-1 ${isVR ? "text-pink-300" : "text-gray-400"}`}
+            >
+              SFX Volume
+            </label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={state.sfxVolume}
+              onChange={(e) => {
+                const v = parseFloat(e.target.value);
+                dispatch({ type: "SET_SFX_VOLUME", volume: v });
               }}
               className={`w-full h-2 rounded-lg cursor-pointer ${sliderAccent}`}
             />
@@ -90,7 +138,7 @@ export function SettingsMenu({
               onChange={(e) => {
                 const v = parseFloat(e.target.value);
                 dispatch({ type: "SET_VOICE_VOLUME", volume: v });
-                setVoiceVolume(v);
+                setVoiceVolume(v * state.masterVolume);
               }}
               className={`w-full h-2 rounded-lg cursor-pointer ${sliderAccent}`}
             />
@@ -121,6 +169,38 @@ export function SettingsMenu({
               <span>Slow</span>
               <span>Fast</span>
             </div>
+          </div>
+
+          {/* Autoplay */}
+          <div className="mb-5">
+            <label
+              className={`flex items-center justify-between cursor-pointer ${
+                isVR ? "text-pink-300" : "text-gray-400"
+              }`}
+            >
+              <span className="text-sm">Auto-advance read lines</span>
+              <button
+                onClick={() => onAutoplayChange(!autoplay)}
+                className={`w-12 h-6 rounded-full transition-colors duration-200 relative ${
+                  autoplay
+                    ? isVR
+                      ? "bg-pink-500"
+                      : "bg-green-600"
+                    : "bg-gray-600"
+                }`}
+              >
+                <span
+                  className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-200 ${
+                    autoplay ? "translate-x-[1px]" : "translate-x-[-20.5px]"
+                  }`}
+                />
+              </button>
+            </label>
+            <p
+              className={`text-xs mt-1 ${isVR ? "text-pink-400/60" : "text-gray-600"}`}
+            >
+              Skips through already-seen lines automatically
+            </p>
           </div>
 
           {/* Action buttons */}

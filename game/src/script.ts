@@ -531,7 +531,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "The name makes my blood run cold.",
         isInternal: true,
-        systemGraphic: "C:/Users/Iris/Archive/My_Future_Husband",
+        systemGraphic: "file:C:/Users/Iris/Archive/My_Future_Husband",
       },
       {
         speaker: "Protagonist",
@@ -598,7 +598,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         sfx: SFX.phoneBuzz,
         systemGraphic:
-          "You look so handsome when you're concentrating. Sweet dreams. See you tomorrow. ❤️",
+          "sms:You look so handsome when you're concentrating. Sweet dreams. See you tomorrow. ❤️",
       },
       {
         speaker: "Protagonist",
@@ -655,7 +655,7 @@ export const scenes: Scene[] = [
         text: '"You were up so late studying! You need your energy. - I ❤️"',
         isInternal: true,
         systemGraphic:
-          "You were up so late studying! You need your energy. - I ❤️",
+          "note:You were up so late studying! You need your energy. - I ❤️",
       },
       {
         speaker: "Protagonist",
@@ -819,7 +819,7 @@ export const scenes: Scene[] = [
         text: "Her expression has completely shattered.",
         isInternal: true,
         bgm: MUSIC.obsession,
-        sprites: [{ character: "Iris", expression: "16", position: "center" }],
+        sprites: [{ character: "Iris", expression: "16", position: "right" }],
       },
       {
         speaker: "Protagonist",
@@ -835,7 +835,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She turns sharply and vanishes into the hallway.",
         isInternal: true,
-        sprites: [{ character: "Iris", expression: "17", position: "center" }],
+        sprites: [{ character: "Iris", expression: "17", position: "right" }],
       },
       {
         speaker: "Protagonist",
@@ -1016,7 +1016,7 @@ export const scenes: Scene[] = [
         text: "It isn't a sticky note this time. It's a piece of lined notebook paper, violently torn at the edges.\nThe handwriting is pressed so hard into the paper that it tore through in some places.",
         isInternal: true,
         systemGraphic:
-          "She's touching the books you touched. She's breathing the air you breathe. Stop talking to her. ONLY TALK TO ME.",
+          "note:She's touching the books you touched. She's breathing the air you breathe. Stop talking to her. ONLY TALK TO ME.",
       },
       {
         speaker: "Protagonist",
@@ -1053,7 +1053,7 @@ export const scenes: Scene[] = [
         text: "\"Chloe, I'm sorry. Please don't sit with me anymore. It isn't safe. Stay away from Iris.\"",
         isInternal: true,
         systemGraphic:
-          "Chloe, I'm sorry. Please don't sit with me anymore. It isn't safe. Stay away from Iris.",
+          "sms:Chloe, I'm sorry. Please don't sit with me anymore. It isn't safe. Stay away from Iris.",
       },
       {
         speaker: "Protagonist",
@@ -1084,7 +1084,7 @@ export const scenes: Scene[] = [
         text: "\"Chloe, I'm so sorry about my weird friend. It was just a stupid prank. Let's study again tomorrow, okay?\"",
         isInternal: true,
         systemGraphic:
-          "Chloe, I'm so sorry about my weird friend. It was just a stupid prank. Let's study again tomorrow, okay?",
+          "sms:Chloe, I'm so sorry about my weird friend. It was just a stupid prank. Let's study again tomorrow, okay?",
       },
       {
         speaker: "Protagonist",
@@ -1307,7 +1307,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I lock every door and window in my house that night. I put a chair under my bedroom doorknob. While checking my desk for anything heavy enough to use as a weapon, I find my mother's old silver locket wedged behind a drawer.",
         isInternal: true,
-        background: BACKGROUNDS.fadeToBlack,
+        background: BACKGROUNDS.bedroomNight,
         sprites: [],
       },
       {
@@ -1317,15 +1317,19 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "I slip the locket into my pocket without really thinking about it. The metal is cold. Solid. Real. But as I finally drift into an exhausted sleep, I can't shake the feeling that locks won't be enough to keep her out anymore.",
+        text: "I turn the locket over in my palm. The metal is cold. Solid. Real. It feels like a fragment of myself Iris couldn't fake even if she tore apart every device I own.",
         isInternal: true,
         background: BACKGROUNDS.fadeToBlack,
         sprites: [],
         choices: [
           {
-            text: "Continue...",
+            text: "Pocket the silver locket.",
             nextSceneId: "day5_start",
             stateEffects: { silverLocket: 1 },
+          },
+          {
+            text: "Leave it hidden in the drawer.",
+            nextSceneId: "day5_start",
           },
         ],
       },
@@ -1361,7 +1365,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Leo",
         text: "Dude, what the hell? You look awful. Did somebody die?",
-        sprites: [{ character: "Leo", expression: "34", position: "center" }],
+        sprites: [{ character: "Leo", expression: "11", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -1371,12 +1375,12 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I show him the SD card. The tracking logs. The audio clips she spliced together. I tell him about the lunchbox, the note in my textbook, the way Chloe vanished, the invitation to Iris's house. I talk too fast and in the wrong order, but once I start, I can't stop.",
         isInternal: true,
-        systemGraphic: "C:/Users/Iris/Archive/My_Future_Husband",
+        systemGraphic: "file:C:/Users/Iris/Archive/My_Future_Husband",
       },
       {
         speaker: "Leo",
         text: "...Okay. That is not normal. That's not even movie-stalker normal. That's call-the-cops-and-burn-your-phone normal.",
-        sprites: [{ character: "Leo", expression: "35", position: "center" }],
+        sprites: [{ character: "Leo", expression: "15", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -1504,7 +1508,7 @@ export const scenes: Scene[] = [
   // ═══════════════════════════════════════════
   {
     id: "day6_start",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -1644,7 +1648,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day6_branch_a",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -1672,7 +1676,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day6_branch_b",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -1732,16 +1736,17 @@ export const scenes: Scene[] = [
 
   {
     id: "day7_start",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
-        text: "I know it's a dream the second I open my eyes.\nI fell asleep with a concussion headache. I should be in my bed. Instead, I'm standing in the middle of a beach that feels too bright to be real.",
+        text: "Summer vacation. I don't remember the semester ending. I don't remember taking my exams. But when I woke up this morning, Leo texted me saying we were all going to the beach.",
         isInternal: true,
-        background: BACKGROUNDS.whiteBlinding,
+        background: BACKGROUNDS.whiteVoid,
         bgm: MUSIC.infiniteSummer,
         sfx: SFX.seagullLoop,
       },
+
       {
         speaker: "Protagonist",
         text: "I'm standing on the sand. It doesn't yield beneath my sandals. It feels like walking on a textured plastic floor.",
@@ -1830,7 +1835,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day7_branch_a",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -1870,7 +1875,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day7_branch_b",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -1910,7 +1915,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day8_start",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -1973,7 +1978,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Maya",
-        text: "{playerName}! Help! I can't feel my... legs... I can't feel my... [ERROR: VARIABLE_NOT_FOUND].",
+        text: "{playerName}! Help! I can't feel my... legs... I can't feel my... ",
         sprites: [{ character: "Maya", expression: "59", position: "center" }],
       },
       {
@@ -2019,7 +2024,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Maya",
-        text: "P-P-Please... I don't want to... [END_PROCESS]...",
+        text: "P-P-Please... I don't want to...",
         sfx: SFX.digitalPing,
         sprites: [{ character: "Maya", expression: "62", position: "center" }],
       },
@@ -2066,7 +2071,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day8_branch_a",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -2104,7 +2109,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day8_branch_b",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -2138,7 +2143,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day9_start",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -2162,7 +2167,7 @@ export const scenes: Scene[] = [
       {
         speaker: "System",
         text: "UNKNOWN CALLER",
-        systemGraphic: "UNKNOWN CALLER\nAnswer?",
+        systemGraphic: "call:UNKNOWN CALLER\nAnswer?",
       },
       {
         speaker: "Protagonist",
@@ -2205,7 +2210,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "{playerName}? Who are you talking to?",
-        sprites: [{ character: "Iris", expression: "66", position: "center" }],
+        sprites: [{ character: "Iris", expression: "68", position: "center" }],
         bgm: MUSIC.obsession,
       },
       {
@@ -2217,7 +2222,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "You look frightened again. I told you, those feelings only make things uglier.",
-        sprites: [{ character: "Iris", expression: "67", position: "center" }],
+        sprites: [{ character: "Iris", expression: "71", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2241,14 +2246,14 @@ export const scenes: Scene[] = [
 
   {
     id: "day9_branch_a",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
         text: "Nobody. I'm just tired.",
         background: BACKGROUNDS.glitchingLibrary,
         bgm: MUSIC.obsession,
-        sprites: [{ character: "Iris", expression: "68", position: "center" }],
+        sprites: [{ character: "Iris", expression: "70", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -2270,14 +2275,14 @@ export const scenes: Scene[] = [
 
   {
     id: "day9_branch_b",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
         text: "Leo called me. He remembers the field. He remembers what you did.",
         background: BACKGROUNDS.glitchingLibrary,
         bgm: MUSIC.obsession,
-        sprites: [{ character: "Iris", expression: "69", position: "center" }],
+        sprites: [{ character: "Iris", expression: "68", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -2304,7 +2309,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day10_start",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -2321,14 +2326,14 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "I hide in the library because it used to feel safe. Quiet. Stable. Now even the bookshelves look sick.",
+        text: "I hide in the library because it used to feel safe. Quiet. Stable. Now even the bookshelves look sick. But I'm not alone.",
         isInternal: true,
         sfx: SFX.libraryPages,
       },
       {
         speaker: "Chloe",
         text: "P-Please... I don't... I don't want to forget.",
-        sprites: [{ character: "Chloe", expression: "24", position: "center" }],
+        sprites: [{ character: "Chloe", expression: "75", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2341,8 +2346,8 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
-        text: "The books... the stories... she's burning them all. The memory, the RAM, everything is being reallocated to her.",
-        sprites: [{ character: "Chloe", expression: "23", position: "center" }],
+        text: "$&@! {playerName}... The books. The stories. She's burning them all. The memory... the RAM... everything is being reallocated to her.",
+        sprites: [{ character: "Chloe", expression: "76", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2361,16 +2366,17 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "With trembling fingers, Chloe pulls a glowing square from inside her cardigan. It looks like a broken save file, pixelated at the edges and shedding static.",
         isInternal: true,
-        systemGraphic: "Item Received\nCorrupted Key_File",
       },
       {
         speaker: "Chloe",
         text: "It's a backdoor. A diagnostic key. I can't use it, but if a signal comes from outside... this might keep the port open long enough for someone to reach you.",
+        sprites: [{ character: "Chloe", expression: "77", position: "center" }],
       },
       {
         speaker: "Protagonist",
         text: "I take the corrupted square. It sinks into my palm like cold light and disappears under my skin.",
         isInternal: true,
+        systemGraphic: "item:Item Received\nCorrupted Key_File",
       },
       {
         speaker: "Protagonist",
@@ -2382,15 +2388,15 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "Chloe. I told you it was time for defragmentation.",
-        sprites: [{ character: "Iris", expression: "67", position: "center" }],
+        sprites: [{ character: "Iris", expression: "78", position: "center" }],
         bgm: MUSIC.obsession,
       },
       {
         speaker: "Chloe",
         text: "No! Please! I have feelings! I like the quiet! I like the books! Don't turn me into nothing!",
         sprites: [
-          { character: "Chloe", expression: "22", position: "left" },
-          { character: "Iris", expression: "67", position: "right" },
+          { character: "Chloe", expression: "79", position: "left" },
+          { character: "Iris", expression: "78", position: "right" },
         ],
       },
       {
@@ -2430,7 +2436,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day10_branch_a",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -2463,7 +2469,8 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "The white rushes into my eyes. I remember Maya falling. I remember Chloe shaking under the table. I remember the corrupted square in my hand. Then even those memories start to come apart.",
         isInternal: true,
-        systemGraphic: "Overwriting_Memory_Sector...\nRebooting Day Cycle...",
+        systemGraphic:
+          "terminal:Overwriting_Memory_Sector...\nRebooting Day Cycle...",
         choices: [{ text: "Continue...", nextSceneId: "day11_start" }],
       },
     ],
@@ -2471,7 +2478,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day10_branch_b",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
@@ -2504,7 +2511,8 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I try to hold on to the last two days. Maya disappearing. Chloe hiding. The key file. Leo. The memories shatter anyway, dissolving into static before I can anchor any of them.",
         isInternal: true,
-        systemGraphic: "Overwriting_Memory_Sector...\nRebooting Day Cycle...",
+        systemGraphic:
+          "terminal:Overwriting_Memory_Sector...\nRebooting Day Cycle...",
         choices: [{ text: "Continue...", nextSceneId: "day11_start" }],
       },
     ],
@@ -2536,7 +2544,7 @@ export const scenes: Scene[] = [
         text: "Then a ringtone tears through the silence. Not the cheerful chime this place uses. Something harsher. Realer.",
         isInternal: true,
         sfx: SFX.phoneRingtone,
-        systemGraphic: "ERR_UNKNOWN_INTRUSION\nAccept?",
+        systemGraphic: "terminal:ERR_UNKNOWN_INTRUSION\nAccept?",
       },
       {
         speaker: "Protagonist",
@@ -2655,7 +2663,7 @@ export const scenes: Scene[] = [
         text: "Nobody. I was just talking to myself. Having a weird dream.",
         background: BACKGROUNDS.bedroomVR,
         bgm: MUSIC.finalSaveState,
-        sprites: [{ character: "Iris", expression: "74", position: "center" }],
+        sprites: [{ character: "Iris", expression: "81", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -2687,7 +2695,7 @@ export const scenes: Scene[] = [
         text: "Leo is in your basement. The police are on their way. It's over, Iris.",
         background: BACKGROUNDS.bedroomVR,
         bgm: null,
-        sprites: [{ character: "Iris", expression: "75", position: "center" }],
+        sprites: [{ character: "Iris", expression: "83", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -2698,13 +2706,13 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She doesn't step toward me. She raises one hand, and the whole room flushes with a violent, blood-orange light.",
         isInternal: true,
-        background: BACKGROUNDS.frozenOversaturated,
+        background: BACKGROUNDS.bedroomDark,
       },
       {
         speaker: "Iris",
         text: "Command: Override_User_Lucidity. Force_Time_Cycle: DUSK.",
         systemGraphic:
-          "Command: Override_User_Lucidity\nForce_Time_Cycle: DUSK",
+          "terminal:Command: Override_User_Lucidity\nForce_Time_Cycle: DUSK",
       },
       {
         speaker: "Protagonist",
@@ -2714,7 +2722,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "You're going to sleep now. And when you wake up, that boy will be gone, and we will finally be alone.",
-        sprites: [{ character: "Iris", expression: "76", position: "center" }],
+        sprites: [{ character: "Iris", expression: "84", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2745,7 +2753,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "My heart is still racing from Leo's call. I need a terminal, a command prompt, anything. Instead I find Iris's phone sitting in the middle of the desk, unlocked and glowing.",
         isInternal: true,
-        systemGraphic: "Iris's Phone\nUnlocked",
+        systemGraphic: "phone:Iris's Phone\nUnlocked",
       },
       {
         speaker: "Protagonist",
@@ -2764,7 +2772,7 @@ export const scenes: Scene[] = [
         text: "The app opens to a live feed. Grainy green night vision. A basement. A medical chair. And strapped into it... me.",
         isInternal: true,
         systemGraphic:
-          "CG Unlock\nNight-vision feed: the real-world protagonist strapped into the chair beneath the VR rig.",
+          "cg:Night-vision feed: the real-world protagonist strapped into the chair beneath the VR rig.",
       },
       {
         speaker: "Protagonist",
@@ -2774,7 +2782,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "I'm sorry you had to see that, {playerName}.",
-        sprites: [{ character: "Iris", expression: "80", position: "center" }],
+        sprites: [{ character: "Iris", expression: "86", position: "center" }],
         bgm: MUSIC.finalSaveState,
       },
       {
@@ -2789,6 +2797,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "Wake up to what? To that cold basement? To a world where you're stressed, tired, and alone?",
+        sprites: [{ character: "Iris", expression: "87", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2802,6 +2811,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "But I can fix it. I can make you forget the pain. I just need to flood your system with something stronger.",
+        sprites: [{ character: "Iris", expression: "88", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2811,6 +2821,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "You don't need to be afraid. You just need to look at me. Only me. Let me be the only thing in your mind.",
+        sprites: [{ character: "Iris", expression: "89", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2850,7 +2861,7 @@ export const scenes: Scene[] = [
         text: "Stop. Put your clothes back on, Iris.",
         background: BACKGROUNDS.studentCouncil,
         bgm: MUSIC.obsession,
-        sprites: [{ character: "Iris", expression: "80", position: "center" }],
+        sprites: [{ character: "Iris", expression: "90", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2888,7 +2899,7 @@ export const scenes: Scene[] = [
         text: "...You're beautiful.",
         background: BACKGROUNDS.studentCouncil,
         bgm: MUSIC.finalSaveState,
-        sprites: [{ character: "Iris", expression: "80", position: "center" }],
+        sprites: [{ character: "Iris", expression: "91", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -2930,7 +2941,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "You're ruining it! I gave you everything! Why do you keep looking at the outside world?!",
-        sprites: [{ character: "Iris", expression: "81", position: "center" }],
+        sprites: [{ character: "Iris", expression: "92", position: "center" }],
         bgm: MUSIC.pistonPressure,
       },
       {
@@ -2961,7 +2972,8 @@ export const scenes: Scene[] = [
         text: "She raises one hand. A command prompt blossoms above her head.",
         isInternal: true,
         systemGraphic:
-          "Command: Execute_Neural_Lockdown\nAdmin_Override_Initiated",
+          "terminal:Command: Execute_Neural_Lockdown\nAdmin_Override_Initiated",
+        sprites: [{ character: "Iris", expression: "97", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2985,7 +2997,7 @@ export const scenes: Scene[] = [
             text: "Use the silver locket memory to break her model of you.",
             nextSceneId: "ending_sunrise",
             requirements: { lucidity: 60, silverLocket: 1 },
-            lockReason: "Requires the silver locket and high lucidity.",
+            lockReason: "Requires pocketing the silver locket and high lucidity.",
           },
         ],
       },
@@ -3001,7 +3013,7 @@ export const scenes: Scene[] = [
         text: "Wait. Iris, stop.",
         background: BACKGROUNDS.whiteBlinding,
         bgm: MUSIC.finalWinterRoom,
-        sprites: [{ character: "Iris", expression: "81", position: "center" }],
+        sprites: [{ character: "Iris", expression: "93", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -3015,13 +3027,14 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "There. Doesn't that feel better? No choices. No pain. Just us.",
+        sprites: [{ character: "Iris", expression: "94", position: "center" }],
       },
       {
         speaker: "Protagonist",
         text: "The glitches vanish. The void rewrites itself into a blinding white room around us. Her lips touch mine and, somewhere in the real world, an icy prick slides into my arm.",
         isInternal: true,
         systemGraphic:
-          "CG Unlock\nA tear on the real-world protagonist's cheek in the blue light of the rig. A mechanical syringe pushes sedative into the IV line.",
+          "cg:A tear on the real-world protagonist's cheek in the blue light of the rig. A mechanical syringe pushes sedative into the IV line.",
       },
       {
         speaker: "Protagonist",
@@ -3037,14 +3050,14 @@ export const scenes: Scene[] = [
 
   {
     id: "ending_breakout",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
         text: "No! I'm not letting you do this!",
         background: BACKGROUNDS.binaryCode,
         bgm: MUSIC.pistonPressure,
-        sprites: [{ character: "Iris", expression: "82", position: "center" }],
+        sprites: [{ character: "Iris", expression: "97", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -3062,12 +3075,14 @@ export const scenes: Scene[] = [
         text: "The conflict between my lucidity and her control throws the whole place into a violent red logic loop. I scream the only command that still feels mine: wake up.",
         isInternal: true,
         background: BACKGROUNDS.totalBlack,
+        sprites: [],
         bgm: null,
       },
       {
         speaker: "Protagonist",
         text: "I gasp in real darkness. Mold. Copper. Old carpet. The VR rig is dead over my eyes, but the leather straps around my wrists are very real.",
         isInternal: true,
+        vrMode: false,
       },
       {
         speaker: "Protagonist",
@@ -3078,7 +3093,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "You broke my world, honey... I spent so long coding it for you.",
-        sprites: [{ character: "Iris", expression: "84", position: "center" }],
+        sprites: [{ character: "Iris", expression: "96", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -3087,6 +3102,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "If you won't love me in there, you'll just have to stay down here until you learn. Don't worry. I'll never let them find us. Now... open wide. It's time to eat.",
+        sprites: [{ character: "Iris", expression: "95", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -3102,19 +3118,21 @@ export const scenes: Scene[] = [
 
   {
     id: "ending_sunrise",
-    vrMode: false,
+    vrMode: true,
     lines: [
       {
         speaker: "Protagonist",
         text: "Iris. Look at me.",
         background: BACKGROUNDS.binaryCode,
         bgm: null,
+        sprites: [{ character: "Iris", expression: "97", position: "center" }],
       },
       {
         speaker: "Protagonist",
         text: "My hand closes around something that renders badly in the void, heavy with static and memory. The silver locket.",
         isInternal: true,
-        systemGraphic: "Item\nThe Silver Locket, glitching heavily in the void",
+        systemGraphic:
+          "item:Item\nThe Silver Locket, glitching heavily in the void",
       },
       {
         speaker: "Protagonist",
@@ -3123,15 +3141,16 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         text: "Yes! And I made it perfect!",
-        sprites: [{ character: "Iris", expression: "85", position: "center" }],
       },
       {
         speaker: "Protagonist",
         text: "Then tell me what this is. What's the date engraved on the inside?",
+        // sprites: [{ character: "Item", expression: "92", position: "center" }],
       },
       {
         speaker: "Iris",
         text: "It's... a necklace. I rendered it for you. It's our symbol!",
+        sprites: [{ character: "Iris", expression: "98", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -3153,18 +3172,20 @@ export const scenes: Scene[] = [
         isInternal: true,
         bgm: MUSIC.sunlightFloorboards,
         sfx: SFX.staticExplosion,
+        sprites: [{ character: "Iris", expression: "92", position: "center" }],
       },
       {
         speaker: "Protagonist",
         text: "The void collapses into blinding white. Then cold air rips the visor from my face.",
         isInternal: true,
-        background: BACKGROUNDS.totalBlack,
+        background: BACKGROUNDS.whiteBlinding,
         sfx: SFX.policeBreach,
+        vrMode: false,
       },
       {
         speaker: "Leo",
         text: "I got you! Medics, get in here! We got him!",
-        sprites: [{ character: "Leo", expression: "86", position: "center" }],
+        sprites: [],
       },
       {
         speaker: "Protagonist",
@@ -3182,11 +3203,11 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "Across from me, Leo sets down two paper cups and drops into the chair with the kind of ordinary clumsiness no simulation ever bothered to copy.",
         isInternal: true,
+        sprites: [{ character: "Leo", expression: "99", position: "center" }],
       },
       {
         speaker: "Leo",
         text: "Hey man. How was physical therapy today?",
-        sprites: [{ character: "Leo", expression: "87", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -3216,6 +3237,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Leo",
         text: "Yeah. It does.",
+        sprites: [{ character: "Leo", expression: "100", position: "center" }],
       },
       {
         speaker: "System",

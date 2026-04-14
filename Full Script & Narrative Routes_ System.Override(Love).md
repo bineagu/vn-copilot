@@ -41,6 +41,7 @@ Iris: "I made something special at my house... Just for us. Will you come over? 
 The Choice:
 Accept: Triggers the Devoted Reality Route (End of normal gameplay).
 Refuse: Triggers the Wary Path (Leads to the Simulation).
+Follow-up: On the refusal path, you find your mother's old silver locket while barricading your room and must choose whether to keep it. Pocketing it is required for the Sunrise ending.
 ### Day 5: The "Accident"
 Scene: The Football Field.
 Dialogue: Leo is frantic. "I found her 'shrine,' man. We're going to the police after practice."
@@ -102,7 +103,7 @@ The Outcome: You wake up in the real world. You are strapped to a chair in a roo
 The Encounter: Real-world Iris enters. She is disheveled, holding a kitchen knife and a plate of cold pasta.
 Dialogue: "You were so happy in there... Why did you have to break it? Now we have to do this the hard way." She sits on your lap and begins to feed you. The game ends as she whispers, "Don't worry. I'll never let the police find us."
 ### 3. "Sunrise" (The True Good End)
-Requirements: Silver Locket + High Lucidity (>60) + Investigated SD Card.
+Requirements: Pocketed Silver Locket + High Lucidity (>60) + Investigated SD Card.
 The Paradox Sequence:
 Presentation: You show Iris the Silver Locket.
 The Question: "Iris, what is the date inside? If you love me, you'd know my mother's birthday."
