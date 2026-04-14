@@ -33,7 +33,7 @@ export const BACKGROUNDS = {
   bedroomDark: "/backgrounds/__23._Protagonist's_Bedroom_202604110144.png",
   // Day 12+
   studentCouncil: "/backgrounds/__24._Student_Council_202604110145.png",
-  binaryCode: "/backgrounds/__25._Binary_Code_202604110145.png",
+  binaryCode: "/backgrounds/25 Binary_code_digital_202604141829.mp4",
   totalBlack: "/backgrounds/__26._Total_Blackness_202604110146.png",
   whiteBlinding: "/backgrounds/__27._Pure_Blinding_202604110146.png",
   cafeReal: "/backgrounds/__28._Real-World_Cafe,_202604110146.png",

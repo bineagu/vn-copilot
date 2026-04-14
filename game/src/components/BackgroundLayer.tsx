@@ -1,43 +1,76 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface BackgroundLayerProps {
   src: string;
   isVRMode: boolean;
 }
 
+function isVideoBackground(src: string): boolean {
+  return /\.(mp4|webm|ogg)(?:\?.*)?$/i.test(src);
+}
+
 export function BackgroundLayer({ src, isVRMode }: BackgroundLayerProps) {
   const [loaded, setLoaded] = useState(false);
-  const [currentSrc, setCurrentSrc] = useState(src);
+  const isVideo = isVideoBackground(src);
 
   useEffect(() => {
-    if (src !== currentSrc) {
-      setLoaded(false);
-      const img = new Image();
-      img.onload = () => {
-        setCurrentSrc(src);
-        setLoaded(true);
+    let cancelled = false;
+    setLoaded(false);
+
+    if (isVideo) {
+      return () => {
+        cancelled = true;
       };
-      img.src = src;
     }
-  }, [src, currentSrc]);
 
-  useEffect(() => {
-    // Preload initial image
     const img = new Image();
-    img.onload = () => setLoaded(true);
+    img.onload = () => {
+      if (!cancelled) setLoaded(true);
+    };
+    img.onerror = () => {
+      if (!cancelled) setLoaded(true);
+    };
     img.src = src;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isVideo, src]);
+
+  const handleVideoEnded = (event: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = event.currentTarget;
+    if (Number.isFinite(video.duration) && video.duration > 0) {
+      video.currentTime = Math.max(0, video.duration - 0.05);
+    }
+    video.pause();
+  };
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Background image */}
-      <div
-        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 animate-bg-pan ${
-          loaded ? "opacity-100" : "opacity-0"
-        }`}
-        style={{ backgroundImage: `url("${currentSrc}")` }}
-      />
+      {/* Background media */}
+      {isVideo ? (
+        <video
+          key={src}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+          src={src}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          onLoadedData={() => setLoaded(true)}
+          onEnded={handleVideoEnded}
+        />
+      ) : (
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 animate-bg-pan ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ backgroundImage: `url("${src}")` }}
+        />
+      )}
 
       {/* Theme overlay */}
       {isVRMode ? (
