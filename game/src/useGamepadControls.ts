@@ -34,6 +34,22 @@ function isPressed(button?: GamepadButton): boolean {
   return !!button?.pressed;
 }
 
+function getGamepadSnapshot(gamepad: Gamepad | null) {
+  const verticalAxis = gamepad?.axes[1] ?? 0;
+  const horizontalAxis = gamepad?.axes[0] ?? 0;
+
+  return {
+    confirm: isPressed(gamepad?.buttons[0]),
+    back: isPressed(gamepad?.buttons[1]),
+    secondary: isPressed(gamepad?.buttons[3]),
+    menu: isPressed(gamepad?.buttons[9]) || isPressed(gamepad?.buttons[16]),
+    up: isPressed(gamepad?.buttons[12]) || verticalAxis <= -AXIS_THRESHOLD,
+    down: isPressed(gamepad?.buttons[13]) || verticalAxis >= AXIS_THRESHOLD,
+    left: isPressed(gamepad?.buttons[14]) || horizontalAxis <= -AXIS_THRESHOLD,
+    right: isPressed(gamepad?.buttons[15]) || horizontalAxis >= AXIS_THRESHOLD,
+  };
+}
+
 export function useGamepadControls({
   enabled = true,
   ...handlers
@@ -66,6 +82,33 @@ export function useGamepadControls({
     }
 
     let animationFrameId = 0;
+    const snapshot = getGamepadSnapshot(getActiveGamepad());
+    const now = performance.now();
+
+    previousButtonsRef.current = {
+      confirm: snapshot.confirm,
+      back: snapshot.back,
+      secondary: snapshot.secondary,
+      menu: snapshot.menu,
+    };
+    repeatStateRef.current = {
+      up: {
+        active: snapshot.up,
+        nextFireAt: snapshot.up ? now + INITIAL_REPEAT_DELAY : 0,
+      },
+      down: {
+        active: snapshot.down,
+        nextFireAt: snapshot.down ? now + INITIAL_REPEAT_DELAY : 0,
+      },
+      left: {
+        active: snapshot.left,
+        nextFireAt: snapshot.left ? now + INITIAL_REPEAT_DELAY : 0,
+      },
+      right: {
+        active: snapshot.right,
+        nextFireAt: snapshot.right ? now + INITIAL_REPEAT_DELAY : 0,
+      },
+    };
 
     const fireEdge = (key: string, pressed: boolean, callback?: () => void) => {
       const wasPressed = previousButtonsRef.current[key] ?? false;

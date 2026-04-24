@@ -3,13 +3,18 @@ import { useEffect, useState } from "react";
 interface BackgroundLayerProps {
   src: string;
   isVRMode: boolean;
+  rotate?: number;
 }
 
 function isVideoBackground(src: string): boolean {
   return /\.(mp4|webm|ogg)(?:\?.*)?$/i.test(src);
 }
 
-export function BackgroundLayer({ src, isVRMode }: BackgroundLayerProps) {
+export function BackgroundLayer({
+  src,
+  isVRMode,
+  rotate,
+}: BackgroundLayerProps) {
   const [loaded, setLoaded] = useState(false);
   const isVideo = isVideoBackground(src);
 
@@ -65,9 +70,9 @@ export function BackgroundLayer({ src, isVRMode }: BackgroundLayerProps) {
         />
       ) : (
         <div
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 animate-bg-pan ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${
+            rotate ? "animate-bg-tilt" : "animate-bg-pan"
+          } ${loaded ? "opacity-100" : "opacity-0"}`}
           style={{ backgroundImage: `url("${src}")` }}
         />
       )}

@@ -3,6 +3,7 @@ import type { GameState, GameAction } from "./types";
 import { getSceneById } from "./script";
 import { GameContext, TOTAL_SLOTS } from "./useGame";
 import type { SaveSlotData } from "./useGame";
+import { appStorage } from "./platform/storage";
 
 const SAVE_PREFIX = "sol_slot_";
 
@@ -28,8 +29,8 @@ const initialState: GameState = {
     silverLocket: 0,
   },
   textSpeed: 30,
-  masterVolume: 1,
-  bgmVolume: 0.5,
+  masterVolume: 0.5,
+  bgmVolume: 0.3,
   sfxVolume: 0.7,
   voiceVolume: 1,
 };
@@ -102,11 +103,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
       timestamp: Date.now(),
       label: `${state.currentSceneId} #${state.dialogueIndex}`,
     };
-    localStorage.setItem(SAVE_PREFIX + slot, JSON.stringify(data));
+    appStorage.setItem(SAVE_PREFIX + slot, JSON.stringify(data));
   };
 
   const getSlot = (slot: number): SaveSlotData | null => {
-    const raw = localStorage.getItem(SAVE_PREFIX + slot);
+    const raw = appStorage.getItem(SAVE_PREFIX + slot);
     if (!raw) return null;
     try {
       return JSON.parse(raw) as SaveSlotData;
@@ -129,12 +130,12 @@ export function GameProvider({ children }: { children: ReactNode }) {
   };
 
   const deleteSlot = (slot: number) => {
-    localStorage.removeItem(SAVE_PREFIX + slot);
+    appStorage.removeItem(SAVE_PREFIX + slot);
   };
 
   const hasAnySave = (): boolean => {
     for (let i = 0; i < TOTAL_SLOTS; i++) {
-      if (localStorage.getItem(SAVE_PREFIX + i)) return true;
+      if (appStorage.hasItem(SAVE_PREFIX + i)) return true;
     }
     return false;
   };

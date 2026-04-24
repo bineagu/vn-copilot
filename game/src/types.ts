@@ -1,7 +1,7 @@
 export interface Sprite {
   character: string;
   expression: string;
-  position?: "left" | "center" | "right";
+  position?: "left" | "center" | "right" | "center-small" | "right-small";
 }
 
 export type VariableRequirements = Record<string, number>;
@@ -22,9 +22,13 @@ export interface DialogueLine {
   sprites?: Sprite[];
   bgm?: string | null;
   sfx?: string;
+  sfxVolume?: number;
+  voice?: string;
+  textVariants?: Array<{ requires: Record<string, number>; text: string }>;
   choices?: Choice[];
   systemGraphic?: string;
   vrMode?: boolean;
+  screenEffect?: "pain" | "tilt";
 }
 
 export interface Scene {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useGame } from "../useGame";
-import { getSceneById, getVoiceLine } from "../script";
+import { getSceneById } from "../script";
 import { BackgroundLayer } from "./BackgroundLayer";
 import { SpriteLayer } from "./SpriteLayer";
 import { DialogueBox } from "./DialogueBox";
@@ -17,6 +17,7 @@ import {
 import type { Choice, DialogueLine } from "../types";
 import { useGamepadControls } from "../useGamepadControls";
 import { ControllerHints } from "./ControllerHints";
+import { appStorage } from "../platform/storage";
 
 interface GameScreenProps {
   onMainMenu: () => void;
@@ -55,7 +56,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
   const visitedRef = useRef<Set<string>>(
     (() => {
       try {
-        const raw = localStorage.getItem("sol_visited");
+        const raw = appStorage.getItem("sol_visited");
         return raw ? new Set(JSON.parse(raw) as string[]) : new Set<string>();
       } catch {
         return new Set<string>();
@@ -65,7 +66,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
 
   // ── Autoplay (persisted) ───────────────────────────────────────────────────
   const [autoplay, setAutoplay] = useState(
-    () => localStorage.getItem("sol_autoplay") === "true",
+    () => appStorage.getItem("sol_autoplay") === "true",
   );
   const autoplayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -81,6 +82,14 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
 
   const scene = getSceneById(state.currentSceneId);
   const line = scene?.lines[state.dialogueIndex];
+  const effectiveText =
+    line?.textVariants?.find((v) =>
+      Object.entries(v.requires).every(
+        ([k, val]) => (state.variables[k] ?? 0) >= val,
+      ),
+    )?.text ??
+    line?.text ??
+    "";
   const hasChoices = !!(line?.choices && line.choices.length > 0);
   const choiceSelectionKey = `${state.currentSceneId}:${state.dialogueIndex}`;
   const selectedChoiceIndex =
@@ -109,7 +118,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     const alreadySeen = visitedRef.current.has(key);
     setIsFirstVisit(!alreadySeen);
     visitedRef.current.add(key);
-    localStorage.setItem(VISITED_KEY, JSON.stringify([...visitedRef.current]));
+    appStorage.setItem(VISITED_KEY, JSON.stringify([...visitedRef.current]));
     // Cancel any pending autoplay timer when line changes
     if (autoplayTimerRef.current) {
       clearTimeout(autoplayTimerRef.current);
@@ -150,19 +159,19 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
   // Handle SFX on line change
   useEffect(() => {
     if (line?.sfx) {
-      playSFX(line.sfx, state.sfxVolume * master);
+      playSFX(line.sfx, (line.sfxVolume ?? 1) * state.sfxVolume * master);
     }
-  }, [line, state.sfxVolume, master]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- we only want to trigger on line change, not on volume changes
+  }, [line]);
 
   // Handle voice lines on line change
   useEffect(() => {
-    const voice = getVoiceLine(state.currentSceneId, state.dialogueIndex);
-    if (voice) {
-      playVoice(voice, state.voiceVolume * master);
+    if (line?.voice) {
+      playVoice(line.voice, state.voiceVolume * master);
     } else {
       stopVoice();
     }
-  }, [state.currentSceneId, state.dialogueIndex, state.voiceVolume, master]);
+  }, [line, state.voiceVolume, master]);
 
   const handleAdvance = useCallback(() => {
     if (isEndOfGame) {
@@ -310,10 +319,27 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       <AudioManager />
 
       {/* Background */}
-      {currentBg && <BackgroundLayer src={currentBg} isVRMode={activeVrMode} />}
+      {currentBg && (
+        <BackgroundLayer
+          src={currentBg}
+          isVRMode={activeVrMode}
+          rotate={line?.screenEffect === "tilt" ? 90 : undefined}
+        />
+      )}
 
       {/* Sprites */}
       <SpriteLayer sprites={currentSprites || []} isVRMode={activeVrMode} />
+
+      {/* Pain screen effect */}
+      {line?.screenEffect === "pain" && (
+        <div
+          className="absolute inset-0 pointer-events-none z-20 animate-pain-flash"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, rgba(255,40,40,0.95) 0%, rgba(180,0,0,0.85) 60%, rgba(100,0,0,0.9) 100%)",
+          }}
+        />
+      )}
 
       {/* Settings gear button */}
       <button
@@ -355,18 +381,19 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       )}
 
       {/* Stats debug (small) */}
-      <div
-        className={`absolute top-3 left-3 z-30 text-[10px] px-2 py-1 rounded ${
-          activeVrMode
-            ? "bg-pink-900/40 text-pink-400/60"
-            : "bg-black/30 text-gray-600"
-        }`}
-      >
-        LUC:{state.variables.lucidity || 0} AFF:
-        {state.variables.irisAffection || 0} ADD:
-        {state.variables.addiction || 0}
-        {debugMode && " [DBG]"}
-      </div>
+      {debugMode && (
+        <div
+          className={`absolute top-3 left-3 z-30 text-[10px] px-2 py-1 rounded ${
+            activeVrMode
+              ? "bg-pink-900/40 text-pink-400/60"
+              : "bg-black/30 text-gray-600"
+          }`}
+        >
+          LUC:{state.variables.lucidity || 0} AFF:
+          {state.variables.irisAffection || 0} ADD:
+          {state.variables.addiction || 0}
+        </div>
+      )}
 
       <ControllerHints
         hints={
@@ -391,7 +418,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       <DialogueBox
         ref={dialogueRef}
         speaker={line.speaker}
-        text={line.text}
+        text={effectiveText}
         isInternal={line.isInternal}
         isVRMode={activeVrMode}
         choices={line.choices}
@@ -413,7 +440,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
           autoplay={autoplay}
           onAutoplayChange={(v) => {
             setAutoplay(v);
-            localStorage.setItem("sol_autoplay", String(v));
+            appStorage.setItem("sol_autoplay", String(v));
           }}
           onClose={() => setShowSettings(false)}
           onMainMenu={() => {

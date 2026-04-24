@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useGame } from "../useGame";
+import { playManagedMedia, primeAudioPlayback } from "../platform/audio";
 
 let currentAudio: HTMLAudioElement | null = null;
 let currentSrc: string | null = null;
@@ -8,6 +9,10 @@ export function AudioManager() {
   const { state } = useGame();
   const volumeRef = useRef(state.bgmVolume);
   volumeRef.current = state.bgmVolume;
+
+  useEffect(() => {
+    primeAudioPlayback();
+  }, []);
 
   useEffect(() => {
     if (currentAudio) {
@@ -27,7 +32,7 @@ export function playBGM(src: string, volume: number) {
   currentAudio = new Audio(src);
   currentAudio.loop = true;
   currentAudio.volume = volume;
-  currentAudio.play().catch(() => {});
+  playManagedMedia(currentAudio);
   currentSrc = src;
 }
 
@@ -49,7 +54,7 @@ export function setBGMVolume(volume: number) {
 export function playSFX(src: string, volume: number = 1) {
   const sfx = new Audio(src);
   sfx.volume = volume;
-  sfx.play().catch(() => {});
+  playManagedMedia(sfx);
 }
 
 let currentVoice: HTMLAudioElement | null = null;
@@ -58,7 +63,7 @@ export function playVoice(src: string, volume: number = 1) {
   stopVoice();
   currentVoice = new Audio(src);
   currentVoice.volume = volume;
-  currentVoice.play().catch(() => {});
+  playManagedMedia(currentVoice);
   currentVoice.addEventListener("ended", () => {
     currentVoice = null;
   });

@@ -181,6 +181,10 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
 
             if (tag === "sms") {
               /* ── Phone text message notification ── */
+              const recipientMatch = content.match(/^\[([^\]]+)\](.+)$/s);
+              const recipient = recipientMatch ? recipientMatch[1] : null;
+              const smsBody = recipientMatch ? recipientMatch[2] : content;
+              const initial = recipient ? recipient[0].toUpperCase() : "?";
               return (
                 <div className="flex justify-center mb-3 px-4 w-full max-w-xl animate-fade-in">
                   <div className="w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-600/40 bg-gray-900/95 backdrop-blur-md">
@@ -197,12 +201,14 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
                       </div>
                     </div>
                     <div className="flex items-center gap-3 px-5 py-3 border-b border-gray-800/60">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-base font-bold">
-                        ?
+                      <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-base font-bold ${recipient ? "bg-gradient-to-br from-blue-500 to-cyan-500" : "bg-gradient-to-br from-purple-500 to-pink-500"}`}
+                      >
+                        {initial}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-sm font-semibold text-gray-200">
-                          Unknown Number
+                          {recipient ?? "Unknown Number"}
                         </div>
                         <div className="text-xs text-gray-500">iMessage</div>
                       </div>
@@ -211,7 +217,7 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
                     <div className="px-5 py-4">
                       <div className="bg-gray-800 rounded-2xl rounded-tl-sm px-5 py-3 inline-block max-w-[90%]">
                         <p className="text-base sm:text-lg text-gray-100 leading-relaxed whitespace-pre-line">
-                          {content}
+                          {smsBody}
                         </p>
                       </div>
                     </div>

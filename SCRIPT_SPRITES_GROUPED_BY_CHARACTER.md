@@ -533,3 +533,11 @@ Prompt: `anime visual novel item sprite, white background, ornate bento box, per
 **85. Day 12 | Item**
 Sprite: Iris's Smartphone. The screen shows a grid of apps.
 Prompt: `anime visual novel item sprite, white background, Iris's smartphone, screen on, grid of apps visible, clean prop presentation, high detail`
+
+**101. Day 4 | Item**
+Sprite: My mother's old silver locket.
+Prompt: `anime visual novel item sprite, white background, my mother's old silver locket`
+
+**102. Day 12 | Item**
+Sprite: My mother's old silver locket.
+Prompt: `renders badly in the void, heavy with static and memory, anime visual novel item sprite, white background,clean prop presentation, high detail, just the locket, keep the glitches blocky so the background can be removed easily`

@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# System.Override(Love)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Psychological horror visual novel built with React 19, TypeScript, Vite, and Tailwind CSS v4.
 
-Currently, two official plugins are available:
+## Targets
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Web: the canonical frontend build.
+- Desktop: Tauri 2 wrapper scaffolded in `src-tauri/`.
+- Android: Tauri mobile scripts are wired, but Android SDK/NDK setup is still required on the machine.
+- iOS: supported by the Tauri architecture, but must be initialized and built from macOS with Xcode.
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Web Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
 ```
+
+## Tauri Desktop
+
+```bash
+npm run tauri:info
+npm run tauri:dev
+npm run tauri:build
+```
+
+Prerequisites for desktop builds:
+
+- Rust toolchain via `rustup`
+- Windows: MSVC build tools + WebView2
+- macOS: Xcode
+- Linux: WebKitGTK and related system packages
+
+## Tauri Android
+
+```bash
+npm run tauri:android:init
+npm run tauri:android:dev
+npm run tauri:android:build
+```
+
+Prerequisites for Android builds:
+
+- Rust via `rustup`
+- Android Studio
+- Android SDK Platform + Platform Tools + Build Tools + NDK + Command-line Tools
+- `JAVA_HOME`, `ANDROID_HOME`, and `NDK_HOME` configured
+
+## iOS
+
+iOS requires macOS and Xcode. This Windows environment can prepare the shared frontend and Tauri desktop scaffold, but iOS initialization and builds must be done from a Mac.
+
+## Notes
+
+- Frontend persistence now goes through a small storage abstraction instead of hard-coding `localStorage` everywhere.
+- Audio playback now uses a lightweight mobile-safe play helper that retries blocked media after first user interaction.
+- Vite is configured for Tauri’s fixed dev port and native build targets.

@@ -1,69 +1,93 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useGame } from "../useGame";
 import { SaveLoadModal } from "./SaveLoadModal";
 import { useGamepadControls } from "../useGamepadControls";
 import { ControllerHints } from "./ControllerHints";
+import { MainMenuNameEntry } from "./MainMenuNameEntry";
 
 interface MainMenuProps {
   onStart: () => void;
 }
 
 export function MainMenu({ onStart }: MainMenuProps) {
-  const { state, dispatch, hasAnySave } = useGame();
+  const { state, dispatch, getAllSlots, hasAnySave, loadFromSlot } = useGame();
   const [showNameInput, setShowNameInput] = useState(false);
-  const [nameValue, setNameValue] = useState(state.playerName);
   const [showLoadSlots, setShowLoadSlots] = useState(false);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   const hasSave = hasAnySave();
+  const latestSaveSlot = useMemo(() => {
+    const slots = getAllSlots();
+    let latestIndex: number | null = null;
 
-  useEffect(() => {
-    if (!hasSave) setSelectedMenuIndex(0);
-  }, [hasSave]);
+    for (let i = 0; i < slots.length; i++) {
+      const slot = slots[i];
+      if (!slot) continue;
+      if (
+        latestIndex === null ||
+        slot.timestamp > (slots[latestIndex]?.timestamp ?? 0)
+      ) {
+        latestIndex = i;
+      }
+    }
+
+    return latestIndex;
+  }, [getAllSlots]);
+
+  const handleLoadGame = () => {
+    setShowLoadSlots(true);
+  };
 
   const handleNewGame = () => {
+    setShowLoadSlots(false);
     setShowNameInput(true);
   };
 
-  const handleStartGame = () => {
-    if (nameValue.trim()) {
-      dispatch({ type: "SET_PLAYER_NAME", name: nameValue.trim() });
-    } else if (state.playerName === "Player") {
-      dispatch({ type: "SET_PLAYER_NAME", name: "" });
-    }
+  const handleStartGame = (playerName: string) => {
+    dispatch({ type: "SET_PLAYER_NAME", name: playerName });
     dispatch({ type: "SET_SCENE", sceneId: "day1_start", lineIndex: 0 });
     onStart();
   };
 
   const handleContinue = () => {
-    setShowLoadSlots(true);
+    if (latestSaveSlot === null) return;
+    if (loadFromSlot(latestSaveSlot)) {
+      onStart();
+    }
   };
 
+  const menuActions = hasSave
+    ? [
+        { label: "Continue", onSelect: handleContinue },
+        { label: "Load Game", onSelect: handleLoadGame },
+        { label: "New Game", onSelect: handleNewGame },
+      ]
+    : [{ label: "New Game", onSelect: handleNewGame }];
+  const clampedSelectedMenuIndex = Math.min(
+    selectedMenuIndex,
+    Math.max(0, menuActions.length - 1),
+  );
+
   useGamepadControls({
-    enabled: !showLoadSlots,
+    enabled: !showLoadSlots && !showNameInput,
     onBack: () => {
-      if (showNameInput) setShowNameInput(false);
+      if (showNameInput) {
+        setShowNameInput(false);
+      }
     },
     onUp: () => {
-      if (!showNameInput && hasSave) {
-        setSelectedMenuIndex((prev) => (prev + 1) % 2);
+      if (menuActions.length > 1) {
+        setSelectedMenuIndex(
+          (prev) => (prev + menuActions.length - 1) % menuActions.length,
+        );
       }
     },
     onDown: () => {
-      if (!showNameInput && hasSave) {
-        setSelectedMenuIndex((prev) => (prev + 1) % 2);
+      if (menuActions.length > 1) {
+        setSelectedMenuIndex((prev) => (prev + 1) % menuActions.length);
       }
     },
     onConfirm: () => {
-      if (showNameInput) {
-        handleStartGame();
-        return;
-      }
-
-      if (selectedMenuIndex === 0) {
-        handleNewGame();
-      } else if (hasSave) {
-        handleContinue();
-      }
+      menuActions[clampedSelectedMenuIndex]?.onSelect();
     },
   });
 
@@ -98,46 +122,25 @@ export function MainMenu({ onStart }: MainMenuProps) {
 
       {/* Name Input */}
       {showNameInput && (
-        <div className="relative z-10 mb-8 w-[85%] max-w-sm animate-slide-up">
-          <label className="block text-gray-400 text-sm mb-2 text-center">
-            Enter your name
-          </label>
-          <input
-            type="text"
-            value={nameValue}
-            onChange={(e) => setNameValue(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleStartGame()}
-            maxLength={20}
-            className="w-full bg-gray-900/80 border border-gray-600 text-gray-100 text-center text-lg py-3 px-4 rounded focus:outline-none focus:border-red-400/60 transition-colors"
-            autoFocus
-            placeholder="Your name..."
-          />
-          <button
-            onClick={handleStartGame}
-            className="w-full mt-3 py-3 bg-red-900/60 hover:bg-red-800/70 text-gray-100 border border-red-700/40 rounded transition-all text-base font-medium active:scale-95 ring-2 ring-red-400/60"
-          >
-            Begin
-          </button>
-        </div>
+        <MainMenuNameEntry
+          initialName={state.playerName}
+          onSubmit={handleStartGame}
+          onCancel={() => setShowNameInput(false)}
+        />
       )}
 
       {/* Menu buttons */}
       {!showNameInput && (
         <div className="relative z-10 flex flex-col gap-4 w-[70%] max-w-xs animate-slide-up">
-          <button
-            onClick={handleNewGame}
-            className={`py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${selectedMenuIndex === 0 ? "ring-2 ring-red-400/60" : ""}`}
-          >
-            New Game
-          </button>
-          {hasSave && (
+          {menuActions.map((action, index) => (
             <button
-              onClick={handleContinue}
-              className={`py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${selectedMenuIndex === 1 ? "ring-2 ring-red-400/60" : ""}`}
+              key={action.label}
+              onClick={action.onSelect}
+              className={`py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${clampedSelectedMenuIndex === index ? "ring-2 ring-red-400/60" : ""}`}
             >
-              Continue
+              {action.label}
             </button>
-          )}
+          ))}
         </div>
       )}
 
@@ -150,8 +153,9 @@ export function MainMenu({ onStart }: MainMenuProps) {
         hints={
           showNameInput
             ? [
-                { button: "KB", action: "Type Name" },
-                { button: "A", action: "Begin" },
+                { button: "D-Pad", action: "Navigate" },
+                { button: "A", action: "Select Key" },
+                { button: "Y", action: "Delete" },
                 { button: "B", action: "Back" },
               ]
             : hasSave

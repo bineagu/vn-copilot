@@ -1,11 +1,8 @@
 import { CHARACTERS, getExpressionSprite } from "../script";
+import type { Sprite } from "../types";
 
 interface SpriteLayerProps {
-  sprites: Array<{
-    character: string;
-    expression: string;
-    position?: "left" | "center" | "right";
-  }>;
+  sprites: Array<Sprite>;
   isVRMode: boolean;
 }
 
@@ -30,12 +27,18 @@ function getCharacterImage(
   return CHARACTERS.irisReal;
 }
 
-function getPositionClass(position?: "left" | "center" | "right"): string {
+function getPositionClass(
+  position?: "left" | "center" | "right" | "center-small" | "right-small",
+): string {
   switch (position) {
     case "left":
       return "left-[5%]";
     case "right":
       return "right-[5%]";
+    case "center-small":
+      return "left-1/2 -translate-x-1/2 scale-50 translate-y-[-10%]";
+    case "right-small":
+      return "right-[5%]  scale-50 ";
     case "center":
     default:
       return "left-1/2 -translate-x-1/2";

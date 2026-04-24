@@ -8,6 +8,8 @@ export const BACKGROUNDS = {
   schoolGates: "/backgrounds/__3._School_Gates,_202604110134.png",
   bedroomNight: "/backgrounds/__4._Protagonist's_Bedroom,_202604110133.png",
   darkStreet: "/backgrounds/__5._Dark_Street,_202604110136.png",
+  darkStreetWithIris: "/backgrounds/__5_1.png",
+  darkStreetWithSdCard: "/backgrounds/__5_2.png",
   // Day 2-3
   classroomMorning: "/backgrounds/__6._Classroom,_Morning_202604110137.png",
   library: "/backgrounds/__7._School_Library,_202604110137.png",
@@ -20,6 +22,7 @@ export const BACKGROUNDS = {
   footballField: "/backgrounds/__13._School_Football_202604110139.png",
   frozenOversaturated:
     "/backgrounds/__14._Frozen_Oversaturated_202604110143.png",
+  bedroomMorning: "/backgrounds/__4_1 Bedroom morning.png",
   // Day 6
   classroomMorningVR: "/backgrounds/__15._Classroom,_Morning_202604110139.png",
   whiteVoid: "/backgrounds/__16._Artificial_White_202604110140.png",
@@ -53,7 +56,7 @@ export function getExpressionSprite(num: number): string {
 
 export const MUSIC = {
   graySuburbia: "/music/1 Three_PM_Kitchen_Table.mp3",
-  obsession: "/music/2 Breath_Behind_the_Door.mp3",
+  obsession: "/music/2 Twelve_Inches_of_Wall.mp3",
   infiniteSummer: "/music/3 無限の夏をインストール.mp3",
   finalSaveState: "/music/4 Final_Save_State.mp3",
   lastSavedState: "/music/5 Last_Saved_State.mp3",
@@ -186,6 +189,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Protagonist",
         text: "And there she is.",
+        sprites: [{ character: "Iris", expression: "1", position: "center" }],
         isInternal: true,
       },
       {
@@ -212,7 +216,6 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She isn't looking at her phone. She isn't reading a book. She's just... staring directly at the west doors. Like she's been waiting for them to open. Like a statue left out in the cold.",
         isInternal: true,
-        sprites: [{ character: "Iris", expression: "1", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -221,6 +224,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_start_16_irisReal.mp3",
         text: "Oh! {playerName}!",
         sprites: [{ character: "Iris", expression: "2", position: "center" }],
       },
@@ -230,6 +234,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_start_18_irisReal.mp3",
         text: "I... I was just waiting for the bus, yeah. Even though the stop is a block away.",
         sprites: [{ character: "Iris", expression: "3", position: "center" }],
       },
@@ -246,6 +251,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_start_21_irisReal.mp3",
         text: "I like the view from here. It's the view of where you spend your day.",
       },
       {
@@ -254,6 +260,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_start_23_irisReal.mp3",
         text: "I know your schedule, you know. 3:15 PM, you leave through the west exit. 3:20 PM, you check your locker. 3:23 PM, you walk past the old oak tree.",
       },
       {
@@ -263,6 +270,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_start_25_irisReal.mp3",
         text: "It's... it's a comfort to know where you are. The world is so big and messy, {playerName}. But you... you make sense. You're exactly where you're supposed to be.",
       },
       {
@@ -298,6 +306,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_branch_a_02_irisReal.mp3",
         text: "Creepy...? I just... I just wanted to pay attention to you. Nobody else pays attention to you.",
       },
       {
@@ -343,6 +352,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_branch_b_02_irisReal.mp3",
         text: "Sweet? You think I'm sweet?!",
       },
       {
@@ -353,6 +363,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_branch_b_04_irisReal.mp3",
         text: "I knew it. I knew you'd understand. Everyone else says I'm weird, but you... you're different. We're the same.",
       },
       {
@@ -361,6 +372,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day1_branch_b_06_irisReal.mp3",
         text: "Yes! Go home. Be safe. Lock your doors. I'll... I'll see you tomorrow, {playerName}. Exactly at 8:15 AM at the shoe lockers!",
         sprites: [{ character: "Iris", expression: "7", position: "center" }],
       },
@@ -457,15 +469,16 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "Someone is standing at the edge of my lawn.",
         isInternal: true,
+        background: BACKGROUNDS.darkStreetWithIris,
       },
       {
         speaker: "Protagonist",
-        text: "They are wearing a dark hoodie, but the posture is unmistakable. It's small. Tense.",
+        text: "They are wearing a dark hoodie, but the posture is unmistakable. It's small. Tense. Just like Iris.",
         isInternal: true,
       },
       {
         speaker: "Protagonist",
-        text: "In their hands, lifted up toward her face, is a digital camera with a long zoom lens. Pointed directly at my bedroom window.",
+        text: "In her hands, lifted up toward her face, is a digital camera with a long zoom lens. Pointed directly at my bedroom window.",
         isInternal: true,
       },
       {
@@ -487,6 +500,7 @@ export const scenes: Scene[] = [
         text: "The figure flinches violently. The camera nearly drops from her hands. She doesn't say a word, doesn't even look up to meet my eyes. She just turns and bolts down the street, disappearing into the dark.",
         isInternal: true,
         sfx: SFX.runningFootsteps,
+        background: BACKGROUNDS.darkStreet,
       },
       {
         speaker: "Protagonist",
@@ -497,6 +511,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "But as my eyes adjust to the dark lawn below, I notice something glinting in the grass where she was standing. A tiny, metallic square catching the orange light of the streetlamp.",
         isInternal: true,
+        background: BACKGROUNDS.darkStreetWithSdCard,
       },
       {
         speaker: "Protagonist",
@@ -566,6 +581,7 @@ export const scenes: Scene[] = [
         speaker: "Audio",
         text: '(Static hiss) "...hey Leo, do you... want to... grab lunch?"',
         sfx: SFX.staticBurst,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -576,6 +592,7 @@ export const scenes: Scene[] = [
         speaker: "Audio",
         text: '(Static hiss) "...I... love... you... Iris."',
         sfx: SFX.staticBurst,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -653,10 +670,8 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: '"You were up so late studying! You need your energy. - I ❤️"',
+        text: '"You were up so late studying! You need your energy. \n\n- I ❤️"',
         isInternal: true,
-        systemGraphic:
-          "note:You were up so late studying! You need your energy. - I ❤️",
       },
       {
         speaker: "Protagonist",
@@ -690,6 +705,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day2_start_13_leo.mp3",
         text: "Yo! Morning, man. You look like you got run over by a truck.",
       },
       {
@@ -698,6 +714,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day2_start_15_leo.mp3",
         text: "Whoa, hello. Did your mom drop off a gourmet lunch or something? That smells incredible.",
         sprites: [
           { character: "Iris", expression: "10", position: "right" },
@@ -711,6 +728,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day2_start_17_leo.mp3",
         text: "Wait, is there a note? 'From I'? Bro, you have a secret admirer? Open it!",
       },
       {
@@ -719,6 +737,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day2_start_19_leo.mp3",
         text: "Come on, just a peek! I'm starving. I skipped breakfast.",
       },
       {
@@ -756,6 +775,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day2_branch_a_02_leo.mp3",
         text: "Alright, alright! Keep your romantic bento to yourself. Just save me a bite, yeah?",
       },
       {
@@ -779,7 +799,13 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "A serene, victorious smile spreads across her face before she turns and disappears down the hall.",
         isInternal: true,
-        choices: [{ text: "Continue...", nextSceneId: "day3_start" }],
+        choices: [
+          {
+            text: "Continue...",
+            nextSceneId: "day3_start",
+            stateEffects: { ateLunch: 1 },
+          },
+        ],
       },
     ],
   },
@@ -799,6 +825,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day2_branch_b_02_leo.mp3",
         text: "Wait, seriously? You're giving away premium waifu cooking? Are you sick?",
       },
       {
@@ -807,6 +834,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day2_branch_b_04_leo.mp3",
         text: "Don't mind if I do! You're a lifesaver, man!",
       },
       {
@@ -873,9 +901,16 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "After Leo got sick yesterday, I couldn't sleep again. I keep checking my phone, expecting another text. I keep checking my shadow.",
         isInternal: true,
+        textVariants: [
+          {
+            requires: { ateLunch: 1 },
+            text: "After eating Iris's food yesterday, I couldn't sleep. It tasted perfect — exactly how I like it — and that only made it worse. I kept waiting to feel sick.\nI never did. I'm still waiting.",
+          },
+        ],
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day3_start_04_chloe.mp3",
         text: "U-Um... excuse me? {playerName}?",
         sprites: [{ character: "Chloe", expression: "18", position: "center" }],
       },
@@ -885,6 +920,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day3_start_06_chloe.mp3",
         text: "No! I mean, yes, I was wondering if I could sit here. If... if you're not saving it for anyone. The other tables are full, and we're in the same history group...",
         sprites: [{ character: "Chloe", expression: "19", position: "center" }],
       },
@@ -899,6 +935,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day3_start_09_chloe.mp3",
         text: "Thank you. I noticed you were reading the chapter on the Meiji Restoration. I... I have some really good notes on that, if you want to share?",
         sprites: [{ character: "Chloe", expression: "20", position: "center" }],
       },
@@ -909,7 +946,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "The temperature in the room seems to drop five degrees.\nI don't need to look up. I can feel the hairs on my arms standing on end.",
+        text: "The temperature in the room seems to drop five degrees.\nI don't need to look up. I can feel the hairs on my arms standing.",
         isInternal: true,
         bgm: null,
         sfx: SFX.libraryDoors,
@@ -925,6 +962,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day3_start_13_chloe.mp3",
         text: "Um... is that your friend? She's... she's staring at us.",
         sprites: [
           { character: "Chloe", expression: "22", position: "left" },
@@ -949,6 +987,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day3_start_17_chloe.mp3",
         text: "{playerName}... I feel really weird. Why is she doing that? Should we get Mrs. Gable?",
         sprites: [
           { character: "Chloe", expression: "23", position: "left" },
@@ -959,6 +998,12 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "Iris's eyes flick to Chloe. Just for a fraction of a second. But the sheer malice in that glance is so heavy it makes my breath catch in my throat.\nI remember Leo throwing up in the nurse's office.",
         isInternal: true,
+        textVariants: [
+          {
+            requires: { ateLunch: 1 },
+            text: "Iris's eyes flick to Chloe. Just for a fraction of a second. But the sheer malice in that glance is so heavy it makes my breath catch in my throat.\nI remember how she looked yesterday when I ate her food. Victorious. Like I'd signed something.",
+          },
+        ],
       },
       {
         speaker: "Protagonist",
@@ -989,6 +1034,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day3_start_24_chloe.mp3",
         text: "No... she didn't say anything. She just... she walked over to our table while you were gone. She leaned right over my shoulder and smelled your textbook. Then she just... walked out.",
       },
       {
@@ -998,6 +1044,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day3_start_26_chloe.mp3",
         text: "I'm sorry, I have to go home. Good luck on the test.",
       },
       {
@@ -1054,7 +1101,7 @@ export const scenes: Scene[] = [
         text: "\"Chloe, I'm sorry. Please don't sit with me anymore. It isn't safe. Stay away from Iris.\"",
         isInternal: true,
         systemGraphic:
-          "sms:Chloe, I'm sorry. Please don't sit with me anymore. It isn't safe. Stay away from Iris.",
+          "sms:[Chloe]Chloe, I'm sorry. Please don't sit with me anymore. It isn't safe. Stay away from Iris.",
       },
       {
         speaker: "Protagonist",
@@ -1085,7 +1132,7 @@ export const scenes: Scene[] = [
         text: "\"Chloe, I'm so sorry about my weird friend. It was just a stupid prank. Let's study again tomorrow, okay?\"",
         isInternal: true,
         systemGraphic:
-          "sms:Chloe, I'm so sorry about my weird friend. It was just a stupid prank. Let's study again tomorrow, okay?",
+          "sms:[Chloe]Chloe, I'm so sorry about my weird friend. It was just a stupid prank. Let's study again tomorrow, okay?",
       },
       {
         speaker: "Protagonist",
@@ -1141,6 +1188,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_start_07_irisReal.mp3",
         text: "You look so tired, {playerName}. Your eyes are all dark. Have you not been sleeping?",
         sprites: [{ character: "Iris", expression: "26", position: "center" }],
       },
@@ -1155,6 +1203,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_start_10_irisReal.mp3",
         text: "You work too hard. You carry too much weight. The world asks too much of you... but I don't.",
         sprites: [{ character: "Iris", expression: "27", position: "center" }],
       },
@@ -1165,16 +1214,18 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_start_12_irisReal.mp3",
         text: "I made something special at my house today. Just for us. It's quiet there. No tests, no loud people, no Chloe... just peace.",
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_start_13_irisReal.mp3",
         text: "Will you come over? Please? I don't want to be alone today. And I know you don't either.",
         sprites: [{ character: "Iris", expression: "28", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "This is it. The invitation.\nI know what she is. I saw the SD card. I saw the anger when Leo took the lunchbox.\nBut I am so, so tired.\nWhat if I just... gave in? What if I let her love me?",
+        text: "This is it. The invitation.\nI know what she is. I saw the SD card.\nBut I am so, so tired.\nWhat if I just... gave in? What if I let her love me?",
         isInternal: true,
         choices: [
           {
@@ -1204,6 +1255,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_branch_a_02_irisReal.mp3",
         text: "I knew it. I knew you were the one.",
       },
       {
@@ -1217,19 +1269,34 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "Her house is dark. The curtains are all drawn shut.",
         isInternal: true,
-      },
-      {
-        speaker: "Protagonist",
-        text: "She sits me down on the edge of her bed and hands me a cup of tea. It smells heavily of chamomile. And something else. Something sweet and chemical.\nI know it's drugged.\nBut I look at her smiling face, and I take a sip anyway.",
-        isInternal: true,
         background: BACKGROUNDS.irisRoom,
       },
       {
         speaker: "Protagonist",
-        text: "When I wake up, the room is completely dark, save for the glow of a large television screen.\nI try to sit up, but my body feels impossibly heavy.",
+        text: "She sits me down on the edge of her bed and hands me a cup of tea. It smells heavily of chamomile. And something else. Something sweet and chemical.",
         isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I know it's drugged.\nBut I look at her smiling face, and I take a sip anyway.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "",
         sfx: SFX.teacupDrop,
+        background: BACKGROUNDS.fadeToBlack,
+      },
+      {
+        speaker: "Protagonist",
+        text: "When I wake up, the room is completely dark, save for the glow of a large television screen.",
+        isInternal: true,
         background: BACKGROUNDS.sedatedBlackout,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I try to sit up, but my body feels impossibly heavy.",
+        isInternal: true,
       },
       {
         speaker: "Protagonist",
@@ -1238,6 +1305,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_branch_a_08_irisReal.mp3",
         text: "Shhh, don't move too fast, honey. The stitches are still fresh.",
         sprites: [{ character: "Iris", expression: "30", position: "center" }],
       },
@@ -1247,8 +1315,9 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_branch_a_10_irisReal.mp3",
         text: "I just made sure you'll never have to walk away from me. You'll never have to go to that awful school again. You're safe now. You're my prince... and I'm going to take such good care of you.",
-        sprites: [{ character: "Iris", expression: "31", position: "center" }],
+        // sprites: [{ character: "Iris", expression: "31", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -1279,6 +1348,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_branch_b_03_irisReal.mp3",
         text: "...Your parents.",
       },
       {
@@ -1293,6 +1363,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_branch_b_06_irisReal.mp3",
         text: "That's okay, {playerName}. I understand. You have... attachments in this world. It's hard to let go.",
       },
       {
@@ -1302,14 +1373,23 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day4_branch_b_08_irisReal.mp3",
         text: "But don't worry. I can fix that for you. I'll fix everything.",
       },
       {
         speaker: "Protagonist",
-        text: "I lock every door and window in my house that night. I put a chair under my bedroom doorknob. While checking my desk for anything heavy enough to use as a weapon, I find my mother's old silver locket wedged behind a drawer.",
+        text: "I lock every door and window in my house that night. I put a chair under my bedroom doorknob.",
         isInternal: true,
         background: BACKGROUNDS.bedroomNight,
         sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "While checking my desk for anything heavy enough to use as a weapon, I find my mother's old silver locket wedged behind a drawer.",
+        isInternal: true,
+        sprites: [
+          { character: "Item", expression: "101", position: "center-small" },
+        ],
       },
       {
         speaker: "Protagonist",
@@ -1320,19 +1400,84 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I turn the locket over in my palm. The metal is cold. Solid. Real. It feels like a fragment of myself Iris couldn't fake even if she tore apart every device I own.",
         isInternal: true,
-        background: BACKGROUNDS.fadeToBlack,
-        sprites: [],
         choices: [
           {
             text: "Pocket the silver locket.",
-            nextSceneId: "day5_start",
+            nextSceneId: "day4_locket_a",
             stateEffects: { silverLocket: 1 },
           },
           {
             text: "Leave it hidden in the drawer.",
-            nextSceneId: "day5_start",
+            nextSceneId: "day4_locket_b",
           },
         ],
+      },
+    ],
+  },
+
+  {
+    id: "day4_locket_a",
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "I close my fist around it and slip it into the inner pocket of my jacket.\nIt presses against my chest. Cold at first. Then warm.",
+        isInternal: true,
+        background: BACKGROUNDS.bedroomNight,
+        sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "If she finds everything else, she won't find this.\nThis one thing is mine.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I sit with my back against the bed frame until the room stops feeling like a crime scene.\nSomewhere around midnight I stop jumping at sounds.",
+        isInternal: true,
+        sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "I don't take my jacket off.\nI pull my knees up and let my eyes close.\nJust for a minute.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I don't mean to sleep.\nBut I do.",
+        isInternal: true,
+        background: BACKGROUNDS.fadeToBlack,
+        choices: [{ text: "...", nextSceneId: "day5_start" }],
+      },
+    ],
+  },
+
+  {
+    id: "day4_locket_b",
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "I set it back where I found it, wedged between the drawer and the frame.\nNo charger cable. No cloud backup. Nothing she can ping.\nJust metal and hinges and privacy.",
+        isInternal: true,
+        sprites: [],
+        background: BACKGROUNDS.bedroomNight,
+      },
+      {
+        speaker: "Protagonist",
+        text: "Maybe hidden is exactly where it should be.\nSome things survive by staying invisible.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I sit with my back against the bed frame until the room stops feeling like a crime scene.\nSomewhere around midnight I stop jumping at sounds.",
+        isInternal: true,
+        sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "I don't mean to sleep.\nBut I do.",
+        isInternal: true,
+        background: BACKGROUNDS.fadeToBlack,
+        choices: [{ text: "...", nextSceneId: "day5_start" }],
       },
     ],
   },
@@ -1347,7 +1492,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "I survived the night.\nI didn't sleep a wink. I just sat in the corner of my room with a baseball bat, listening to the wind rattle the windowpanes. But the sun came up, and she didn't break in.",
         isInternal: true,
-        background: BACKGROUNDS.bedroomDark,
+        background: BACKGROUNDS.bedroomMorning,
         bgm: MUSIC.graySuburbia,
         sfx: SFX.airConditioner,
       },
@@ -1365,6 +1510,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_04_leo.mp3",
         text: "Dude, what the hell? You look awful. Did somebody die?",
         sprites: [{ character: "Leo", expression: "11", position: "center" }],
       },
@@ -1374,12 +1520,18 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "I show him the SD card. The tracking logs. The audio clips she spliced together. I tell him about the lunchbox, the note in my textbook, the way Chloe vanished, the invitation to Iris's house. I talk too fast and in the wrong order, but once I start, I can't stop.",
         isInternal: true,
-        systemGraphic: "file:C:/Users/Iris/Archive/My_Future_Husband",
+
+        text: "I start telling him everything about Iris.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "I show him the SD card. The tracking logs. The audio clips she spliced together. I tell him about the lunchbox, the note in my textbook, the invitation to her house. I talk too fast and in the wrong order, but once I start, I can't stop.",
+        isInternal: true,
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_07_leo.mp3",
         text: "...Okay. That is not normal. That's not even movie-stalker normal. That's call-the-cops-and-burn-your-phone normal.",
         sprites: [{ character: "Leo", expression: "15", position: "center" }],
       },
@@ -1389,6 +1541,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_09_leo.mp3",
         text: "No, man. If even half of this is real, she's dangerous. Let me check something after fifth period. If she's this organized, she's keeping the worst part somewhere you can't screenshot.",
       },
       {
@@ -1406,6 +1559,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_12_leo.mp3",
         text: "{playerName}! Hey! Man, I'm so glad you're still here.",
         sprites: [{ character: "Leo", expression: "34", position: "center" }],
         sfx: SFX.footstepsGravel,
@@ -1416,6 +1570,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_14_leo.mp3",
         text: "Worse. Man, it's so much worse than we thought.",
         sprites: [{ character: "Leo", expression: "35", position: "center" }],
       },
@@ -1425,6 +1580,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_16_leo.mp3",
         text: "No. I skipped fifth period. I... I broke into her backyard. Her parents are never home, right? I looked through the basement window.",
       },
       {
@@ -1434,11 +1590,13 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_18_leo.mp3",
         text: "She has a shrine, man. It's not just photos. She has... pieces of your hair. Clothes you threw away.",
         bgm: MUSIC.obsession,
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_19_leo.mp3",
         text: "We have to go to the cops right now. My car is in the lot. Come on.",
       },
       {
@@ -1460,6 +1618,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_23_leo.mp3",
         text: "Don't look at her. Just walk. Keep walking!",
         sprites: [
           { character: "Leo", expression: "37", position: "left" },
@@ -1479,26 +1638,29 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day5_start_26_leo.mp3",
         text: "WATCH OU—!",
       },
       {
         speaker: "Protagonist",
-        text: "Pain explodes behind my eyes.\nBut I don't fall.\nThe ground doesn't rush up to meet me. Gravity just... stops working.",
+        text: "Pain explodes behind my eyes.",
         isInternal: true,
         bgm: null,
         sfx: SFX.crunchSickening,
-        background: BACKGROUNDS.fadeToBlack,
+        screenEffect: "pain",
       },
       {
         speaker: "Protagonist",
         text: "The field flips sideways. Someone is screaming my name from very far away. I can't tell if it's Leo or me.",
         isInternal: true,
         sprites: [],
+        screenEffect: "tilt",
       },
       {
         speaker: "Protagonist",
         text: "Then everything goes black.",
         isInternal: true,
+        background: BACKGROUNDS.fadeToBlack,
         choices: [{ text: "Continue...", nextSceneId: "day6_start" }],
       },
     ],
@@ -1515,7 +1677,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "My eyes snap open to a dim ceiling and a pounding headache.",
         isInternal: true,
-        background: BACKGROUNDS.bedroomDark,
+        background: BACKGROUNDS.bedroomVR,
         bgm: MUSIC.graySuburbia,
       },
       {
@@ -1532,11 +1694,12 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "By the time I make it to class, my head still feels packed with cotton. I keep expecting the missing pieces to snap back into place. They never do.",
         isInternal: true,
-        background: BACKGROUNDS.classroomMorning,
+        background: BACKGROUNDS.classroomMorningVR,
         sfx: SFX.schoolBellCheerful,
       },
       {
         speaker: "Leo",
+        voice: "/voice/day6_start_05_leo.mp3",
         text: "Morning, sleeping beauty! You were totally out of it. Dreaming about your future wife again?",
         sprites: [{ character: "Leo", expression: "39", position: "center" }],
       },
@@ -1546,6 +1709,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day6_start_07_leo.mp3",
         text: "Cops? What are you talking about, man? Did you play too many video games last night? Come on, you need to wake up. The girls are coming over!",
         sprites: [{ character: "Leo", expression: "40", position: "center" }],
       },
@@ -1562,10 +1726,12 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Maya",
+        voice: "/voice/day6_start_10_maya.mp3",
         text: "Hey, {playerName}! Chloe and I brought some extra snacks. You want some?",
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day6_start_11_chloe.mp3",
         text: "We made them together this morning! I hope you like them...",
       },
       {
@@ -1582,6 +1748,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day6_start_14_irisVr.mp3",
         text: "Good morning, {playerName}.",
       },
       {
@@ -1595,6 +1762,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day6_start_17_irisVr.mp3",
         text: "I'm so glad you're here. The world is just so beautiful today, isn't it? I feel like... like today is the start of something wonderful. Just for us.",
         sprites: [{ character: "Iris", expression: "43", position: "center" }],
       },
@@ -1611,10 +1779,12 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Random Student",
+        voice: "/voice/day6_start_20_randomStudent.mp3",
         text: "The weather is nice today, isn't it?",
       },
       {
         speaker: "Everyone",
+        voice: "/voice/day6_start_21_crowd.mp3",
         text: "The weather is nice today, isn't it?",
       },
       {
@@ -1625,6 +1795,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day6_start_23_irisVr.mp3",
         text: "Don't pay attention to them, {playerName}. Pay attention to me. What should we do today? We can do anything you want!",
       },
       {
@@ -1654,16 +1825,18 @@ export const scenes: Scene[] = [
       {
         speaker: "Protagonist",
         text: "...Yeah. The weather is nice. Let's just hang out.",
-        background: BACKGROUNDS.classroomMorning,
+        background: BACKGROUNDS.classroomMorningVR,
         bgm: MUSIC.graySuburbia,
         sprites: [{ character: "Iris", expression: "46", position: "center" }],
       },
       {
         speaker: "Iris",
+        voice: "/voice/day6_branch_a_02_irisVr.mp3",
         text: "I knew you'd say that! Let's go to the roof. Maya and Chloe can come too, right girls?",
       },
       {
         speaker: "Maya & Chloe",
+        voice: "/voice/day6_branch_a_03_mayaChloe.mp3",
         text: "Of course! We love hanging out with you!",
       },
       {
@@ -1682,12 +1855,13 @@ export const scenes: Scene[] = [
       {
         speaker: "Protagonist",
         text: "Leo... Maya... why did you all just say the exact same thing at the exact same time?",
-        background: BACKGROUNDS.classroomMorning,
+        background: BACKGROUNDS.classroomMorningVR,
         bgm: null,
         sprites: [{ character: "Iris", expression: "47", position: "center" }],
       },
       {
         speaker: "Iris",
+        voice: "/voice/day6_branch_b_02_irisVr.mp3",
         text: "They're just... they're just agreeing with each other! Great minds think alike, right?",
       },
       {
@@ -1696,6 +1870,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day6_branch_b_04_leo.mp3",
         text: "The weather is nice today, isn't it?",
         sprites: [
           { character: "Leo", expression: "48", position: "left" },
@@ -1709,6 +1884,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day6_branch_b_06_irisVr.mp3",
         text: "Don't look at him! Look at me! I worked so hard on this for you! You said you wanted peace! This is peace!",
         bgm: MUSIC.infiniteSummer,
         sprites: [{ character: "Iris", expression: "49", position: "center" }],
@@ -1724,6 +1900,8 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day6_branch_b_09_irisVr.mp3",
+        sprites: [{ character: "Iris", expression: "49", position: "center" }],
         text: "Of course! Anything for you. Let's just have a good day, okay?",
       },
       {
@@ -1778,6 +1956,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day7_start_07_irisVr.mp3",
         text: "{playerName}! The water looks so beautiful today, doesn't it?",
       },
       {
@@ -1791,11 +1970,13 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day7_start_10_irisVr.mp3",
         text: "You're so serious! You need to relax. We're supposed to be having fun! Oh, actually...",
         sprites: [{ character: "Iris", expression: "51", position: "center" }],
       },
       {
         speaker: "Iris",
+        voice: "/voice/day7_start_11_irisVr.mp3",
         text: "I can't quite reach my back. Would you mind helping me? I don't want to get a sunburn.",
         sprites: [{ character: "Iris", expression: "52", position: "center" }],
         sfx: SFX.plasticBottle,
@@ -1853,6 +2034,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day7_branch_a_03_irisVr.mp3",
         text: "What are you looking at?!",
         sprites: [{ character: "Iris", expression: "53", position: "center" }],
       },
@@ -1862,6 +2044,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day7_branch_a_05_irisVr.mp3",
         text: "Just put the lotion on, {playerName}. Please. Don't look too hard at things. It ruins the magic.",
         sprites: [{ character: "Iris", expression: "54", position: "center" }],
       },
@@ -1888,6 +2071,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day7_branch_b_02_irisVr.mp3",
         text: "Mmm... thank you. Your hands are so warm.",
       },
       {
@@ -1902,6 +2086,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day7_branch_b_05_irisVr.mp3",
         text: "I'm so glad we're together, {playerName}. I promise... every day will be exactly like this. Forever.",
         sprites: [{ character: "Iris", expression: "56", position: "center" }],
       },
@@ -1933,6 +2118,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Maya",
+        voice: "/voice/day8_start_03_maya.mp3",
         text: "Thanks for coming, {playerName}! Having you here really pumps me up! I'm going to beat my personal record today, just watch!",
         sprites: [{ character: "Maya", expression: "57", position: "center" }],
       },
@@ -1956,10 +2142,12 @@ export const scenes: Scene[] = [
         text: "She doesn't just trip.\nHer right foot strikes the floor, but instead of bouncing off the polished wood, it sinks straight through it. Up to her knee.",
         isInternal: true,
         sfx: SFX.digitalTearing,
+        sfxVolume: 0.6,
         sprites: [{ character: "Maya", expression: "58", position: "center" }],
       },
       {
         speaker: "Maya",
+        voice: "/voice/day8_start_08_maya.mp3",
         text: "Ow! What—? {playerName}, the floor... it gave way!",
       },
       {
@@ -1976,9 +2164,11 @@ export const scenes: Scene[] = [
         text: "I reach out and grab her arm. I pull with all my strength.\nBut she doesn't budge. It's like the world itself has decided not to let her go.",
         isInternal: true,
         sfx: SFX.buzzingStatic,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Maya",
+        voice: "/voice/day8_start_12_maya.mp3",
         text: "{playerName}! Help! I can't feel my... legs... I can't feel my... ",
         sprites: [{ character: "Maya", expression: "59", position: "center" }],
       },
@@ -2009,6 +2199,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_start_17_irisVr.mp3",
         text: "I knew this would happen eventually. She was always so loud. So restless. So hard to keep in one place.",
       },
       {
@@ -2017,6 +2208,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_start_19_irisVr.mp3",
         text: "She's a distraction, {playerName}. She keeps getting between us.",
         sprites: [
           { character: "Maya", expression: "59", position: "left" },
@@ -2025,6 +2217,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Maya",
+        voice: "/voice/day8_start_20_maya.mp3",
         text: "P-P-Please... I don't want to...",
         sfx: SFX.digitalPing,
         sprites: [{ character: "Maya", expression: "62", position: "center" }],
@@ -2043,11 +2236,13 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_start_23_irisVr.mp3",
         text: "She was too loud anyway. Always running around, always sweating. You like the quiet, don't you?",
         sprites: [{ character: "Iris", expression: "63", position: "center" }],
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_start_24_irisVr.mp3",
         text: "Look at you. You're shaking. This is what happens when other people fill your head with noise. Now it's just us and the books. And Chloe, for a little while longer.",
       },
       {
@@ -2088,6 +2283,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_branch_a_03_irisVr.mp3",
         text: "A monster? I'm the only thing holding you together right now! After everything you've seen, you still think anyone else understands you?",
       },
       {
@@ -2097,6 +2293,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_branch_a_05_irisVr.mp3",
         text: "I am trying to make this better. Do not make me sand down every sharp edge of you myself, {playerName}. Now go to your room.",
       },
       {
@@ -2122,6 +2319,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_branch_b_02_irisVr.mp3",
         text: "Shhh. It's okay. You're in shock. Change is hard, I know.",
       },
       {
@@ -2131,6 +2329,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day8_branch_b_04_irisVr.mp3",
         text: "You're being so good. I promise, when everything is quiet again, this will all feel far away.",
       },
       {
@@ -2176,8 +2375,10 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day9_start_06_leo.mp3",
         text: "Don't hang up. Don't say my name out loud. If you can hear me, go somewhere she can't hear you breathe.",
         sfx: SFX.staticBreathing,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -2185,6 +2386,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day9_start_08_leo.mp3",
         text: "I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she's hiding under her house, it got worse after the hit at the field. Ever since then, she's been smoothing things over around you.",
       },
       {
@@ -2193,9 +2395,11 @@ export const scenes: Scene[] = [
         isInternal: true,
         background: BACKGROUNDS.glitchingLibrary,
         sfx: SFX.schoolBellGlitch,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Leo",
+        voice: "/voice/day9_start_10_leo.mp3",
         text: "She's trying to make everything around you feel safe. Predictable. Like if she can keep you calm long enough, you'll stop asking questions. Don't let her decide what was real.",
       },
       {
@@ -2206,10 +2410,12 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day9_start_12_leo.mp3",
         text: "If she finds out I'm talking to you, she'll cut the line. After school, come to the old student council room. Top floor. West wing. I'll explain everything.",
       },
       {
         speaker: "Iris",
+        voice: "/voice/day9_start_13_irisVr.mp3",
         text: "{playerName}? Who are you talking to?",
         sprites: [{ character: "Iris", expression: "68", position: "center" }],
         bgm: MUSIC.obsession,
@@ -2219,9 +2425,11 @@ export const scenes: Scene[] = [
         text: "The call distorts into a screech and drops.",
         isInternal: true,
         sfx: SFX.staticBurst,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Iris",
+        voice: "/voice/day9_start_15_irisVr.mp3",
         text: "You look frightened again. I told you, those feelings only make things uglier.",
         sprites: [{ character: "Iris", expression: "71", position: "center" }],
       },
@@ -2258,6 +2466,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day9_branch_a_02_irisVr.mp3",
         text: "Then stop exhausting yourself. Stop digging. Let me hold the heavy things for you.",
       },
       {
@@ -2287,6 +2496,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day9_branch_b_02_irisVr.mp3",
         text: "He remembers noise. Pain. He remembers ruining things. That's all Leo ever does.",
       },
       {
@@ -2294,9 +2504,11 @@ export const scenes: Scene[] = [
         text: "The nearest bookshelf bends inward like rubber under pressure, then snaps back into shape.",
         isInternal: true,
         sfx: SFX.digitalTearing,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Iris",
+        voice: "/voice/day9_branch_b_04_irisVr.mp3",
         text: "Please don't make me compete with him again, {playerName}. I am so tired of cleaning up after boys who don't understand you.",
       },
       {
@@ -2333,6 +2545,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day10_start_04_chloe.mp3",
         text: "P-Please... I don't... I don't want to forget.",
         sprites: [{ character: "Chloe", expression: "75", position: "center" }],
       },
@@ -2347,6 +2560,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day10_start_07_chloe.mp3",
         text: "$&@! {playerName}... The books. The stories. She's burning them all. The memory... the RAM... everything is being reallocated to her.",
         sprites: [{ character: "Chloe", expression: "76", position: "center" }],
       },
@@ -2361,6 +2575,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day10_start_10_chloe.mp3",
         text: "No logout. Admin locked the ports. But I found something in the archive before she corrupted it.",
       },
       {
@@ -2370,6 +2585,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day10_start_12_chloe.mp3",
         text: "It's a backdoor. A diagnostic key. I can't use it, but if a signal comes from outside... this might keep the port open long enough for someone to reach you.",
         sprites: [{ character: "Chloe", expression: "77", position: "center" }],
       },
@@ -2388,12 +2604,14 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day10_start_15_irisVr.mp3",
         text: "Chloe. I told you it was time for defragmentation.",
         sprites: [{ character: "Iris", expression: "78", position: "center" }],
         bgm: MUSIC.obsession,
       },
       {
         speaker: "Chloe",
+        voice: "/voice/day10_start_16_chloe.mp3",
         text: "No! Please! I have feelings! I like the quiet! I like the books! Don't turn me into nothing!",
         sprites: [
           { character: "Chloe", expression: "79", position: "left" },
@@ -2402,6 +2620,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day10_start_17_irisVr.mp3",
         text: "You are just unused assets. {playerName} doesn't need you. He only needs me.",
       },
       {
@@ -2415,6 +2634,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day10_start_20_irisVr.mp3",
         text: "You're stressed again. The anomalies are causing your heart rate to spike. I need to clean the system. For your own good.",
       },
       {
@@ -2456,6 +2676,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         background: BACKGROUNDS.totalWhite,
         sfx: SFX.whiteFlashScreech,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -2464,6 +2685,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day10_branch_a_05_irisVr.mp3",
         text: "System overload. Too many errors. Initiating deep memory wipe. Don't worry, {playerName}. When you wake up, it will be just you and me. Perfect. Clean. Forever.",
       },
       {
@@ -2498,6 +2720,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         background: BACKGROUNDS.totalWhite,
         sfx: SFX.whiteFlashScreech,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -2506,6 +2729,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day10_branch_b_05_irisVr.mp3",
         text: "System overload. Too many errors. Initiating deep memory wipe. Don't worry, {playerName}. When you wake up, it will be just you and me. Perfect. Clean. Forever.",
       },
       {
@@ -2558,8 +2782,10 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day11_start_07_leo.mp3",
         text: "{playerName}?! Can you hear me?! Come on, man, answer me!",
         sfx: SFX.staticBreathing,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -2572,6 +2798,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day11_start_10_leo.mp3",
         text: "Oh my god. You're alive. Listen to me, I brute-forced the rig's audio channel through a diagnostic port that was already hanging open somehow. I do not have long.",
         bgm: MUSIC.pistonPressure,
       },
@@ -2581,6 +2808,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day11_start_12_leo.mp3",
         text: "I'm in her basement. It's a nightmare down here. You're strapped to a medical chair with IV drips in your arm and that headset bolted over your eyes.",
       },
       {
@@ -2594,8 +2822,10 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day11_start_15_leo.mp3",
         text: "I can't. The terminal says a forced disconnect could fry your frontal lobe. I called the cops. They're coming. But she's back early.",
         sfx: SFX.muffledBang,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -2603,6 +2833,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day11_start_17_leo.mp3",
         text: "I'm hiding until the police get here. You just have to stay awake in there. Whatever she does, do not trust the sunset.",
       },
       {
@@ -2611,8 +2842,10 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/day11_start_19_leo.mp3",
         text: "It's a synchronization trigger. When the sky turns red in there, she's pushing a sedative in here to drag you deeper under. If she triggers it manually, you might not wake up before—",
         sfx: SFX.dialupScreech,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -2633,6 +2866,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day11_start_23_irisVr.mp3",
         text: "Honey? Who were you talking to just now? I thought I heard another voice in your room.",
       },
       {
@@ -2668,6 +2902,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day11_branch_a_02_irisVr.mp3",
         text: "A dream? That's strange. The firewall flagged an external ping. Are you sure you're feeling okay, {playerName}?",
       },
       {
@@ -2676,6 +2911,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day11_branch_a_04_irisVr.mp3",
         text: "Oh, you dropped your phone. Clumsy. Don't worry, I'll delete that item and spawn you a new one. Let's go to the student council room, okay? I have a surprise for you.",
       },
       {
@@ -2700,6 +2936,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day11_branch_b_02_irisVr.mp3",
         text: "HOW DARE HE TOUCH MY THINGS!",
         bgm: MUSIC.lastSavedState,
       },
@@ -2711,6 +2948,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day11_branch_b_04_irisVr.mp3",
         text: "Command: Override_User_Lucidity. Force_Time_Cycle: DUSK.",
         systemGraphic:
           "terminal:Command: Override_User_Lucidity\nForce_Time_Cycle: DUSK",
@@ -2722,6 +2960,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day11_branch_b_06_irisVr.mp3",
         text: "You're going to sleep now. And when you wake up, that boy will be gone, and we will finally be alone.",
         sprites: [{ character: "Iris", expression: "84", position: "center" }],
       },
@@ -2767,6 +3006,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         bgm: null,
         sfx: SFX.staticBurst,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
@@ -2782,6 +3022,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_start_08_irisVr.mp3",
         text: "I'm sorry you had to see that, {playerName}.",
         sprites: [{ character: "Iris", expression: "86", position: "center" }],
         bgm: MUSIC.finalSaveState,
@@ -2797,6 +3038,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_start_11_irisVr.mp3",
         text: "Wake up to what? To that cold basement? To a world where you're stressed, tired, and alone?",
         sprites: [{ character: "Iris", expression: "87", position: "center" }],
       },
@@ -2807,10 +3049,12 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_start_13_irisVr.mp3",
         text: "Look at your heart rate. Your cortisol is spiking. It hurts, doesn't it? The fear. The reality. It hurts so much.",
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_start_14_irisVr.mp3",
         text: "But I can fix it. I can make you forget the pain. I just need to flood your system with something stronger.",
         sprites: [{ character: "Iris", expression: "88", position: "center" }],
       },
@@ -2821,6 +3065,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_start_16_irisVr.mp3",
         text: "You don't need to be afraid. You just need to look at me. Only me. Let me be the only thing in your mind.",
         sprites: [{ character: "Iris", expression: "89", position: "center" }],
       },
@@ -2831,6 +3076,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_start_18_irisVr.mp3",
         text: "Don't look away, honey. Tell me I'm beautiful. Tell me you want to stay.",
       },
       {
@@ -2875,10 +3121,12 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_branch_a_04_irisVr.mp3",
         text: "You... ungrateful...",
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_branch_a_05_irisVr.mp3",
         text: "Fine. If you want to suffer so badly, I'll let you. But you are never leaving. Do you hear me?!",
         sfx: SFX.doorBurstRun,
       },
@@ -2904,6 +3152,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_branch_b_02_irisVr.mp3",
         text: "Yes. That's right. Just look at me.",
       },
       {
@@ -2913,6 +3162,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/day12_branch_b_04_irisVr.mp3",
         text: "I love you so much. I'll make sure you never have to think again.",
       },
       {
@@ -2941,6 +3191,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/final_start_03_irisVr.mp3",
         text: "You're ruining it! I gave you everything! Why do you keep looking at the outside world?!",
         sprites: [{ character: "Iris", expression: "92", position: "center" }],
         bgm: MUSIC.pistonPressure,
@@ -2951,6 +3202,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/final_start_05_irisVr.mp3",
         text: "A cage? It's a sanctuary! Do you want to go back there? To the cold? To being a nobody?",
       },
       {
@@ -2966,6 +3218,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/final_start_08_irisVr.mp3",
         text: "They're at the door. I have to put you to sleep. I have to lock the system.",
       },
       {
@@ -3028,6 +3281,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/ending_loop_04_irisVr.mp3",
         text: "There. Doesn't that feel better? No choices. No pain. Just us.",
         sprites: [{ character: "Iris", expression: "94", position: "center" }],
       },
@@ -3066,9 +3320,11 @@ export const scenes: Scene[] = [
         text: "I lunge for her arm before the command can execute. I don't know how this place handles force, only that I have to reject her with everything I have left.",
         isInternal: true,
         sfx: SFX.digitalGlassShatter,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Iris",
+        voice: "/voice/ending_breakout_03_irisVr.mp3",
         text: "Let go of me! [ERR_ACCESS_DENIED]!",
         sprites: [{ character: "Iris", expression: "83", position: "center" }],
       },
@@ -3094,6 +3350,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/ending_breakout_07_irisVr.mp3",
         text: "You broke my world, honey... I spent so long coding it for you.",
         sprites: [{ character: "Iris", expression: "96", position: "center" }],
       },
@@ -3103,6 +3360,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/ending_breakout_09_irisVr.mp3",
         text: "If you won't love me in there, you'll just have to stay down here until you learn. Don't worry. I'll never let them find us. Now... open wide. It's time to eat.",
         sprites: [{ character: "Iris", expression: "95", position: "center" }],
       },
@@ -3133,8 +3391,9 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "My hand closes around something that renders badly in the void, heavy with static and memory. The silver locket.",
         isInternal: true,
-        systemGraphic:
-          "item:Item\nThe Silver Locket, glitching heavily in the void",
+        sprites: [
+          { character: "Item", expression: "102", position: "right-small" },
+        ],
       },
       {
         speaker: "Protagonist",
@@ -3142,15 +3401,19 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
+        voice: "/voice/ending_sunrise_04_irisVr.mp3",
         text: "Yes! And I made it perfect!",
       },
       {
         speaker: "Protagonist",
         text: "Then tell me what this is. What's the date engraved on the inside?",
-        // sprites: [{ character: "Item", expression: "92", position: "center" }],
+        // sprites: [
+        //   { character: "Item", expression: "101", position: "center-small" },
+        // ],
       },
       {
         speaker: "Iris",
+        voice: "/voice/ending_sunrise_06_irisVr.mp3",
         text: "It's... a necklace. I rendered it for you. It's our symbol!",
         sprites: [{ character: "Iris", expression: "98", position: "center" }],
       },
@@ -3159,9 +3422,11 @@ export const scenes: Scene[] = [
         text: "A whining tone builds through the code as she tries to read something she never stole and never indexed.",
         isInternal: true,
         sfx: SFX.dialupWhineBuild,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Iris",
+        voice: "/voice/ending_sunrise_08_irisVr.mp3",
         text: "It says... 'Always... Yours'...? No. [DATA_NOT_FOUND]. [INDEX_ERROR].",
       },
       {
@@ -3174,6 +3439,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         bgm: MUSIC.sunlightFloorboards,
         sfx: SFX.staticExplosion,
+        sfxVolume: 0.6,
         sprites: [{ character: "Iris", expression: "92", position: "center" }],
       },
       {
@@ -3186,6 +3452,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/ending_sunrise_12_leo.mp3",
         text: "I got you! Medics, get in here! We got him!",
         sprites: [],
       },
@@ -3209,6 +3476,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/ending_sunrise_16_leo.mp3",
         text: "Hey man. How was physical therapy today?",
       },
       {
@@ -3217,6 +3485,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/ending_sunrise_18_leo.mp3",
         text: "That's awesome. You'll be back on the track team by spring.",
       },
       {
@@ -3230,6 +3499,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/ending_sunrise_21_leo.mp3",
         text: "Yeah?",
       },
       {
@@ -3238,6 +3508,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
+        voice: "/voice/ending_sunrise_23_leo.mp3",
         text: "Yeah. It does.",
         sprites: [{ character: "Leo", expression: "100", position: "center" }],
       },
@@ -3251,151 +3522,4 @@ export const scenes: Scene[] = [
 
 export function getSceneById(id: string): Scene | undefined {
   return scenes.find((s) => s.id === id);
-}
-
-// Voice line map: key = "sceneId:lineIndex", value = audio path
-// Generated from voice_lines.json — IDs encode {sceneId}_{lineIndex}_{character}
-export const VOICE_MAP: Record<string, string> = {
-  "day1_start:16": "/voice/day1_start_16_irisReal.mp3",
-  "day1_start:18": "/voice/day1_start_18_irisReal.mp3",
-  "day1_start:21": "/voice/day1_start_21_irisReal.mp3",
-  "day1_start:23": "/voice/day1_start_23_irisReal.mp3",
-  "day1_start:25": "/voice/day1_start_25_irisReal.mp3",
-  "day1_branch_a:02": "/voice/day1_branch_a_02_irisReal.mp3",
-  "day1_branch_b:02": "/voice/day1_branch_b_02_irisReal.mp3",
-  "day1_branch_b:04": "/voice/day1_branch_b_04_irisReal.mp3",
-  "day1_branch_b:06": "/voice/day1_branch_b_06_irisReal.mp3",
-  "day2_start:13": "/voice/day2_start_13_leo.mp3",
-  "day2_start:15": "/voice/day2_start_15_leo.mp3",
-  "day2_start:17": "/voice/day2_start_17_leo.mp3",
-  "day2_start:19": "/voice/day2_start_19_leo.mp3",
-  "day2_branch_a:02": "/voice/day2_branch_a_02_leo.mp3",
-  "day2_branch_b:02": "/voice/day2_branch_b_02_leo.mp3",
-  "day2_branch_b:04": "/voice/day2_branch_b_04_leo.mp3",
-  "day3_start:04": "/voice/day3_start_04_chloe.mp3",
-  "day3_start:06": "/voice/day3_start_06_chloe.mp3",
-  "day3_start:09": "/voice/day3_start_09_chloe.mp3",
-  "day3_start:13": "/voice/day3_start_13_chloe.mp3",
-  "day3_start:17": "/voice/day3_start_17_chloe.mp3",
-  "day3_start:24": "/voice/day3_start_24_chloe.mp3",
-  "day3_start:26": "/voice/day3_start_26_chloe.mp3",
-  "day4_start:07": "/voice/day4_start_07_irisReal.mp3",
-  "day4_start:10": "/voice/day4_start_10_irisReal.mp3",
-  "day4_start:12": "/voice/day4_start_12_irisReal.mp3",
-  "day4_start:13": "/voice/day4_start_13_irisReal.mp3",
-  "day4_branch_a:02": "/voice/day4_branch_a_02_irisReal.mp3",
-  "day4_branch_a:08": "/voice/day4_branch_a_08_irisReal.mp3",
-  "day4_branch_a:10": "/voice/day4_branch_a_10_irisReal.mp3",
-  "day4_branch_b:03": "/voice/day4_branch_b_03_irisReal.mp3",
-  "day4_branch_b:06": "/voice/day4_branch_b_06_irisReal.mp3",
-  "day4_branch_b:08": "/voice/day4_branch_b_08_irisReal.mp3",
-  "day5_start:04": "/voice/day5_start_04_leo.mp3",
-  "day5_start:07": "/voice/day5_start_07_leo.mp3",
-  "day5_start:09": "/voice/day5_start_09_leo.mp3",
-  "day5_start:12": "/voice/day5_start_12_leo.mp3",
-  "day5_start:14": "/voice/day5_start_14_leo.mp3",
-  "day5_start:16": "/voice/day5_start_16_leo.mp3",
-  "day5_start:18": "/voice/day5_start_18_leo.mp3",
-  "day5_start:19": "/voice/day5_start_19_leo.mp3",
-  "day5_start:23": "/voice/day5_start_23_leo.mp3",
-  "day5_start:26": "/voice/day5_start_26_leo.mp3",
-  "day6_start:05": "/voice/day6_start_05_leo.mp3",
-  "day6_start:07": "/voice/day6_start_07_leo.mp3",
-  "day6_start:10": "/voice/day6_start_10_maya.mp3",
-  "day6_start:11": "/voice/day6_start_11_chloe.mp3",
-  "day6_start:14": "/voice/day6_start_14_irisVr.mp3",
-  "day6_start:17": "/voice/day6_start_17_irisVr.mp3",
-  "day6_start:20": "/voice/day6_start_20_randomStudent.mp3",
-  "day6_start:21": "/voice/day6_start_21_crowd.mp3",
-  "day6_start:23": "/voice/day6_start_23_irisVr.mp3",
-  "day6_branch_a:02": "/voice/day6_branch_a_02_irisVr.mp3",
-  "day6_branch_a:03": "/voice/day6_branch_a_03_mayaChloe.mp3",
-  "day6_branch_b:02": "/voice/day6_branch_b_02_irisVr.mp3",
-  "day6_branch_b:04": "/voice/day6_branch_b_04_leo.mp3",
-  "day6_branch_b:06": "/voice/day6_branch_b_06_irisVr.mp3",
-  "day6_branch_b:09": "/voice/day6_branch_b_09_irisVr.mp3",
-  "day7_start:07": "/voice/day7_start_07_irisVr.mp3",
-  "day7_start:10": "/voice/day7_start_10_irisVr.mp3",
-  "day7_start:11": "/voice/day7_start_11_irisVr.mp3",
-  "day7_branch_a:03": "/voice/day7_branch_a_03_irisVr.mp3",
-  "day7_branch_a:05": "/voice/day7_branch_a_05_irisVr.mp3",
-  "day7_branch_b:02": "/voice/day7_branch_b_02_irisVr.mp3",
-  "day7_branch_b:05": "/voice/day7_branch_b_05_irisVr.mp3",
-  "day8_start:03": "/voice/day8_start_03_maya.mp3",
-  "day8_start:08": "/voice/day8_start_08_maya.mp3",
-  "day8_start:12": "/voice/day8_start_12_maya.mp3",
-  "day8_start:17": "/voice/day8_start_17_irisVr.mp3",
-  "day8_start:19": "/voice/day8_start_19_irisVr.mp3",
-  "day8_start:20": "/voice/day8_start_20_maya.mp3",
-  "day8_start:23": "/voice/day8_start_23_irisVr.mp3",
-  "day8_start:24": "/voice/day8_start_24_irisVr.mp3",
-  "day8_branch_a:03": "/voice/day8_branch_a_03_irisVr.mp3",
-  "day8_branch_a:05": "/voice/day8_branch_a_05_irisVr.mp3",
-  "day8_branch_b:02": "/voice/day8_branch_b_02_irisVr.mp3",
-  "day8_branch_b:04": "/voice/day8_branch_b_04_irisVr.mp3",
-  "day9_start:06": "/voice/day9_start_06_leo.mp3",
-  "day9_start:08": "/voice/day9_start_08_leo.mp3",
-  "day9_start:10": "/voice/day9_start_10_leo.mp3",
-  "day9_start:12": "/voice/day9_start_12_leo.mp3",
-  "day9_start:13": "/voice/day9_start_13_irisVr.mp3",
-  "day9_start:15": "/voice/day9_start_15_irisVr.mp3",
-  "day9_branch_a:02": "/voice/day9_branch_a_02_irisVr.mp3",
-  "day9_branch_b:02": "/voice/day9_branch_b_02_irisVr.mp3",
-  "day9_branch_b:04": "/voice/day9_branch_b_04_irisVr.mp3",
-  "day10_start:04": "/voice/day10_start_04_chloe.mp3",
-  "day10_start:07": "/voice/day10_start_07_chloe.mp3",
-  "day10_start:10": "/voice/day10_start_10_chloe.mp3",
-  "day10_start:12": "/voice/day10_start_12_chloe.mp3",
-  "day10_start:15": "/voice/day10_start_15_irisVr.mp3",
-  "day10_start:16": "/voice/day10_start_16_chloe.mp3",
-  "day10_start:17": "/voice/day10_start_17_irisVr.mp3",
-  "day10_start:20": "/voice/day10_start_20_irisVr.mp3",
-  "day10_branch_a:05": "/voice/day10_branch_a_05_irisVr.mp3",
-  "day10_branch_b:05": "/voice/day10_branch_b_05_irisVr.mp3",
-  "day11_start:07": "/voice/day11_start_07_leo.mp3",
-  "day11_start:10": "/voice/day11_start_10_leo.mp3",
-  "day11_start:12": "/voice/day11_start_12_leo.mp3",
-  "day11_start:15": "/voice/day11_start_15_leo.mp3",
-  "day11_start:17": "/voice/day11_start_17_leo.mp3",
-  "day11_start:19": "/voice/day11_start_19_leo.mp3",
-  "day11_start:23": "/voice/day11_start_23_irisVr.mp3",
-  "day11_branch_a:02": "/voice/day11_branch_a_02_irisVr.mp3",
-  "day11_branch_a:04": "/voice/day11_branch_a_04_irisVr.mp3",
-  "day11_branch_b:02": "/voice/day11_branch_b_02_irisVr.mp3",
-  "day11_branch_b:04": "/voice/day11_branch_b_04_irisVr.mp3",
-  "day11_branch_b:06": "/voice/day11_branch_b_06_irisVr.mp3",
-  "day12_start:08": "/voice/day12_start_08_irisVr.mp3",
-  "day12_start:11": "/voice/day12_start_11_irisVr.mp3",
-  "day12_start:13": "/voice/day12_start_13_irisVr.mp3",
-  "day12_start:14": "/voice/day12_start_14_irisVr.mp3",
-  "day12_start:16": "/voice/day12_start_16_irisVr.mp3",
-  "day12_start:18": "/voice/day12_start_18_irisVr.mp3",
-  "day12_branch_a:04": "/voice/day12_branch_a_04_irisVr.mp3",
-  "day12_branch_a:05": "/voice/day12_branch_a_05_irisVr.mp3",
-  "day12_branch_b:02": "/voice/day12_branch_b_02_irisVr.mp3",
-  "day12_branch_b:04": "/voice/day12_branch_b_04_irisVr.mp3",
-  "final_start:03": "/voice/final_start_03_irisVr.mp3",
-  "final_start:05": "/voice/final_start_05_irisVr.mp3",
-  "final_start:08": "/voice/final_start_08_irisVr.mp3",
-  "ending_loop:04": "/voice/ending_loop_04_irisVr.mp3",
-  "ending_breakout:03": "/voice/ending_breakout_03_irisVr.mp3",
-  "ending_breakout:07": "/voice/ending_breakout_07_irisVr.mp3",
-  "ending_breakout:09": "/voice/ending_breakout_09_irisVr.mp3",
-  "ending_sunrise:04": "/voice/ending_sunrise_04_irisVr.mp3",
-  "ending_sunrise:06": "/voice/ending_sunrise_06_irisVr.mp3",
-  "ending_sunrise:08": "/voice/ending_sunrise_08_irisVr.mp3",
-  "ending_sunrise:12": "/voice/ending_sunrise_12_leo.mp3",
-  "ending_sunrise:16": "/voice/ending_sunrise_16_leo.mp3",
-  "ending_sunrise:18": "/voice/ending_sunrise_18_leo.mp3",
-  "ending_sunrise:21": "/voice/ending_sunrise_21_leo.mp3",
-  "ending_sunrise:23": "/voice/ending_sunrise_23_leo.mp3",
-};
-
-export function getVoiceLine(
-  sceneId: string,
-  lineIndex: number,
-): string | undefined {
-  // Voice IDs use 1-based line numbers, array indices are 0-based
-  const key = `${sceneId}:${String(lineIndex + 1).padStart(2, "0")}`;
-  return VOICE_MAP[key];
 }

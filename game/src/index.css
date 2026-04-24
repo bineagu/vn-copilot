@@ -83,3 +83,24 @@
 .animate-bg-pan {
   animation: bgPan 30s ease-in-out infinite;
 }
+
+@keyframes painFlash {
+  0%   { opacity: 0; }
+  6%   { opacity: 0.9; }
+  25%  { opacity: 0.75; }
+  55%  { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+
+.animate-pain-flash {
+  animation: painFlash 1.2s ease-out forwards;
+}
+
+@keyframes bgTilt {
+  0%   { transform: scale(1.05) translate(0, 0); }
+  100% { transform: rotate(90deg) scale(2); }
+}
+
+.animate-bg-tilt {
+  animation: bgTilt 0.9s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+}
