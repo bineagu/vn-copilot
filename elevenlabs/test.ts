@@ -53,6 +53,17 @@ async function generateSfx(
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, audioBytes);
 
+  const publicPath = path.resolve(
+    scriptDirectory,
+    "..",
+    "game",
+    "public",
+    "sfx",
+    ensureMp3Extension(fileName),
+  );
+
+  await writeFile(publicPath, audioBytes);
+
   return outputPath;
 }
 
@@ -63,6 +74,7 @@ const voices = {
   chloe: "9LQXwQNBrPJQQ5D2qv07",
   leo: "8YIOgzXVOYUwEENkD1m0",
   randomStudent: "LWDjGNDPlm2PQwnzQKdK",
+  teacher: "JHNbhvjBVSfA2WdEpCAd",
   // crowd: "LWDjGNDPlm2PQwnzQKdK",
   // mayaChloe: "IA1Uo0uGXjm4EZdkWo1t",
 };
@@ -88,6 +100,17 @@ async function generateLine(line: string, character: string, id: string) {
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, audioBytes);
+
+  const publicPath = path.resolve(
+    scriptDirectory,
+    "..",
+    "game",
+    "public",
+    "voice",
+    ensureMp3Extension(id),
+  );
+
+  await writeFile(publicPath, audioBytes);
 
   return outputPath;
 }

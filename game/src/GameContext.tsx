@@ -47,6 +47,13 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       if (state.dialogueIndex < scene.lines.length - 1) {
         return { ...state, dialogueIndex: state.dialogueIndex + 1 };
       }
+      if (scene.nextSceneId) {
+        return {
+          ...state,
+          currentSceneId: scene.nextSceneId,
+          dialogueIndex: 0,
+        };
+      }
       return state;
     }
     case "CHOOSE": {

@@ -390,12 +390,12 @@
     "id": "day9_start_06_leo"
   },
   {
-    "line": "[hushed, urgent] I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she's hiding under her house, it got worse after the hit at the field. Ever since then, she's been smoothing things over around you.",
+    "line": "[hushed, urgent] I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she's hiding under her house, it got worse after the hit at the field.",
     "character": "leo",
     "id": "day9_start_08_leo"
   },
   {
-    "line": "[urgent] She's trying to make everything around you feel safe. Predictable. Like if she can keep you calm long enough, you'll stop asking questions. Don't let her decide what was real.",
+    "line": "[urgent] She's trying to make everything around you feel safe. Predictable. Like if she can keep you calm long enough, you'll stop asking questions. Don't let her decide what is real.",
     "character": "leo",
     "id": "day9_start_10_leo"
   },
@@ -403,6 +403,11 @@
     "line": "[urgent] If she finds out I'm talking to you, she'll cut the line. After school, come to the old student council room. Top floor. West wing. I'll explain everything.",
     "character": "leo",
     "id": "day9_start_12_leo"
+  },
+  {
+    "line": "[too calm, suspicious] Who are you talking to?",
+    "character": "irisVr",
+    "id": "day9_start_14_irisVr"
   },
   {
     "line": "[too calm] Hey... who are you talking to?",
@@ -417,15 +422,80 @@
   {
     "line": "[tenderly] Then stop exhausting yourself. Stop digging. Let me hold the heavy things for you.",
     "character": "irisVr",
-    "id": "day9_branch_a_02_irisVr"
+    "id": "day9_phone_a_02_irisVr"
   },
   {
     "line": "[dismissive] He remembers noise. Pain. He remembers ruining things. That's all Leo ever does.",
     "character": "irisVr",
-    "id": "day9_branch_b_02_irisVr"
+    "id": "day9_phone_b_02_irisVr"
   },
   {
     "line": "[tired, wounded] Please don't make me compete with him again. I am so tired of cleaning up after boys who don't understand you.",
+    "character": "irisVr",
+    "id": "day9_phone_b_04_irisVr"
+  },
+  {
+    "line": "[urgent, groggy] I woke up with a pounding headache and haven't seen you since. Don't hang up. Don't say my name out loud. If you can hear me, go somewhere she can't hear you breathe.",
+    "character": "leo",
+    "id": "day9_start_09_leo"
+  },
+  {
+    "line": "[calm, authoritative] Good morning, class. Let us begin roll call. Akira... Present. Chloe... Present.",
+    "character": "teacher",
+    "id": "day9_start_17_teacher"
+  },
+  {
+    "line": "[halting, glitching] Maya... Maya...",
+    "character": "teacher",
+    "id": "day9_start_19_teacher"
+  },
+  {
+    "line": "[stuttering, glitching] Ma-...Ma-...Ma-...Maya...",
+    "character": "teacher",
+    "id": "day9_start_21_teacher"
+  },
+  {
+    "line": "[urgent, forced calm] She transferred! Maya transferred schools yesterday! Right, class?",
+    "character": "irisVr",
+    "id": "day9_start_23_irisVr"
+  },
+  {
+    "line": "[flat, synchronized] Maya transferred schools yesterday. We wish her the best.",
+    "character": "crowd",
+    "id": "day9_start_24_students"
+  },
+  {
+    "line": "[flat, routine] Maya transferred. Moving on to the lesson.",
+    "character": "teacher",
+    "id": "day9_start_25_teacher"
+  },
+  {
+    "line": "[bright, too sweet] Good morning, honey! Isn't it a beautifully quiet day? It's so much more peaceful without all that running around.",
+    "character": "irisVr",
+    "id": "day9_start_27_irisVr"
+  },
+  {
+    "line": "[smooth, possessive] They're just adjusting to the changes. You don't need them anyway. You only need me. We're going to have a perfect day today.",
+    "character": "irisVr",
+    "id": "day9_start_29_irisVr"
+  },
+  {
+    "line": "[panicked] Don't look at that! Look at me! [screaming] I said look at me!",
+    "character": "irisVr",
+    "id": "day9_start_31_irisVr"
+  },
+  {
+    "line": "[shaky, relieved, needy] Thank you. Thank you. I just... I want it to be perfect for you. I'll clean up the leftover code tonight. Just stay with me, okay?",
+    "character": "irisVr",
+    "id": "day9_branch_a_02_irisVr"
+  },
+  {
+    "line": "[screaming, furious] I control EVERYTHING! I am a god in here! You don't know how hard it is to maintain a cohesive reality matrix for an ungrateful user!",
+    "character": "irisVr",
+    "id": "day9_branch_b_02_irisVr"
+  },
+  {
+    "line": "[cold, furious] Fine! You want it clean? I'll purge the entire athletic module!",
     "character": "irisVr",
     "id": "day9_branch_b_04_irisVr"
   },

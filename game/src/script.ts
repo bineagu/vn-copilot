@@ -27,7 +27,8 @@ export const BACKGROUNDS = {
   classroomMorningVR: "/backgrounds/__15._Classroom,_Morning_202604110139.png",
   whiteVoid: "/backgrounds/__16._Artificial_White_202604110140.png",
   gymnasium: "/backgrounds/__17._School_Gymnasium,_202604110140.png",
-  classroomNormalVR: "/backgrounds/__18._Classroom,_Morning_202604110140.png",
+  classroomMorningVRBroken:
+    "/backgrounds/__18._Classroom,_Morning_202604110140.png",
   hallwayLockers: "/backgrounds/__19._Hallway_with_202604110141.png",
   // Day 9-10
   glitchingLibrary: "/backgrounds/__20._Glitching_Library,_202604110141.png",
@@ -36,6 +37,10 @@ export const BACKGROUNDS = {
   bedroomDark: "/backgrounds/__23._Protagonist's_Bedroom_202604110144.png",
   // Day 12+
   studentCouncil: "/backgrounds/__24._Student_Council_202604110145.png",
+  studentCouncilGlitch: "/backgrounds/__24_1 glitched student council.png",
+  binaryCodeHallway: "/backgrounds/__25._Binary_Code_Hallway_202604110145.png",
+  studentCouncilRed: "/backgrounds/__24_2redlogicloop.png",
+  basement: "/backgrounds/__26._Basement_202604110145.png",
   binaryCode: "/backgrounds/25 Binary_code_digital_202604141829.mp4",
   totalBlack: "/backgrounds/__26._Total_Blackness_202604110146.png",
   whiteBlinding: "/backgrounds/__27._Pure_Blinding_202604110146.png",
@@ -599,6 +604,7 @@ export const scenes: Scene[] = [
         text: "I rip my headphones off my ears, throwing them onto the desk.",
         isInternal: true,
         sfx: SFX.hallwayThud,
+        sfxVolume: 2,
       },
       {
         speaker: "Protagonist",
@@ -1278,12 +1284,12 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "I know it's drugged.\nBut I look at her smiling face, and I take a sip anyway.",
+        text: "I look at her smiling face and I take a sip.",
         isInternal: true,
       },
       {
         speaker: "Protagonist",
-        text: "",
+        text: "Why is everything so dark...",
         sfx: SFX.teacupDrop,
         background: BACKGROUNDS.fadeToBlack,
       },
@@ -1317,7 +1323,6 @@ export const scenes: Scene[] = [
         speaker: "Iris",
         voice: "/voice/day4_branch_a_10_irisReal.mp3",
         text: "I just made sure you'll never have to walk away from me. You'll never have to go to that awful school again. You're safe now. You're my prince... and I'm going to take such good care of you.",
-        // sprites: [{ character: "Iris", expression: "31", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2346,29 +2351,41 @@ export const scenes: Scene[] = [
     id: "day9_start",
     vrMode: true,
     lines: [
+      // ── Classroom morning opening ──
       {
         speaker: "Protagonist",
-        text: "The next day I hide in the library because it is the only place left that still feels like it might obey ordinary rules.",
+        text: "I didn't sleep. I just sat on the edge of my bed, waiting for the floor to open up and swallow me.",
         isInternal: true,
-        background: BACKGROUNDS.library,
-        bgm: MUSIC.graySuburbia,
-        sfx: SFX.libraryPages,
+        background: BACKGROUNDS.classroomMorningVR,
+        bgm: MUSIC.infiniteSummer,
+        sfx: SFX.schoolBellGlitch,
       },
       {
         speaker: "Protagonist",
-        text: "It doesn't. The fluorescent lights buzz in an irregular rhythm. Whole shelves seem slightly farther away every time I blink.",
+        text: "But morning came anyway. I got ready for school. I put on my uniform. I walked to the bus stop. I got on the bus. I rode to school.",
         isInternal: true,
       },
       {
         speaker: "Protagonist",
-        text: "Then my phone vibrates. Unknown number.",
+        text: "I arrived early. I'm sitting at my desk. I look at the spot where Maya used to sit.",
         isInternal: true,
-        sfx: SFX.phoneRingtone,
+      },
+      {
+        speaker: "Protagonist",
+        text: "The desk is gone. It didn't just disappear — the floorboards underneath it are perfectly fused together, as if a desk had never been there in the history of the school.",
+        isInternal: true,
+      },
+      // ── Leo calls ──
+      {
+        speaker: "Protagonist",
+        text: "Then my phone vibrates. Leo.",
+        isInternal: true,
+        sfx: SFX.phoneBuzz,
       },
       {
         speaker: "System",
-        text: "UNKNOWN CALLER",
-        systemGraphic: "call:UNKNOWN CALLER\nAnswer?",
+        text: "",
+        systemGraphic: "call:Leo\nAnswer?",
       },
       {
         speaker: "Protagonist",
@@ -2376,8 +2393,8 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Leo",
-        voice: "/voice/day9_start_06_leo.mp3",
-        text: "Don't hang up. Don't say my name out loud. If you can hear me, go somewhere she can't hear you breathe.",
+        voice: "/voice/day9_start_09_leo.mp3",
+        text: "I woke up with a pounding headache and haven't seen you since. Don't hang up. Don't say my name out loud. If you can hear me, go somewhere she can't hear you breathe.",
         sfx: SFX.staticBreathing,
         sfxVolume: 0.6,
       },
@@ -2388,26 +2405,12 @@ export const scenes: Scene[] = [
       {
         speaker: "Leo",
         voice: "/voice/day9_start_08_leo.mp3",
-        text: "I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she's hiding under her house, it got worse after the hit at the field. Ever since then, she's been smoothing things over around you.",
-      },
-      {
-        speaker: "Protagonist",
-        text: "The shelves suddenly shimmer. Book spines smear into horizontal lines for half a second before snapping back.",
-        isInternal: true,
-        background: BACKGROUNDS.glitchingLibrary,
-        sfx: SFX.schoolBellGlitch,
-        sfxVolume: 0.6,
+        text: "I know. I know. Listen to me. I found the basement again. I got video this time. Whatever she's hiding under her house, it got worse after the hit at the field.",
       },
       {
         speaker: "Leo",
         voice: "/voice/day9_start_10_leo.mp3",
-        text: "She's trying to make everything around you feel safe. Predictable. Like if she can keep you calm long enough, you'll stop asking questions. Don't let her decide what was real.",
-      },
-      {
-        speaker: "Protagonist",
-        text: "Footsteps drift in from the hallway. Light, unhurried. Familiar.",
-        isInternal: true,
-        sfx: SFX.hesitantFootsteps,
+        text: "She's trying to make everything around you feel safe. Predictable. Like if she can keep you calm long enough, you'll stop asking questions. Don't let her decide what is real.",
       },
       {
         speaker: "Leo",
@@ -2416,9 +2419,9 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Iris",
-        voice: "/voice/day9_start_13_irisVr.mp3",
+        voice: "/voice/day9_start_14_irisVr.mp3",
         text: "{playerName}? Who are you talking to?",
-        sprites: [{ character: "Iris", expression: "68", position: "center" }],
+        sprites: [{ character: "Iris", expression: "65", position: "center" }],
         bgm: MUSIC.obsession,
       },
       {
@@ -2436,16 +2439,210 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "I can either hide what I know and play along a little longer... or push her and see what falls out.",
+        text: "She's watching me carefully. I decide on the spot.",
         isInternal: true,
         choices: [
           {
             text: '"Nobody. I\'m just tired."',
-            nextSceneId: "day9_branch_a",
-            stateEffects: { addiction: 10, irisAffection: 10, lucidity: -5 },
+            nextSceneId: "day9_phone_a",
+            stateEffects: { addiction: 10, irisAffection: 5, lucidity: -5 },
           },
           {
             text: '"Leo called me. He remembers the field."',
+            nextSceneId: "day9_phone_b",
+            stateEffects: { lucidity: 15, irisAffection: -10 },
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "day9_phone_a",
+    vrMode: true,
+    nextSceneId: "day9_class",
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "Nobody. I'm just tired.",
+        background: BACKGROUNDS.classroomMorningVR,
+        bgm: MUSIC.obsession,
+        sprites: [{ character: "Iris", expression: "71", position: "center" }],
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day9_phone_a_02_irisVr.mp3",
+        text: "Then stop exhausting yourself. Stop digging. Let me hold the heavy things for you.",
+        sprites: [{ character: "Iris", expression: "70", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "She leans down and kisses my forehead. The lights stop flickering for a moment. For one nauseating second, relief nearly wins.",
+        isInternal: true,
+        sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "But Leo's voice is still trapped behind my eyes: Don't let her decide what is real.",
+        isInternal: true,
+      },
+    ],
+  },
+
+  {
+    id: "day9_phone_b",
+    vrMode: true,
+    nextSceneId: "day9_class",
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "Leo called me. He remembers the field incident. He remembers what you did.",
+        background: BACKGROUNDS.classroomMorningVR,
+        bgm: MUSIC.obsession,
+        sprites: [{ character: "Iris", expression: "72", position: "center" }],
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day9_phone_b_02_irisVr.mp3",
+        text: "He remembers noise. Pain. He remembers ruining things. That's all Leo ever does.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The room shudders. A row of desks slides an inch to the left, then snaps back.",
+        isInternal: true,
+        sfx: SFX.digitalTearing,
+        sfxVolume: 0.6,
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day9_phone_b_04_irisVr.mp3",
+        text: "Please don't make me compete with him again, {playerName}. I am so tired of cleaning up after boys who don't understand you.",
+        sprites: [{ character: "Iris", expression: "73", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "She says it softly, but it lands like a threat.",
+        isInternal: true,
+      },
+    ],
+  },
+
+  {
+    id: "day9_class",
+    vrMode: true,
+    lines: [
+      // ── Teacher roll call ──
+      {
+        speaker: "Teacher",
+        voice: "/voice/day9_start_17_teacher.mp3",
+        text: "Good morning, class. Let us begin roll call. Akira... Present. Chloe... Present.",
+        background: BACKGROUNDS.classroomMorningVR,
+        bgm: MUSIC.infiniteSummer,
+        sprites: [
+          { character: "Teacher", expression: "66", position: "center" },
+        ],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Chloe is sitting across the room — absolutely terrified, trembling and clutching her notebook.",
+        isInternal: true,
+        sprites: [
+          { character: "Teacher", expression: "66", position: "right" },
+          { character: "Chloe", expression: "67", position: "left" },
+        ],
+      },
+      {
+        speaker: "Teacher",
+        voice: "/voice/day9_start_19_teacher.mp3",
+        sprites: [
+          { character: "Teacher", expression: "66", position: "center" },
+        ],
+        text: "Maya... Maya...",
+      },
+      {
+        speaker: "Protagonist",
+        text: "The Teacher NPC freezes. His mouth stays open. The AI script is looking for a character asset that Iris permanently deleted.",
+        isInternal: true,
+      },
+      {
+        speaker: "Teacher",
+        voice: "/voice/day9_start_21_teacher.mp3",
+        text: "Ma-Ma-Ma-Maya...",
+        sfx: SFX.errorTone,
+        sfxVolume: 0.7,
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day9_start_23_irisVr.mp3",
+        text: "She transferred! Maya transferred schools yesterday! Right, class?",
+        sprites: [{ character: "Iris", expression: "68", position: "center" }],
+      },
+      {
+        speaker: "Students",
+        voice: "/voice/day9_start_24_students.mp3",
+        text: "Maya transferred schools yesterday. We wish her the best.",
+        sprites: [
+          { character: "Students", expression: "69", position: "center" },
+        ],
+      },
+      {
+        speaker: "Teacher",
+        voice: "/voice/day9_start_25_teacher.mp3",
+        text: "Maya transferred. Moving on to the lesson.",
+        sprites: [
+          { character: "Teacher", expression: "66", position: "right" },
+        ],
+      },
+      {
+        speaker: "Protagonist",
+        text: "The teacher turns back to the chalkboard and begins writing in invisible chalk. Iris lets out a heavy sigh, then turns and looks at me — instantly replacing her stressed frown with a blinding, fake smile.",
+        isInternal: true,
+        sprites: [{ character: "Iris", expression: "71", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Iris... the teacher just broke. Everyone is acting like robots.",
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day9_start_29_irisVr.mp3",
+        text: "They're just adjusting to the changes. You don't need them anyway. You only need me. We're going to have a perfect day today.",
+        sprites: [{ character: "Iris", expression: "65", position: "center" }],
+      },
+      // ── Hallway: Maya's ghost ──
+      {
+        speaker: "Protagonist",
+        text: "Iris flinches.",
+        isInternal: true,
+        sfx: SFX.hallwayThud,
+        sfxVolume: 2,
+        sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "I look out the open classroom door. The physics engine is still running Maya's daily routine, even though her character model is gone. Her basketball bounces down the hall, guided by an invisible ghost.",
+        isInternal: true,
+        background: BACKGROUNDS.hallwayLockers,
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day9_start_31_irisVr.mp3",
+        text: "Don't look at that! Look at me! I said look at me!",
+        sprites: [{ character: "Iris", expression: "72", position: "center" }],
+        background: BACKGROUNDS.classroomMorningVR,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I can either play along and keep her calm a little longer... or push her and see what falls out.",
+        isInternal: true,
+        choices: [
+          {
+            text: '"Okay! I\'m looking at you. Just calm down."',
+            nextSceneId: "day9_branch_a",
+            stateEffects: { addiction: 10, irisAffection: 5, lucidity: -5 },
+          },
+          {
+            text: '"You can\'t even control your own game, can you?"',
             nextSceneId: "day9_branch_b",
             stateEffects: { lucidity: 15, irisAffection: -10 },
           },
@@ -2460,21 +2657,23 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "Nobody. I'm just tired.",
-        background: BACKGROUNDS.glitchingLibrary,
+        text: "Okay, Iris. I'm looking. I'm right here.",
+        background: BACKGROUNDS.classroomMorningVR,
         bgm: MUSIC.obsession,
-        sprites: [{ character: "Iris", expression: "70", position: "center" }],
+        sprites: [{ character: "Iris", expression: "72", position: "center" }],
       },
       {
         speaker: "Iris",
         voice: "/voice/day9_branch_a_02_irisVr.mp3",
-        text: "Then stop exhausting yourself. Stop digging. Let me hold the heavy things for you.",
+        text: "Thank you. Thank you. I just... I want it to be perfect for you. I'll clean up the leftover code tonight. Just stay with me, okay?",
+        sprites: [{ character: "Iris", expression: "73", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "She kisses my forehead. The library lights stop flickering. The shelves straighten. For one nauseating second, relief nearly wins.",
+        text: "She's losing her grip on the world. The cracks are showing everywhere. But as long as I play along, she doesn't hurt me. I nod slowly.",
         isInternal: true,
-        background: BACKGROUNDS.library,
+        background: BACKGROUNDS.classroomMorningVRBroken,
+        sprites: [],
       },
       {
         speaker: "Protagonist",
@@ -2491,32 +2690,42 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "Leo called me. He remembers the field incident. He remembers what you did.",
-        background: BACKGROUNDS.glitchingLibrary,
+        text: "You deleted her, but you couldn't even delete her right. You can't even control your own game.",
+        background: BACKGROUNDS.classroomMorningVR,
         bgm: MUSIC.obsession,
-        sprites: [{ character: "Iris", expression: "68", position: "center" }],
+        sprites: [{ character: "Iris", expression: "72", position: "center" }],
       },
       {
         speaker: "Iris",
         voice: "/voice/day9_branch_b_02_irisVr.mp3",
-        text: "He remembers noise. Pain. He remembers ruining things. That's all Leo ever does.",
+        text: "I control EVERYTHING! I am a god in here! You don't know how hard it is to maintain a cohesive reality matrix for an ungrateful user!",
+        sprites: [{ character: "Iris", expression: "74", position: "center" }],
+        bgm: MUSIC.pistonPressure,
       },
       {
         speaker: "Protagonist",
-        text: "The nearest bookshelf bends inward like rubber under pressure, then snaps back into shape.",
+        text: "She pulls up her tablet, her fingers flying across the screen in a blur of rage.",
         isInternal: true,
-        sfx: SFX.digitalTearing,
-        sfxVolume: 0.6,
       },
       {
         speaker: "Iris",
         voice: "/voice/day9_branch_b_04_irisVr.mp3",
-        text: "Please don't make me compete with him again, {playerName}. I am so tired of cleaning up after boys who don't understand you.",
+        text: "Fine! You want it clean? I'll purge the entire athletic module!",
       },
       {
         speaker: "Protagonist",
-        text: "She says it softly, but it lands like a threat.",
+        text: "Out the window, the entire school gymnasium simply vanishes — replaced by a wall of white void.",
         isInternal: true,
+        sfx: SFX.rushingWind,
+        sfxVolume: 0.6,
+        background: BACKGROUNDS.whiteVoid,
+        sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "She storms out of the classroom, leaving me alone in the broken, glitching room.",
+        isInternal: true,
+        background: BACKGROUNDS.classroomMorningVRBroken,
         choices: [{ text: "Continue...", nextSceneId: "day10_start" }],
       },
     ],
@@ -2530,7 +2739,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "Today everything is wrong.",
         isInternal: true,
-        background: BACKGROUNDS.hallwayLockers,
+        background: BACKGROUNDS.binaryCodeHallway,
         bgm: MUSIC.lastSavedState,
       },
       {
@@ -2751,7 +2960,7 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "Day ten happened. I know it did. But the simulation filed most of it somewhere I can't reach.",
+        text: "Yesterday happened. I know it did. But the simulation filed most of it somewhere I can't reach.",
         isInternal: true,
         background: BACKGROUNDS.bedroomVR,
         bgm: null,
@@ -2771,12 +2980,12 @@ export const scenes: Scene[] = [
         text: "Then a ringtone tears through the silence. Not the cheerful chime this place uses. Something harsher. Realer.",
         isInternal: true,
         sfx: SFX.phoneRingtone,
-        systemGraphic: "terminal:ERR_UNKNOWN_INTRUSION\nAccept?",
       },
       {
         speaker: "Protagonist",
         text: "I flinch so hard I nearly fall off the bed. The sound is coming from the phone on my desk.",
         isInternal: true,
+        systemGraphic: "call:ERR_UNKNOWN_INTRUSION\nAnswer?",
       },
       {
         speaker: "Protagonist",
@@ -2827,7 +3036,7 @@ export const scenes: Scene[] = [
         voice: "/voice/day11_start_15_leo.mp3",
         text: "I can't. The terminal says a forced disconnect could fry your frontal lobe. I called the cops. They're coming. But she's back early.",
         sfx: SFX.muffledBang,
-        sfxVolume: 0.6,
+        sfxVolume: 2,
       },
       {
         speaker: "Protagonist",
@@ -2851,7 +3060,6 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "The phone shrieks, the glass spiders with black pixels, and the call drops dead in my hand.",
         isInternal: true,
-        bgm: null,
         sfx: SFX.dialupScreech,
         sfxVolume: 0.6,
       },
@@ -2884,7 +3092,12 @@ export const scenes: Scene[] = [
           {
             text: '"Leo is in your basement. It\'s over, Iris."',
             nextSceneId: "day11_branch_b",
-            stateEffects: { lucidity: -20, addiction: 20, irisAffection: -10 },
+            stateEffects: {
+              lucidity: -20,
+              addiction: 20,
+              irisAffection: -10,
+              exposedLeo: 1,
+            },
           },
         ],
       },
@@ -2915,10 +3128,11 @@ export const scenes: Scene[] = [
         speaker: "Iris",
         voice: "/voice/day11_branch_a_04_irisVr.mp3",
         text: "Oh, you dropped your phone. Clumsy. Don't worry, I'll delete that item and spawn you a new one. Let's go to the student council room, okay? I have a surprise for you.",
+        sprites: [{ character: "Iris", expression: "82", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "She knows I'm lying. She just doesn't want to admit the simulation is fraying. I nod because playing along is the only time I've bought all week.",
+        text: "She knows I'm lying. She just doesn't want to admit the simulation is fraying. I nod because buying time is the only move I have left.",
         isInternal: true,
         choices: [{ text: "Continue...", nextSceneId: "day12_start" }],
       },
@@ -2934,12 +3148,12 @@ export const scenes: Scene[] = [
         text: "Leo is in your basement. The police are on their way. It's over, Iris.",
         background: BACKGROUNDS.bedroomVR,
         bgm: null,
-        sprites: [{ character: "Iris", expression: "83", position: "center" }],
       },
       {
         speaker: "Iris",
         voice: "/voice/day11_branch_b_02_irisVr.mp3",
         text: "HOW DARE HE TOUCH MY THINGS!",
+        sprites: [{ character: "Iris", expression: "83", position: "center" }],
         bgm: MUSIC.lastSavedState,
       },
       {
@@ -2985,6 +3199,12 @@ export const scenes: Scene[] = [
         isInternal: true,
         background: BACKGROUNDS.studentCouncil,
         bgm: MUSIC.lastSavedState,
+        textVariants: [
+          {
+            requires: { exposedLeo: 1 },
+            text: "I woke up here. The student council room. She must have moved me while the sedative worked through my system. The light is a heavy gold sunset that doesn't move.",
+          },
+        ],
       },
       {
         speaker: "Protagonist",
@@ -2996,6 +3216,12 @@ export const scenes: Scene[] = [
         text: "My heart is still racing from Leo's call. I need a terminal, a command prompt, anything. Instead I find Iris's phone sitting in the middle of the desk, unlocked and glowing.",
         isInternal: true,
         systemGraphic: "phone:Iris's Phone\nUnlocked",
+        textVariants: [
+          {
+            requires: { exposedLeo: 1 },
+            text: "My throat is still raw from saying his name out loud. I need a terminal, a command prompt, anything. Instead I find Iris's phone sitting in the middle of the desk, unlocked and glowing.",
+          },
+        ],
       },
       {
         speaker: "Protagonist",
@@ -3190,6 +3416,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "Walls, desks, sky, all of it unravel into green-black streams. The simulation is breaking apart around us.",
         isInternal: true,
+        background: BACKGROUNDS.studentCouncilGlitch,
       },
       {
         speaker: "Iris",
@@ -3233,7 +3460,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "This is it. Either I break the system now, or I disappear inside it forever.",
+        text: "",
         isInternal: true,
         choices: [
           {
@@ -3313,7 +3540,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Protagonist",
         text: "No! I'm not letting you do this!",
-        background: BACKGROUNDS.binaryCode,
+        background: BACKGROUNDS.studentCouncilGlitch,
         bgm: MUSIC.pistonPressure,
         sprites: [{ character: "Iris", expression: "97", position: "center" }],
       },
@@ -3332,17 +3559,18 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "The conflict between my lucidity and her control throws the whole place into a violent red logic loop. I scream the only command that still feels mine: wake up.",
+        text: "The conflict between my autonomy and her control throws the whole place into a violent red logic loop. I scream the only command that still feels mine: wake up.",
         isInternal: true,
-        background: BACKGROUNDS.totalBlack,
         sprites: [],
         bgm: null,
+        background: BACKGROUNDS.studentCouncilRed,
       },
       {
         speaker: "Protagonist",
         text: "I gasp in real darkness. Mold. Copper. Old carpet. The VR rig is dead over my eyes, but the leather straps around my wrists are very real.",
         isInternal: true,
         vrMode: false,
+        background: BACKGROUNDS.fadeToBlack,
       },
       {
         speaker: "Protagonist",
@@ -3355,6 +3583,7 @@ export const scenes: Scene[] = [
         voice: "/voice/ending_breakout_07_irisVr.mp3",
         text: "You broke my world, honey... I spent so long coding it for you.",
         sprites: [{ character: "Iris", expression: "96", position: "center" }],
+        background: BACKGROUNDS.basement,
       },
       {
         speaker: "Protagonist",

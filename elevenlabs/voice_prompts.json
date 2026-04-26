@@ -70,6 +70,16 @@
     "sampleLine": "The weather is nice today, isn't it?"
   },
   {
+    "character": "teacher",
+    "displayName": "Teacher NPC",
+    "creationStrategy": "design-voice",
+    "voiceDesignPrompt": "Native English, neutral American. Female, 35-50. Very good quality. Persona: generic school teacher NPC. Emotion: flat, routine, authoritative. Plain formal mid-range baritone with measured pacing, professional articulation, and zero personality. Sounds like every interchangeable school teacher — pleasant but hollow, as if reading from a pre-loaded script with no real investment in what she is saying.",
+    "previewText": "Good morning, class. Let us begin roll call. Akira... Present. Chloe... Present. Maya... Maya...",
+    "performanceNotes": "This is an NPC running inside a VR simulation. For normal lines, keep the performance genuinely flat and unremarkable — no warmth, no quirk. The freeze lines require special treatment: 'Maya... Maya...' should trail off with an unnatural, mechanical hesitation as if a process is hanging. The 'Ma-Ma-Ma-Ma-Maya' line should repeat each syllable group at exactly the same pitch, cadence, and volume — like a corrupted audio loop rather than a human stutter.",
+    "avoid": "Avoid warm teacher personality, comedic dad-voice, any impression of a real human investing in their students, or any variation in the glitch line that resembles natural human disfluency.",
+    "sampleLine": "Good morning, class. Let us begin roll call."
+  },
+  {
     "character": "mayaChloe",
     "displayName": "Maya and Chloe Together",
     "creationStrategy": "multi-voice-dialogue-preferred",

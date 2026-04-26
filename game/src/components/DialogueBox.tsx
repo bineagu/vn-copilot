@@ -35,6 +35,7 @@ interface DialogueBoxProps {
   playerName: string;
   systemGraphic?: string;
   isEnding?: boolean;
+  debugMode?: boolean;
   onAdvance: () => void;
   onChoice: (choice: Choice) => void;
   onComplete?: () => void;
@@ -54,6 +55,7 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
       playerName,
       systemGraphic,
       isEnding,
+      debugMode,
       onAdvance,
       onChoice,
       onComplete,
@@ -398,6 +400,9 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
                 choice.requirements,
               );
               const isSelected = selectedChoiceIndex === i;
+
+              // Hide locked choices unless debug mode is active
+              if (!unlocked && !debugMode) return null;
 
               return (
                 <button

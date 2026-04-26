@@ -4,6 +4,7 @@ import { SaveLoadModal } from "./SaveLoadModal";
 import { useGamepadControls } from "../useGamepadControls";
 import { ControllerHints } from "./ControllerHints";
 import { MainMenuNameEntry } from "./MainMenuNameEntry";
+import { isTauriRuntime } from "../platform/runtime";
 
 interface MainMenuProps {
   onStart: () => void;
@@ -15,6 +16,12 @@ export function MainMenu({ onStart }: MainMenuProps) {
   const [showLoadSlots, setShowLoadSlots] = useState(false);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   const hasSave = hasAnySave();
+  const isTauri = isTauriRuntime();
+
+  const handleExit = async () => {
+    const { invoke } = await import("@tauri-apps/api/core");
+    await invoke("plugin:process|exit", { code: 0 });
+  };
   const latestSaveSlot = useMemo(() => {
     const slots = getAllSlots();
     let latestIndex: number | null = null;
@@ -93,29 +100,34 @@ export function MainMenu({ onStart }: MainMenuProps) {
 
   return (
     <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <div
-          className="absolute inset-0 bg-cover bg-center animate-bg-pan"
-          style={{
-            backgroundImage: `url("/backgrounds/5. The Dark Street.png")`,
-            filter: "grayscale(80%) contrast(1.2)",
-          }}
-        />
-      </div>
-
-      {/* Glitch overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/5 to-black/80" />
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url("/backgrounds/main_menu.jpeg")` }}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
 
       {/* Title */}
       <div className="relative z-10 text-center mb-12 animate-fade-in">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 tracking-tight leading-tight">
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 tracking-tight leading-tight"
+          style={{
+            textShadow:
+              "0 0 30px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.7), 2px 2px 0 rgba(220,38,38,0.4), -2px -1px 0 rgba(236,72,153,0.3), 4px 0 8px rgba(220,38,38,0.2)",
+          }}
+        >
           <span className="text-red-400">System</span>
           <span className="text-gray-500">.Override(</span>
           <span className="text-pink-400">Love</span>
           <span className="text-gray-500">)</span>
         </h1>
-        <p className="mt-3 text-sm sm:text-base text-gray-500 tracking-widest uppercase">
+        <p
+          className="mt-3 text-sm sm:text-base text-gray-400 tracking-widest uppercase"
+          style={{
+            textShadow: "0 0 20px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,0.9)",
+          }}
+        >
           A Psychological Horror Visual Novel
         </p>
       </div>
@@ -141,6 +153,14 @@ export function MainMenu({ onStart }: MainMenuProps) {
               {action.label}
             </button>
           ))}
+          {isTauri && (
+            <button
+              onClick={handleExit}
+              className="py-4 text-lg font-medium text-gray-400 hover:text-gray-200 bg-gray-900/40 hover:bg-gray-800/60 border border-gray-700/30 rounded transition-all active:scale-95"
+            >
+              Exit
+            </button>
+          )}
         </div>
       )}
 

@@ -428,6 +428,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         playerName={state.playerName}
         systemGraphic={line.systemGraphic}
         isEnding={isEndOfGame}
+        debugMode={debugMode}
         onAdvance={handleAdvance}
         onChoice={handleChoice}
         onComplete={handleLineComplete}

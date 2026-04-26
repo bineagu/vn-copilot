@@ -34,6 +34,7 @@ export interface DialogueLine {
 export interface Scene {
   id: string;
   vrMode?: boolean;
+  nextSceneId?: string;
   lines: DialogueLine[];
 }
 
