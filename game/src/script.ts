@@ -1446,7 +1446,7 @@ export const scenes: Scene[] = [
         text: "I don't mean to sleep.\nBut I do.",
         isInternal: true,
         background: BACKGROUNDS.fadeToBlack,
-        choices: [{ text: "...", nextSceneId: "day5_start" }],
+        choices: [{ text: "Continue...", nextSceneId: "day5_start" }],
       },
     ],
   },
@@ -1477,7 +1477,7 @@ export const scenes: Scene[] = [
         text: "I don't mean to sleep.\nBut I do.",
         isInternal: true,
         background: BACKGROUNDS.fadeToBlack,
-        choices: [{ text: "...", nextSceneId: "day5_start" }],
+        choices: [{ text: "Continue...", nextSceneId: "day5_start" }],
       },
     ],
   },
@@ -1901,7 +1901,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         voice: "/voice/day6_branch_b_09_irisVr.mp3",
-        sprites: [{ character: "Iris", expression: "49", position: "center" }],
+        sprites: [{ character: "Iris", expression: "46", position: "center" }],
         text: "Of course! Anything for you. Let's just have a good day, okay?",
       },
       {
@@ -1994,6 +1994,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She turns her back to me, sweeping her hair over her shoulder.\nI pour a drop of the sunscreen into my palm. It smells like coconut, but underneath that, there's a sharp, ozone smell. Like an overheating computer tower.",
         isInternal: true,
+        sprites: [{ character: "Iris", expression: "56", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2025,7 +2026,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         background: BACKGROUNDS.whiteBlinding,
         bgm: MUSIC.infiniteSummer,
-        sprites: [{ character: "Iris", expression: "52", position: "center" }],
+        sprites: [{ character: "Iris", expression: "56", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2067,7 +2068,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         background: BACKGROUNDS.whiteBlinding,
         bgm: MUSIC.infiniteSummer,
-        sprites: [{ character: "Iris", expression: "55", position: "center" }],
+        sprites: [{ character: "Iris", expression: "56", position: "center" }],
       },
       {
         speaker: "Iris",
@@ -2088,7 +2089,7 @@ export const scenes: Scene[] = [
         speaker: "Iris",
         voice: "/voice/day7_branch_b_05_irisVr.mp3",
         text: "I'm so glad we're together, {playerName}. I promise... every day will be exactly like this. Forever.",
-        sprites: [{ character: "Iris", expression: "56", position: "center" }],
+        sprites: [{ character: "Iris", expression: "55", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2209,7 +2210,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         voice: "/voice/day8_start_19_irisVr.mp3",
-        text: "She's a distraction, {playerName}. She keeps getting between us.",
+        text: "She's a distraction, {playerName}. She's ruining it.",
         sprites: [
           { character: "Maya", expression: "59", position: "left" },
           { character: "Iris", expression: "61", position: "right" },
@@ -2391,7 +2392,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "The shelves to my left suddenly shimmer. Book spines smear into horizontal lines for half a second before snapping back.",
+        text: "The shelves suddenly shimmer. Book spines smear into horizontal lines for half a second before snapping back.",
         isInternal: true,
         background: BACKGROUNDS.glitchingLibrary,
         sfx: SFX.schoolBellGlitch,
@@ -2473,10 +2474,11 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She kisses my forehead. The library lights stop flickering. The shelves straighten. For one nauseating second, relief nearly wins.",
         isInternal: true,
+        background: BACKGROUNDS.library,
       },
       {
         speaker: "Protagonist",
-        text: "But Leo's voice is still trapped behind my eyes: Don't let her decide what was real.",
+        text: "But Leo's voice is still trapped behind my eyes: Don't let her decide what is real.",
         isInternal: true,
         choices: [{ text: "Continue...", nextSceneId: "day10_start" }],
       },
@@ -2489,7 +2491,7 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "Leo called me. He remembers the field. He remembers what you did.",
+        text: "Leo called me. He remembers the field incident. He remembers what you did.",
         background: BACKGROUNDS.glitchingLibrary,
         bgm: MUSIC.obsession,
         sprites: [{ character: "Iris", expression: "68", position: "center" }],
@@ -2526,20 +2528,20 @@ export const scenes: Scene[] = [
     lines: [
       {
         speaker: "Protagonist",
-        text: "The simulation is dying.",
+        text: "Today everything is wrong.",
         isInternal: true,
-        background: BACKGROUNDS.glitchingLibrary,
+        background: BACKGROUNDS.hallwayLockers,
         bgm: MUSIC.lastSavedState,
-        sfx: SFX.airConditioner,
       },
       {
         speaker: "Protagonist",
-        text: "Since Iris threw her tantrum yesterday, the world has been falling apart. Doors open onto blank walls. Students walk into corners and keep walking. Entire chunks of the hallway jitter like damaged video.",
+        text: "The world seems to be falling apart. Doors open onto blank walls. Students walk into corners and keep walking. Entire chunks of the hallway jitter like damaged video.",
         isInternal: true,
       },
       {
         speaker: "Protagonist",
         text: "I hide in the library because it used to feel safe. Quiet. Stable. Now even the bookshelves look sick. But I'm not alone.",
+        background: BACKGROUNDS.glitchingLibrary,
         isInternal: true,
         sfx: SFX.libraryPages,
       },
@@ -2844,14 +2846,14 @@ export const scenes: Scene[] = [
         speaker: "Leo",
         voice: "/voice/day11_start_19_leo.mp3",
         text: "It's a synchronization trigger. When the sky turns red in there, she's pushing a sedative in here to drag you deeper under. If she triggers it manually, you might not wake up before—",
-        sfx: SFX.dialupScreech,
-        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
         text: "The phone shrieks, the glass spiders with black pixels, and the call drops dead in my hand.",
         isInternal: true,
         bgm: null,
+        sfx: SFX.dialupScreech,
+        sfxVolume: 0.6,
       },
       {
         speaker: "Protagonist",
