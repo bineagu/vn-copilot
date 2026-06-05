@@ -7,6 +7,7 @@ import {
   forwardRef,
 } from "react";
 import type { Choice } from "../types";
+import { isNativeMobileRuntime } from "../platform/runtime";
 
 function meetsRequirements(
   variables: Record<string, number>,
@@ -36,6 +37,7 @@ interface DialogueBoxProps {
   systemGraphic?: string;
   isEnding?: boolean;
   debugMode?: boolean;
+  instantComplete?: boolean;
   onAdvance: () => void;
   onChoice: (choice: Choice) => void;
   onComplete?: () => void;
@@ -56,6 +58,7 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
       systemGraphic,
       isEnding,
       debugMode,
+      instantComplete,
       onAdvance,
       onChoice,
       onComplete,
@@ -75,6 +78,17 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
     useEffect(() => {
       setDisplayedText("");
       setIsComplete(false);
+
+      if (instantComplete) {
+        setDisplayedText(processedText);
+        setIsComplete(true);
+        onCompleteRef.current?.();
+        return () => {
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        };
+      }
+
       let index = 0;
       intervalRef.current = setInterval(() => {
         if (index < processedText.length) {
@@ -91,7 +105,7 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
         if (intervalRef.current) clearInterval(intervalRef.current);
         intervalRef.current = null;
       };
-    }, [processedText, textSpeed]);
+    }, [instantComplete, processedText, textSpeed]);
 
     const handleTap = useCallback(() => {
       if (!isComplete) {
@@ -116,6 +130,19 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
 
     const hasChoices = choices && choices.length > 0 && isComplete;
     const isTitleCard = speaker === "";
+    const isNativeMobile = isNativeMobileRuntime();
+    const boxPaddingClass = isNativeMobile
+      ? "p-3 pb-4 sm:p-4 sm:pb-6"
+      : "p-4 pb-6 sm:p-5 sm:pb-8";
+    const speakerTextClass = isNativeMobile
+      ? "text-xs sm:text-sm"
+      : "text-sm sm:text-base";
+    const dialogueTextClass = isNativeMobile
+      ? "text-sm sm:text-base md:text-lg leading-snug min-h-[3rem]"
+      : "text-lg sm:text-xl md:text-2xl leading-relaxed min-h-[5rem]";
+    const titleCardClass = isNativeMobile
+      ? "text-center text-lg sm:text-xl font-bold py-3"
+      : "text-center text-2xl sm:text-3xl font-bold py-4";
 
     // Theme classes
     const boxBg = isVRMode
@@ -443,14 +470,14 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
 
         {/* Dialogue Box */}
         <div
-          className={`w-full max-w-4xl p-4 pb-6 sm:p-5 sm:pb-8 cursor-pointer rounded-xl ${boxBg}`}
+          className={`w-full max-w-[62rem] ${boxPaddingClass} cursor-pointer rounded-xl ${boxBg}`}
           onClick={handleTap}
         >
           {/* Speaker name badge */}
           {speaker && !isTitleCard && (
             <div className="mb-2 -mt-8 sm:-mt-9">
               <span
-                className={`text-sm sm:text-base font-semibold ${speakerBg}`}
+                className={`${speakerTextClass} font-semibold ${speakerBg}`}
               >
                 {speaker === "Protagonist"
                   ? isInternal
@@ -463,10 +490,8 @@ export const DialogueBox = forwardRef<DialogueBoxHandle, DialogueBoxProps>(
 
           {/* Text */}
           <div
-            className={`text-lg sm:text-xl md:text-2xl leading-relaxed min-h-[5rem] whitespace-pre-line ${textColor} ${
-              isTitleCard
-                ? "text-center text-2xl sm:text-3xl font-bold py-4"
-                : ""
+            className={`${dialogueTextClass} whitespace-pre-line ${textColor} ${
+              isTitleCard ? titleCardClass : ""
             }`}
           >
             {displayedText}

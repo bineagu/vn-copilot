@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGamepadConnected, useGamepadControls } from "../useGamepadControls";
+import { isNativeMobileRuntime } from "../platform/runtime";
 
 interface MainMenuNameEntryProps {
   initialName: string;
@@ -22,6 +23,7 @@ export function MainMenuNameEntry({
   onSubmit,
   onCancel,
 }: MainMenuNameEntryProps) {
+  const isNativeMobile = isNativeMobileRuntime();
   const [nameValue, setNameValue] = useState(
     initialName === "Player" ? "" : initialName,
   );
@@ -127,7 +129,11 @@ export function MainMenuNameEntry({
   });
 
   return (
-    <div className="relative z-10 mb-8 w-[85%] max-w-sm animate-slide-up">
+    <div
+      className={`relative z-10 w-[85%] max-w-sm animate-slide-up ${
+        isNativeMobile ? "mb-4" : "mb-8"
+      }`}
+    >
       <label className="block text-gray-400 text-sm mb-2 text-center">
         Enter your name
       </label>
@@ -140,7 +146,9 @@ export function MainMenuNameEntry({
         }}
         onKeyDown={(e) => e.key === "Enter" && handleStartGame()}
         maxLength={MAX_NAME_LENGTH}
-        className={`w-full bg-gray-900/80 border text-gray-100 text-center text-lg py-3 px-4 rounded focus:outline-none transition-colors ${
+        className={`w-full bg-gray-900/80 border text-gray-100 text-center rounded focus:outline-none transition-colors ${
+          isNativeMobile ? "text-base py-2.5 px-3" : "text-lg py-3 px-4"
+        } ${
           showNameError
             ? "border-red-500/70 focus:border-red-400"
             : "border-gray-600 focus:border-red-400/60"
@@ -160,7 +168,9 @@ export function MainMenuNameEntry({
       <button
         onClick={handleStartGame}
         disabled={!isNameValid}
-        className={`w-full mt-3 py-3 text-gray-100 border rounded transition-all text-base font-medium ring-2 ring-red-400/60 ${
+        className={`w-full mt-3 text-gray-100 border rounded transition-all font-medium ring-2 ring-red-400/60 ${
+          isNativeMobile ? "py-2.5 text-sm" : "py-3 text-base"
+        } ${
           isNameValid
             ? "bg-red-900/60 hover:bg-red-800/70 border-red-700/40 active:scale-95"
             : "bg-gray-800/70 border-gray-700/40 opacity-60 cursor-not-allowed"
@@ -170,7 +180,11 @@ export function MainMenuNameEntry({
       </button>
 
       {hasGamepad && (
-        <div className="mt-4 rounded-xl border border-gray-700/60 bg-black/45 p-3 backdrop-blur-sm">
+        <div
+          className={`rounded-xl border border-gray-700/60 bg-black/45 backdrop-blur-sm ${
+            isNativeMobile ? "mt-3 p-2.5" : "mt-4 p-3"
+          }`}
+        >
           <p className="mb-3 text-center text-xs uppercase tracking-[0.25em] text-gray-500">
             Controller Keyboard
           </p>
@@ -178,7 +192,7 @@ export function MainMenuNameEntry({
             {NAME_KEYBOARD_ROWS.map((row, rowIndex) => (
               <div
                 key={row.join("-")}
-                className="grid gap-2"
+                className={`grid ${isNativeMobile ? "gap-1.5" : "gap-2"}`}
                 style={{
                   gridTemplateColumns: `repeat(${row.length}, minmax(0, 1fr))`,
                 }}
@@ -200,7 +214,9 @@ export function MainMenuNameEntry({
                       type="button"
                       onClick={() => handleKeyboardAction(key)}
                       disabled={isDisabled}
-                      className={`min-h-11 rounded border text-sm font-medium transition-all ${
+                      className={`rounded font-medium transition-all ${
+                        isNativeMobile ? "min-h-10 text-xs" : "min-h-11 text-sm"
+                      } ${
                         isActionKey
                           ? "bg-red-950/40 border-red-800/40 text-red-100"
                           : "bg-gray-900/70 border-gray-700/50 text-gray-100"

@@ -4,6 +4,7 @@ import { playManagedMedia, primeAudioPlayback } from "../platform/audio";
 
 let currentAudio: HTMLAudioElement | null = null;
 let currentSrc: string | null = null;
+let bgmWasPlayingBeforePause = false;
 
 export function AudioManager() {
   const { state } = useGame();
@@ -49,6 +50,20 @@ export function setBGMVolume(volume: number) {
   if (currentAudio) {
     currentAudio.volume = volume;
   }
+}
+
+export function pauseBGM() {
+  if (currentAudio && !currentAudio.paused) {
+    bgmWasPlayingBeforePause = true;
+    currentAudio.pause();
+  }
+}
+
+export function resumeBGM() {
+  if (currentAudio && bgmWasPlayingBeforePause) {
+    playManagedMedia(currentAudio);
+  }
+  bgmWasPlayingBeforePause = false;
 }
 
 export function playSFX(src: string, volume: number = 1) {

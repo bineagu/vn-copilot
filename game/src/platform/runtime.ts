@@ -25,7 +25,15 @@ export function getTauriPlatform(): string | undefined {
 
 export function isNativeMobileRuntime(): boolean {
   const platform = getTauriPlatform();
-  return platform === "android" || platform === "ios";
+  if (platform === "android" || platform === "ios") {
+    return true;
+  }
+
+  if (!isTauriRuntime() || typeof navigator === "undefined") {
+    return false;
+  }
+
+  return /android|iphone|ipad|ipod/i.test(navigator.userAgent);
 }
 
 export function canUseDomStorage(): boolean {

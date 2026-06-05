@@ -4,7 +4,8 @@ import { SaveLoadModal } from "./SaveLoadModal";
 import { useGamepadControls } from "../useGamepadControls";
 import { ControllerHints } from "./ControllerHints";
 import { MainMenuNameEntry } from "./MainMenuNameEntry";
-import { isTauriRuntime } from "../platform/runtime";
+import { isNativeMobileRuntime, isTauriRuntime } from "../platform/runtime";
+import { exit } from "@tauri-apps/plugin-process";
 
 interface MainMenuProps {
   onStart: () => void;
@@ -17,10 +18,10 @@ export function MainMenu({ onStart }: MainMenuProps) {
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   const hasSave = hasAnySave();
   const isTauri = isTauriRuntime();
+  const isNativeMobile = isNativeMobileRuntime();
 
   const handleExit = async () => {
-    const { invoke } = await import("@tauri-apps/api/core");
-    await invoke("plugin:process|exit", { code: 0 });
+    await exit(0);
   };
   const latestSaveSlot = useMemo(() => {
     const slots = getAllSlots();
@@ -109,9 +110,17 @@ export function MainMenu({ onStart }: MainMenuProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
 
       {/* Title */}
-      <div className="relative z-10 text-center mb-12 animate-fade-in">
+      <div
+        className={`relative z-10 text-center animate-fade-in ${
+          isNativeMobile ? "mb-6" : "mb-12"
+        }`}
+      >
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 tracking-tight leading-tight"
+          className={`font-bold text-gray-100 tracking-tight leading-tight ${
+            isNativeMobile
+              ? "text-3xl sm:text-4xl"
+              : "text-4xl sm:text-5xl md:text-6xl"
+          }`}
           style={{
             textShadow:
               "0 0 30px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.7), 2px 2px 0 rgba(220,38,38,0.4), -2px -1px 0 rgba(236,72,153,0.3), 4px 0 8px rgba(220,38,38,0.2)",
@@ -123,7 +132,11 @@ export function MainMenu({ onStart }: MainMenuProps) {
           <span className="text-gray-500">)</span>
         </h1>
         <p
-          className="mt-3 text-sm sm:text-base text-gray-400 tracking-widest uppercase"
+          className={`text-gray-400 tracking-widest uppercase ${
+            isNativeMobile
+              ? "mt-2 text-[11px] sm:text-xs"
+              : "mt-3 text-sm sm:text-base"
+          }`}
           style={{
             textShadow: "0 0 20px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,0.9)",
           }}
@@ -143,20 +156,31 @@ export function MainMenu({ onStart }: MainMenuProps) {
 
       {/* Menu buttons */}
       {!showNameInput && (
-        <div className="relative z-10 flex flex-col gap-4 w-[70%] max-w-xs animate-slide-up">
+        <div
+          className={`relative z-10 flex flex-col animate-slide-up ${
+            isNativeMobile
+              ? "gap-3 w-[78%] max-w-[17rem]"
+              : "gap-4 w-[70%] max-w-xs"
+          }`}
+        >
           {menuActions.map((action, index) => (
             <button
               key={action.label}
               onClick={action.onSelect}
-              className={`py-4 text-lg font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${clampedSelectedMenuIndex === index ? "ring-2 ring-red-400/60" : ""}`}
+              className={`text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${
+                isNativeMobile ? "py-3 text-base" : "py-4 text-lg"
+              } ${clampedSelectedMenuIndex === index ? "ring-2 ring-red-400/60" : ""}`}
             >
               {action.label}
             </button>
           ))}
           {isTauri && (
             <button
+              key={"exit-btn"}
               onClick={handleExit}
-              className="py-4 text-lg font-medium text-gray-400 hover:text-gray-200 bg-gray-900/40 hover:bg-gray-800/60 border border-gray-700/30 rounded transition-all active:scale-95"
+              className={`font-medium text-gray-200 bg-gray-900/60 hover:bg-gray-800/70 border border-gray-600/40 rounded transition-all active:scale-95 ${
+                isNativeMobile ? "py-3 text-base" : "py-4 text-lg"
+              }`}
             >
               Exit
             </button>
@@ -165,7 +189,11 @@ export function MainMenu({ onStart }: MainMenuProps) {
       )}
 
       {/* Footer */}
-      <div className="absolute bottom-6 text-xs text-gray-700 z-10">
+      <div
+        className={`absolute text-xs text-gray-700 z-10 ${
+          isNativeMobile ? "bottom-3" : "bottom-6"
+        }`}
+      >
         v0.1 — Day 1
       </div>
 
@@ -186,7 +214,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
               : [{ button: "A", action: "New Game" }]
         }
         isVRMode={false}
-        className="absolute right-4 bottom-14"
+        className={`absolute right-4 ${isNativeMobile ? "bottom-9" : "bottom-14"}`}
       />
 
       {showLoadSlots && (

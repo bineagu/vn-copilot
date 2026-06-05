@@ -44,7 +44,12 @@ Prerequisites for desktop builds:
 npm run tauri:android:init
 npm run tauri:android:dev
 npm run tauri:android:build
+npm run tauri:android:build:debug
 ```
+
+`tauri:android:build` now targets `arm64` only, which is the right default for physical Android phones and avoids generating a 4-ABI universal APK. Use `npm run tauri:android:build:universal` only if you explicitly need one APK for multiple ABIs.
+
+`tauri:android:build` produces an unsigned release APK/AAB, so it is not directly installable until you sign it. For local device testing, use `npm run tauri:android:build:debug`, which produces a debug APK signed with the debug keystore.
 
 Prerequisites for Android builds:
 

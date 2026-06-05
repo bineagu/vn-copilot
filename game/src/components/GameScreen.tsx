@@ -9,6 +9,8 @@ import { SettingsMenu } from "./SettingsMenu";
 import {
   AudioManager,
   playBGM,
+  pauseBGM,
+  resumeBGM,
   stopBGM,
   playSFX,
   playVoice,
@@ -42,8 +44,10 @@ function resolveFromHistory(
 }
 
 export function GameScreen({ onMainMenu }: GameScreenProps) {
-  const { state, dispatch } = useGame();
+  const { state, dispatch, saveToSlot } = useGame();
   const [showSettings, setShowSettings] = useState(false);
+  const [showExitPrompt, setShowExitPrompt] = useState(false);
+  const [skipMode, setSkipMode] = useState(false);
   const [choiceSelection, setChoiceSelection] = useState({
     key: "",
     index: 0,
@@ -64,10 +68,6 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     })(),
   );
 
-  // ── Autoplay (persisted) ───────────────────────────────────────────────────
-  const [autoplay, setAutoplay] = useState(
-    () => appStorage.getItem("sol_autoplay") === "true",
-  );
   const autoplayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // ── Navigation history (in-memory, for back button) ───────────────────────
@@ -82,6 +82,8 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
 
   const scene = getSceneById(state.currentSceneId);
   const line = scene?.lines[state.dialogueIndex];
+  const currentLineKey = `${state.currentSceneId}:${state.dialogueIndex}`;
+  const hasReadCurrentLine = visitedRef.current.has(currentLineKey);
   const effectiveText =
     line?.textVariants?.find((v) =>
       Object.entries(v.requires).every(
@@ -91,14 +93,16 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     line?.text ??
     "";
   const hasChoices = !!(line?.choices && line.choices.length > 0);
-  const choiceSelectionKey = `${state.currentSceneId}:${state.dialogueIndex}`;
+  const choiceSelectionKey = currentLineKey;
   const selectedChoiceIndex =
     choiceSelection.key === choiceSelectionKey ? choiceSelection.index : 0;
+  const shouldSkipReadLine = skipMode && hasReadCurrentLine && !hasChoices;
 
   const isEndOfGame =
     scene !== undefined &&
     state.dialogueIndex === scene.lines.length - 1 &&
-    !hasChoices;
+    !hasChoices &&
+    !scene.nextSceneId;
 
   const gamepadHints = hasChoices
     ? [
@@ -111,20 +115,40 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         { button: "Start", action: "Settings" },
       ];
 
-  // Track visited and whether this is a first-time visit
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
-  useEffect(() => {
-    const key = `${state.currentSceneId}:${state.dialogueIndex}`;
-    const alreadySeen = visitedRef.current.has(key);
-    setIsFirstVisit(!alreadySeen);
-    visitedRef.current.add(key);
-    appStorage.setItem(VISITED_KEY, JSON.stringify([...visitedRef.current]));
-    // Cancel any pending autoplay timer when line changes
+  const clearAdvanceTimer = useCallback(() => {
     if (autoplayTimerRef.current) {
       clearTimeout(autoplayTimerRef.current);
       autoplayTimerRef.current = null;
     }
-  }, [state.currentSceneId, state.dialogueIndex]);
+  }, []);
+
+  // Track visited lines
+  useEffect(() => {
+    visitedRef.current.add(currentLineKey);
+    appStorage.setItem(VISITED_KEY, JSON.stringify([...visitedRef.current]));
+
+    return () => {
+      clearAdvanceTimer();
+    };
+  }, [clearAdvanceTimer, currentLineKey]);
+
+  useEffect(() => {
+    if (!skipMode) {
+      return;
+    }
+
+    if (!hasReadCurrentLine || hasChoices || showSettings || showExitPrompt) {
+      setSkipMode(false);
+      clearAdvanceTimer();
+    }
+  }, [
+    clearAdvanceTimer,
+    hasChoices,
+    hasReadCurrentLine,
+    showExitPrompt,
+    showSettings,
+    skipMode,
+  ]);
 
   const {
     bg: currentBg,
@@ -159,19 +183,27 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
   // Handle SFX on line change
   useEffect(() => {
     if (line?.sfx) {
-      playSFX(line.sfx, (line.sfxVolume ?? 1) * state.sfxVolume * master);
+      playSFX(
+        line.sfx,
+        Math.min((line.sfxVolume ?? 1) * state.sfxVolume * master, 1),
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- we only want to trigger on line change, not on volume changes
   }, [line]);
 
   // Handle voice lines on line change
   useEffect(() => {
+    if (shouldSkipReadLine) {
+      stopVoice();
+      return;
+    }
+
     if (line?.voice) {
       playVoice(line.voice, state.voiceVolume * master);
     } else {
       stopVoice();
     }
-  }, [line, state.voiceVolume, master]);
+  }, [line, master, shouldSkipReadLine, state.voiceVolume]);
 
   const handleAdvance = useCallback(() => {
     if (isEndOfGame) {
@@ -223,6 +255,19 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     [dispatch, state.currentSceneId, state.dialogueIndex],
   );
 
+  const handleExitToMainMenu = useCallback(() => {
+    stopBGM();
+    stopVoice();
+    setShowExitPrompt(false);
+    setShowSettings(false);
+    onMainMenu();
+  }, [onMainMenu]);
+
+  const handleSaveAndExit = useCallback(() => {
+    saveToSlot(0);
+    handleExitToMainMenu();
+  }, [handleExitToMainMenu, saveToSlot]);
+
   const moveChoiceSelection = useCallback(
     (delta: number) => {
       if (!line?.choices?.length || !dialogueRef.current?.isComplete()) return;
@@ -239,21 +284,50 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     [choiceSelectionKey, line?.choices],
   );
 
-  // Autoplay: fires when DialogueBox typewriter completes
+  // Skip mode: advances immediately after read lines render complete
   const handleLineComplete = useCallback(() => {
-    if (!autoplay || isFirstVisit || hasChoices || isEndOfGame || showSettings)
+    if (
+      !skipMode ||
+      !hasReadCurrentLine ||
+      hasChoices ||
+      isEndOfGame ||
+      showSettings ||
+      showExitPrompt
+    )
       return;
-    autoplayTimerRef.current = setTimeout(() => {
-      handleAdvance();
-    }, 400);
+
+    autoplayTimerRef.current = setTimeout(
+      () => {
+        handleAdvance();
+      },
+      skipMode ? 45 : 120,
+    );
   }, [
-    autoplay,
-    isFirstVisit,
-    hasChoices,
-    isEndOfGame,
-    showSettings,
     handleAdvance,
+    hasChoices,
+    hasReadCurrentLine,
+    isEndOfGame,
+    showExitPrompt,
+    showSettings,
+    skipMode,
   ]);
+
+  const stopSkipMode = useCallback(() => {
+    setSkipMode(false);
+    clearAdvanceTimer();
+  }, [clearAdvanceTimer]);
+
+  const toggleSkipMode = useCallback(() => {
+    setSkipMode((prev) => {
+      if (prev) {
+        clearAdvanceTimer();
+        return false;
+      }
+
+      clearAdvanceTimer();
+      return true;
+    });
+  }, [clearAdvanceTimer]);
 
   // Keyboard support
   useEffect(() => {
@@ -261,12 +335,22 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       // Esc toggles settings
       if (e.key === "Escape") {
         e.preventDefault();
+        stopSkipMode();
         setShowSettings((prev) => !prev);
         return;
       }
       if (showSettings) return;
+      if (e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        toggleSkipMode();
+        return;
+      }
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
+        if (skipMode) {
+          stopSkipMode();
+          return;
+        }
         dialogueRef.current?.tap();
       }
       // Backtick 5× → toggle debug mode
@@ -284,12 +368,50 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [showSettings]);
+  }, [showSettings, skipMode, stopSkipMode, toggleSkipMode]);
+
+  useEffect(() => {
+    const handleRequestExit = () => {
+      stopSkipMode();
+      setShowSettings(false);
+      setShowExitPrompt(true);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        pauseBGM();
+        stopVoice();
+      } else {
+        resumeBGM();
+      }
+    };
+
+    window.addEventListener(
+      "sol:request-exit-to-menu",
+      handleRequestExit as EventListener,
+    );
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener(
+        "sol:request-exit-to-menu",
+        handleRequestExit as EventListener,
+      );
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [stopSkipMode]);
 
   useGamepadControls({
     enabled: !showSettings,
-    onMenu: () => setShowSettings((prev) => !prev),
+    onMenu: () => {
+      stopSkipMode();
+      setShowSettings((prev) => !prev);
+    },
     onBack: () => {
+      if (skipMode) {
+        stopSkipMode();
+        return;
+      }
       if (debugMode && navHistoryRef.current.length > 0) {
         handleBack();
       }
@@ -297,6 +419,10 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
     onUp: () => moveChoiceSelection(-1),
     onDown: () => moveChoiceSelection(1),
     onConfirm: () => {
+      if (skipMode) {
+        stopSkipMode();
+        return;
+      }
       if (hasChoices && dialogueRef.current?.isComplete()) {
         const choice = line.choices?.[selectedChoiceIndex];
         if (choice) handleChoice(choice);
@@ -353,18 +479,22 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         ⚙
       </button>
 
-      {/* Autoplay indicator */}
-      {autoplay && (
-        <div
-          className={`absolute top-3 right-16 z-30 text-[10px] px-2 py-1 rounded font-mono ${
-            activeVrMode
-              ? "bg-pink-900/60 text-pink-300 border border-pink-400/30"
-              : "bg-black/40 text-green-400 border border-green-600/30"
+      <div className="absolute top-3 right-16 z-30 flex gap-2">
+        <button
+          onClick={toggleSkipMode}
+          className={`rounded px-2 py-1 text-[10px] font-mono transition-all active:scale-95 ${
+            skipMode
+              ? activeVrMode
+                ? "bg-cyan-500/25 text-cyan-100 border border-cyan-300/40"
+                : "bg-amber-500/25 text-amber-100 border border-amber-400/50"
+              : activeVrMode
+                ? "bg-black/35 text-pink-200 border border-pink-400/25"
+                : "bg-black/35 text-gray-200 border border-gray-500/35"
           }`}
         >
-          AUTO
-        </div>
-      )}
+          {skipMode ? "STOP" : "SKIP"}
+        </button>
+      </div>
 
       {/* Debug back button (visible in debug mode) */}
       {debugMode && historyDepth > 0 && (
@@ -409,7 +539,12 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       <div
         className="absolute inset-0 z-10"
         onClick={() => {
-          if (!showSettings) dialogueRef.current?.tap();
+          if (showSettings) return;
+          if (skipMode) {
+            stopSkipMode();
+            return;
+          }
+          dialogueRef.current?.tap();
         }}
         style={{ bottom: "30%" }}
       />
@@ -429,6 +564,7 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
         systemGraphic={line.systemGraphic}
         isEnding={isEndOfGame}
         debugMode={debugMode}
+        instantComplete={shouldSkipReadLine}
         onAdvance={handleAdvance}
         onChoice={handleChoice}
         onComplete={handleLineComplete}
@@ -438,17 +574,77 @@ export function GameScreen({ onMainMenu }: GameScreenProps) {
       {showSettings && (
         <SettingsMenu
           isVRMode={activeVrMode}
-          autoplay={autoplay}
-          onAutoplayChange={(v) => {
-            setAutoplay(v);
-            appStorage.setItem("sol_autoplay", String(v));
-          }}
           onClose={() => setShowSettings(false)}
           onMainMenu={() => {
-            stopBGM();
-            onMainMenu();
+            setShowExitPrompt(true);
           }}
         />
+      )}
+
+      {showExitPrompt && (
+        <div className="absolute inset-0 z-[70] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm animate-fade-in">
+          <div
+            className={`w-full max-w-sm rounded-2xl border p-5 shadow-2xl ${
+              activeVrMode
+                ? "border-pink-400/30 bg-gradient-to-b from-purple-900/95 to-pink-900/95"
+                : "border-gray-600/50 bg-gray-900/95"
+            }`}
+          >
+            <h2
+              className={`text-lg font-bold ${
+                activeVrMode ? "text-pink-100" : "text-gray-100"
+              }`}
+            >
+              Return to Main Menu?
+            </h2>
+            <p
+              className={`mt-2 text-sm ${
+                activeVrMode ? "text-pink-200/80" : "text-gray-300"
+              }`}
+            >
+              Save before leaving this run?
+            </p>
+            <p
+              className={`mt-2 text-xs ${
+                activeVrMode ? "text-pink-300/60" : "text-gray-500"
+              }`}
+            >
+              Save uses slot 1 as a quick exit save.
+            </p>
+            <div className="mt-5 flex flex-col gap-3">
+              <button
+                onClick={handleSaveAndExit}
+                className={`rounded-xl px-4 py-3 text-sm font-medium ${
+                  activeVrMode
+                    ? "border border-cyan-300/40 bg-cyan-500/30 text-cyan-50"
+                    : "border border-green-500/40 bg-green-700/40 text-green-50"
+                }`}
+              >
+                Save and Return
+              </button>
+              <button
+                onClick={handleExitToMainMenu}
+                className={`rounded-xl px-4 py-3 text-sm font-medium ${
+                  activeVrMode
+                    ? "border border-pink-300/30 bg-pink-700/30 text-pink-50"
+                    : "border border-gray-500/40 bg-gray-700/50 text-gray-100"
+                }`}
+              >
+                Return Without Saving
+              </button>
+              <button
+                onClick={() => setShowExitPrompt(false)}
+                className={`rounded-xl px-4 py-3 text-sm font-medium ${
+                  activeVrMode
+                    ? "border border-red-300/30 bg-red-800/30 text-red-100"
+                    : "border border-red-500/40 bg-red-900/40 text-red-100"
+                }`}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

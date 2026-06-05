@@ -38,7 +38,7 @@ export const BACKGROUNDS = {
   // Day 12+
   studentCouncil: "/backgrounds/__24._Student_Council_202604110145.png",
   studentCouncilGlitch: "/backgrounds/__24_1 glitched student council.png",
-  binaryCodeHallway: "/backgrounds/__25._Binary_Code_Hallway_202604110145.png",
+  binaryCodeHallway: "/backgrounds/__25._Binary_Code_202604110145.png",
   studentCouncilRed: "/backgrounds/__24_2redlogicloop.png",
   basement: "/backgrounds/__26._Basement_202604110145.png",
   binaryCode: "/backgrounds/25 Binary_code_digital_202604141829.mp4",
@@ -1281,11 +1281,37 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "She sits me down on the edge of her bed and hands me a cup of tea. It smells heavily of chamomile. And something else. Something sweet and chemical.",
         isInternal: true,
+        sprites: [{ character: "Iris", expression: "31", position: "center" }],
       },
       {
         speaker: "Protagonist",
-        text: "I look at her smiling face and I take a sip.",
+        text: "I look at her smiling face.",
         isInternal: true,
+        choices: [
+          {
+            text: "Take a sip.",
+            nextSceneId: "day4_glass_coffin",
+            stateEffects: { irisAffection: 10 },
+          },
+          {
+            text: "Set the cup down.",
+            nextSceneId: "day4_branch_a_escape",
+            stateEffects: { lucidity: 20 },
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "day4_glass_coffin",
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "I take a sip.",
+        isInternal: true,
+        background: BACKGROUNDS.irisRoom,
+        bgm: MUSIC.finalSaveState,
       },
       {
         speaker: "Protagonist",
@@ -1332,6 +1358,92 @@ export const scenes: Scene[] = [
       {
         speaker: "System",
         text: "ENDING 4 — THE GLASS COFFIN",
+      },
+    ],
+  },
+
+  {
+    id: "day4_branch_a_escape",
+    lines: [
+      {
+        speaker: "Protagonist",
+        text: "I set the cup down quietly on the nightstand. The smell doesn't leave my nose.",
+        isInternal: true,
+        background: BACKGROUNDS.irisRoom,
+        bgm: MUSIC.finalSaveState,
+        sprites: [{ character: "Iris", expression: "32", position: "center" }],
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day4_branch_a_escape_02_irisReal.mp3",
+        text: "Not thirsty?",
+        sprites: [{ character: "Iris", expression: "32", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "I just... I don't feel well. I need some air.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "She stands up slowly. She doesn't go toward the window. She goes toward the door.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day4_branch_a_escape_05_irisReal.mp3",
+        text: "You can stay as long as you need. I'll get you some water.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "She is between me and the door. She is not going to get me water.",
+        isInternal: true,
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day4_branch_a_escape_07_irisReal.mp3",
+        text: "You smelled it, didn't you.",
+        sprites: [{ character: "Iris", expression: "33", position: "center" }],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Iris—",
+      },
+      {
+        speaker: "Iris",
+        voice: "/voice/day4_branch_a_escape_09_irisReal.mp3",
+        text: "It would have been so peaceful. You would have felt nothing. You would have just... stayed.",
+      },
+      {
+        speaker: "Protagonist",
+        text: "A pipe knocks somewhere deep in the house. Iris's eyes flick toward the ceiling for just one second.",
+        isInternal: true,
+        sfx: SFX.muffledBang,
+        sfxVolume: 4,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I run.",
+        isInternal: true,
+        sfx: SFX.doorBurstRun,
+        background: BACKGROUNDS.darkStreet,
+        sprites: [],
+      },
+      {
+        speaker: "Protagonist",
+        text: "Down her hall, through her front door, down her street. I don't stop until my lungs are burning and her house is three blocks behind me.",
+        isInternal: true,
+      },
+      {
+        speaker: "Protagonist",
+        text: "I lock every door and window in my house that night. I put a chair under my bedroom doorknob.",
+        isInternal: true,
+        background: BACKGROUNDS.bedroomNight,
+      },
+      {
+        speaker: "Protagonist",
+        text: "She said it would have been peaceful. She said it like she was doing me a favour.",
+        isInternal: true,
+        choices: [{ text: "Continue...", nextSceneId: "day5_start" }],
       },
     ],
   },
@@ -2280,6 +2392,7 @@ export const scenes: Scene[] = [
         text: "You're a monster! Stay away from me!",
         background: BACKGROUNDS.gymnasium,
         bgm: MUSIC.obsession,
+        sprites: [{ character: "Iris", expression: "63", position: "center" }],
       },
       {
         speaker: "Protagonist",
@@ -2718,7 +2831,7 @@ export const scenes: Scene[] = [
         isInternal: true,
         sfx: SFX.rushingWind,
         sfxVolume: 0.6,
-        background: BACKGROUNDS.whiteVoid,
+        background: BACKGROUNDS.totalWhite,
         sprites: [],
       },
       {
@@ -3329,6 +3442,7 @@ export const scenes: Scene[] = [
 
   {
     id: "day12_branch_a",
+    nextSceneId: "final_start",
     vrMode: true,
     lines: [
       {
@@ -3362,7 +3476,7 @@ export const scenes: Scene[] = [
         speaker: "Protagonist",
         text: "Her footsteps thunder away down the hall. I survived the trap. That only means the final confrontation is here.",
         isInternal: true,
-        choices: [{ text: "Continue...", nextSceneId: "final_start" }],
+        sprites: [],
       },
     ],
   },
@@ -3422,7 +3536,7 @@ export const scenes: Scene[] = [
         speaker: "Iris",
         voice: "/voice/final_start_03_irisVr.mp3",
         text: "You're ruining it! I gave you everything! Why do you keep looking at the outside world?!",
-        sprites: [{ character: "Iris", expression: "92", position: "center" }],
+        sprites: [{ character: "Iris", expression: "80", position: "center" }],
         bgm: MUSIC.pistonPressure,
       },
       {
@@ -3501,7 +3615,7 @@ export const scenes: Scene[] = [
       },
       {
         speaker: "Protagonist",
-        text: "The command prompt hovers above us. Her eyes are full of tears. My body feels impossibly heavy, and the memory of her warmth is still burning through every thought that was supposed to save me.",
+        text: "The command prompt hovers above us. My body feels impossibly heavy, and the memory of her warmth is still burning through every thought that was supposed to save me.",
         isInternal: true,
       },
       {
@@ -3554,7 +3668,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Iris",
         voice: "/voice/ending_breakout_03_irisVr.mp3",
-        text: "Let go of me! [ERR_ACCESS_DENIED]!",
+        text: "Let go of me!",
         sprites: [{ character: "Iris", expression: "83", position: "center" }],
       },
       {
@@ -3562,7 +3676,6 @@ export const scenes: Scene[] = [
         text: "The conflict between my autonomy and her control throws the whole place into a violent red logic loop. I scream the only command that still feels mine: wake up.",
         isInternal: true,
         sprites: [],
-        bgm: null,
         background: BACKGROUNDS.studentCouncilRed,
       },
       {
@@ -3577,13 +3690,13 @@ export const scenes: Scene[] = [
         text: "Heavy footsteps thud on the stairs above me. The cops didn't make it in time.",
         isInternal: true,
         sfx: SFX.footstepsStairs,
+        background: BACKGROUNDS.basement,
       },
       {
         speaker: "Iris",
         voice: "/voice/ending_breakout_07_irisVr.mp3",
         text: "You broke my world, honey... I spent so long coding it for you.",
         sprites: [{ character: "Iris", expression: "96", position: "center" }],
-        background: BACKGROUNDS.basement,
       },
       {
         speaker: "Protagonist",
@@ -3614,7 +3727,7 @@ export const scenes: Scene[] = [
       {
         speaker: "Protagonist",
         text: "Iris. Look at me.",
-        background: BACKGROUNDS.binaryCode,
+        background: BACKGROUNDS.studentCouncilGlitch,
         bgm: null,
         sprites: [{ character: "Iris", expression: "97", position: "center" }],
       },
@@ -3623,6 +3736,7 @@ export const scenes: Scene[] = [
         text: "My hand closes around something that renders badly in the void, heavy with static and memory. The silver locket.",
         isInternal: true,
         sprites: [
+          { character: "Iris", expression: "97", position: "center" },
           { character: "Item", expression: "102", position: "right-small" },
         ],
       },

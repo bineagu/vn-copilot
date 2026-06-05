@@ -150,6 +150,26 @@
     "id": "day4_branch_a_10_irisReal"
   },
   {
+    "line": "[deceptively calm, watching] Not thirsty?",
+    "character": "irisReal",
+    "id": "day4_branch_a_escape_02_irisReal"
+  },
+  {
+    "line": "[too sweet, honeytrap] You can stay as long as you need. I'll get you some water.",
+    "character": "irisReal",
+    "id": "day4_branch_a_escape_05_irisReal"
+  },
+  {
+    "line": "[flat, quiet, no accusation — just a statement] You smelled it, didn't you.",
+    "character": "irisReal",
+    "id": "day4_branch_a_escape_07_irisReal"
+  },
+  {
+    "line": "[genuinely baffled, soft] It would have been so peaceful. You would have felt nothing. You would have just... stayed.",
+    "character": "irisReal",
+    "id": "day4_branch_a_escape_09_irisReal"
+  },
+  {
     "line": "[hesitant] ...Your parents.",
     "character": "irisReal",
     "id": "day4_branch_b_03_irisReal"
@@ -330,7 +350,7 @@
     "id": "day8_start_03_maya"
   },
   {
-    "line": "[startled] Ow! What—? The floor... it gave way!",
+    "line": "[startled] Ow! What—? The floor... [screaming] it gave way!",
     "character": "maya",
     "id": "day8_start_08_maya"
   },
