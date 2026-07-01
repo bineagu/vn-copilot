@@ -178,6 +178,15 @@ export function MainMenuNameEntry({
       >
         Begin
       </button>
+      <button
+        type="button"
+        onClick={onCancel}
+        className={`w-full mt-2 text-gray-200 bg-gray-900/70 hover:bg-gray-800/80 border border-gray-700/50 rounded transition-all active:scale-95 ${
+          isNativeMobile ? "py-2.5 text-sm" : "py-3 text-base"
+        }`}
+      >
+        Back
+      </button>
 
       {hasGamepad && (
         <div

@@ -1,8 +1,8 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "System.Override(Love)",
-  "version": "0.1.0",
-  "identifier": "com.systemoverride.love",
+  "version": "0.1.1",
+  "identifier": "system.override.love.com.homelabed",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",

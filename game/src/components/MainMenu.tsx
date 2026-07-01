@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useGame } from "../useGame";
 import { SaveLoadModal } from "./SaveLoadModal";
 import { useGamepadControls } from "../useGamepadControls";
@@ -19,6 +19,17 @@ export function MainMenu({ onStart }: MainMenuProps) {
   const hasSave = hasAnySave();
   const isTauri = isTauriRuntime();
   const isNativeMobile = isNativeMobileRuntime();
+
+  useEffect(() => {
+    const handlePopState = () => {
+      if (showNameInput && window.history.state?.screen === "menu") {
+        setShowNameInput(false);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [showNameInput]);
 
   const handleExit = async () => {
     await exit(0);
@@ -47,7 +58,17 @@ export function MainMenu({ onStart }: MainMenuProps) {
 
   const handleNewGame = () => {
     setShowLoadSlots(false);
+    window.history.pushState({ screen: "name-entry" }, "");
     setShowNameInput(true);
+  };
+
+  const handleCancelNameEntry = () => {
+    if (window.history.state?.screen === "name-entry") {
+      window.history.back();
+      return;
+    }
+
+    setShowNameInput(false);
   };
 
   const handleStartGame = (playerName: string) => {
@@ -150,7 +171,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
         <MainMenuNameEntry
           initialName={state.playerName}
           onSubmit={handleStartGame}
-          onCancel={() => setShowNameInput(false)}
+          onCancel={handleCancelNameEntry}
         />
       )}
 

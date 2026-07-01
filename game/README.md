@@ -51,6 +51,35 @@ npm run tauri:android:build:debug
 
 `tauri:android:build` produces an unsigned release APK/AAB, so it is not directly installable until you sign it. For local device testing, use `npm run tauri:android:build:debug`, which produces a debug APK signed with the debug keystore.
 
+### Signed Play Store AAB
+
+For Play Console uploads, use the repo-level signing command instead of opening Android Studio every time.
+
+Required environment variables:
+
+- `ANDROID_UPLOAD_KEYSTORE`: path to your upload keystore, relative to `game/` or absolute
+- `ANDROID_UPLOAD_KEY_ALIAS`: keystore alias name
+- `ANDROID_UPLOAD_STORE_PASSWORD`: keystore password
+- `ANDROID_UPLOAD_KEY_PASSWORD`: optional key password if it differs from the store password
+
+PowerShell example:
+
+```powershell
+$env:ANDROID_UPLOAD_KEYSTORE = "..\upload-keystore.jks"
+$env:ANDROID_UPLOAD_KEY_ALIAS = "upload"
+$env:ANDROID_UPLOAD_STORE_PASSWORD = "your-keystore-password"
+$env:ANDROID_UPLOAD_KEY_PASSWORD = "your-key-password"
+npm run tauri:android:build:play
+```
+
+If you already built the release bundle and only want to sign the latest release `.aab`, run:
+
+```powershell
+npm run tauri:android:sign:aab
+```
+
+The command signs the newest release bundle under `src-tauri/gen/android/app/build/outputs/bundle/` and verifies the signature with `jarsigner`.
+
 Prerequisites for Android builds:
 
 - Rust via `rustup`

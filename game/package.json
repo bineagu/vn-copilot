@@ -16,7 +16,9 @@
     "tauri:android:dev": "tauri android dev --target aarch64",
     "tauri:android:build": "tauri android build --target aarch64",
     "tauri:android:build:debug": "tauri android build --debug --target aarch64",
-    "tauri:android:build:universal": "tauri android build"
+    "tauri:android:build:universal": "tauri android build",
+    "tauri:android:sign:aab": "node ./scripts/sign-android-bundle.mjs",
+    "tauri:android:build:play": "node ./scripts/sign-android-bundle.mjs --build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",

@@ -15,15 +15,12 @@ val tauriProperties = Properties().apply {
 
 android {
     compileSdk = 36
-    namespace = "com.systemoverride.love"
+    namespace = "system.override.love.com.homelabed"
     defaultConfig {
         manifestPlaceholders["usesCleartextTraffic"] = "false"
-        applicationId = "com.systemoverride.love"
+        applicationId = "system.override.love.com.homelabed"
         minSdk = 24
         targetSdk = 36
-        ndk {
-            abiFilters += listOf("arm64-v8a")
-        }
         versionCode = tauriProperties.getProperty("tauri.android.versionCode", "1").toInt()
         versionName = tauriProperties.getProperty("tauri.android.versionName", "1.0")
     }
